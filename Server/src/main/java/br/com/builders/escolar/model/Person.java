@@ -89,9 +89,9 @@ public class Person {
     @NotBlank
     private String country;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private RoleEnum role;
+//    @Column(nullable = false)
+//    @Enumerated(EnumType.STRING)
+//    private RoleEnum role;
 
     @Column
     private LocalDateTime createdAt;

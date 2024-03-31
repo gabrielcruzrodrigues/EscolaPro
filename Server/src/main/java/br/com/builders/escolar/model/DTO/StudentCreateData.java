@@ -17,7 +17,7 @@ public record StudentCreateData(
         String identity,
         @NotBlank
         String cpf,
-        @NotBlank
+
         Date dateOfBirth,
         @NotBlank
         String nationality,

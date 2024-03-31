@@ -32,13 +32,13 @@ public class FixedHealth {
     @Column(length = 50)
     private String medicalClinic;
 
-    @Column(nullable = false)
+    @Column
     private Long quantityBrothers;
 
-    @Column(nullable = false)
+    @Column
     private boolean toGoOutAuthorization;
 
-    @Column(nullable = false)
+    @Column
     private boolean active;
 
     @Column

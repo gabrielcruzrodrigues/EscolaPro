@@ -2,11 +2,14 @@ package br.com.builders.escolar.service.student;
 
 import br.com.builders.escolar.exception.customized.UserNotFoundException;
 import br.com.builders.escolar.model.DTO.StudentCreateData;
+import br.com.builders.escolar.model.enums.SituationsStudentEnum;
 import br.com.builders.escolar.model.student.Student;
 import br.com.builders.escolar.repository.StudentRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -51,10 +54,15 @@ public class StudentService {
         student.setFather(request.father());
         student.setMother(request.mother());
         student.setShifts(request.shifts());
+        student.setSituation(SituationsStudentEnum.MATRICULADO);
         return student;
     }
 
     public Student findById(Long id) {
         return this.studentRepository.findById(id).orElseThrow(UserNotFoundException::new);
+    }
+
+    public List<Student> findAll() {
+        return this.studentRepository.findAll();
     }
 }
