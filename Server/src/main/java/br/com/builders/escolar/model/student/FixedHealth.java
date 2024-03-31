@@ -33,7 +33,6 @@ public class FixedHealth {
     private String medicalClinic;
 
     @Column(nullable = false)
-    @NotNull
     private Long quantityBrothers;
 
     @Column(nullable = false)

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,6 +16,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Builder
 public class Family {
 
     @Id
@@ -24,38 +26,31 @@ public class Family {
     @Column(nullable = false)
     private Date dateOfBirth;
 
-    @Column(nullable = false, length = 100)
-    @NotBlank
+    @Column(length = 100)
     private String address;
 
-    @Column(nullable = false, length = 100)
-    @NotBlank
+    @Column(length = 100)
     private String workAddress;
 
-    @Column(nullable = false, length = 50)
-    @NotBlank
+    @Column(length = 50)
     private String occupation;
 
-    @Column(nullable = false, length = 50)
-    @NotBlank
+    @Column(length = 50)
     private String neighborhood;
 
-    @Column(nullable = false, length = 50)
-    @NotBlank
+    @Column(length = 50)
     private String city;
 
-    @Column(nullable = false, length = 50)
-    @NotBlank
+    @Column(length = 50)
     private String state;
 
-    @Column(nullable = false, length = 50)
-    @NotBlank
+    @Column(length = 50)
     private String cep;
 
     @Column
     private boolean active;
 
-    @Column(nullable = false)
+    @Column
     @Enumerated(EnumType.STRING)
     private FamilyTypeEnum type;
 

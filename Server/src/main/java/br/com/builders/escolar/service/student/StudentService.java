@@ -25,8 +25,8 @@ public class StudentService {
         if (request.imageProfile() != null) {
             this.filesStudentService.saveImage(request.imageProfile(), student);
         }
-        this.familyService.createFamily(student);
-        this.fixedHealthService.createFixedHealth(student);
+        this.familyService.createBasicFamily(student);
+        this.fixedHealthService.createBasicFixedHealth(student);
     }
 
     private Student modelingNewStudentForSave(StudentCreateData request) {
