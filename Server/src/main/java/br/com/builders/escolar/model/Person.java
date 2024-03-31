@@ -7,6 +7,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,6 +18,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Builder
 public class Person {
 
     @Id
@@ -28,8 +30,8 @@ public class Person {
     @NotBlank
     private String name;
 
-    @Column(nullable = false)
-    private LocalDateTime entryDate;
+//    @Column(nullable = false)
+//    private LocalDateTime entryDate;
 
     @Column(nullable = false, length = 10)
     @NotBlank
@@ -89,7 +91,7 @@ public class Person {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private RoleEnum roleEnum;
+    private RoleEnum role;
 
     @Column
     private LocalDateTime createdAt;
