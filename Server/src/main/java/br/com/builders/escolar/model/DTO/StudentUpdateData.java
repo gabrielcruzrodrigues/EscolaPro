@@ -1,6 +1,5 @@
 package br.com.builders.escolar.model.DTO;
 
-import br.com.builders.escolar.model.enums.RoleEnum;
 import br.com.builders.escolar.model.enums.SexEnum;
 import br.com.builders.escolar.model.enums.ShiftEnum;
 import jakarta.validation.constraints.NotBlank;
@@ -8,10 +7,11 @@ import jakarta.validation.constraints.NotNull;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
-public record StudentCreateData(
+public record StudentUpdateData(
+        @NotNull
+        Long id,
         @NotBlank
         String name,
         @NotBlank

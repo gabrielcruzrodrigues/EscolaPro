@@ -19,6 +19,10 @@ import java.util.List;
 @Setter
 public class Student extends Person {
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private SituationsStudentEnum situation;
+
     @Email
     @NotBlank
     @Column(nullable = false, length = 100)
@@ -34,19 +38,15 @@ public class Student extends Person {
     @Column(length = 50)
     private String mother;
 
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private List<ShiftEnum> shifts;
+
     @OneToMany(mappedBy = "student")
     private List<Family> family;
 
     @OneToOne(mappedBy = "student")
     private FixedHealth fixedHealth;
-
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private List<ShiftEnum> shifts;
-
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private SituationsStudentEnum situation;
 
     @OneToMany(mappedBy = "student")
     private List<FilesStudent> imageProfile;

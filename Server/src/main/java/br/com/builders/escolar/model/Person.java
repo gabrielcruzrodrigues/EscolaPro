@@ -1,6 +1,5 @@
 package br.com.builders.escolar.model;
 
-import br.com.builders.escolar.model.enums.RoleEnum;
 import br.com.builders.escolar.model.enums.SexEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -11,8 +10,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @MappedSuperclass
 @NoArgsConstructor
@@ -42,7 +41,7 @@ public class Person {
     private String cpf;
 
     @Column(nullable = false)
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
 
     @Column(nullable = false)
     @NotBlank
