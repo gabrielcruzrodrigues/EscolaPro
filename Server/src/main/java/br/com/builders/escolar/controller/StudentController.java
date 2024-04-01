@@ -1,7 +1,7 @@
 package br.com.builders.escolar.controller;
 
-import br.com.builders.escolar.model.DTO.StudentCreateData;
-import br.com.builders.escolar.model.DTO.StudentUpdateData;
+import br.com.builders.escolar.model.DTO.StudentCreateDataDTO;
+import br.com.builders.escolar.model.DTO.StudentUpdateDataDTO;
 import br.com.builders.escolar.model.student.Student;
 import br.com.builders.escolar.service.student.StudentService;
 import jakarta.validation.Valid;
@@ -20,13 +20,13 @@ public class StudentController {
     private final StudentService studentService;
 
     @PostMapping
-    public ResponseEntity<?> createStudentMATRICULADO(@RequestBody @Valid StudentCreateData request) {
+    public ResponseEntity<?> createStudentMATRICULADO(@RequestBody @Valid StudentCreateDataDTO request) {
         this.studentService.createStudentMATRICULADO(request);
         return new ResponseEntity<>("Student created", HttpStatus.CREATED);
     }
 
     @PostMapping(path = "/pendente")
-    public ResponseEntity<?> createStudentPENDENTE(@RequestBody @Valid StudentCreateData request) {
+    public ResponseEntity<?> createStudentPENDENTE(@RequestBody @Valid StudentCreateDataDTO request) {
         this.studentService.createStudentPENDENTE(request);
         return new ResponseEntity<>("Student created", HttpStatus.CREATED);
     }
@@ -57,7 +57,7 @@ public class StudentController {
     }
 
     @PutMapping
-    public ResponseEntity<?> updateStudent(@RequestBody StudentUpdateData request) {
+    public ResponseEntity<?> updateStudent(@RequestBody StudentUpdateDataDTO request) {
         this.studentService.updateStudent(request);
         return new ResponseEntity<>("Student updated", HttpStatus.NO_CONTENT);
     }

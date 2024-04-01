@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.time.LocalDate;
 import java.util.List;
 
-public record StudentUpdateData(
+public record StudentUpdateDataDTO(
         @NotNull
         Long id,
         @NotBlank

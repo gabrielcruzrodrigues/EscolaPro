@@ -1,8 +1,8 @@
 package br.com.builders.escolar.service.student;
 
 import br.com.builders.escolar.exception.customized.UserNotFoundException;
-import br.com.builders.escolar.model.DTO.StudentCreateData;
-import br.com.builders.escolar.model.DTO.StudentUpdateData;
+import br.com.builders.escolar.model.DTO.StudentCreateDataDTO;
+import br.com.builders.escolar.model.DTO.StudentUpdateDataDTO;
 import br.com.builders.escolar.model.enums.SituationsStudentEnum;
 import br.com.builders.escolar.model.student.Student;
 import br.com.builders.escolar.repository.StudentRepository;
@@ -23,7 +23,7 @@ public class StudentService {
     private final FixedHealthService fixedHealthService;
 
     @Transactional
-    public void createStudentMATRICULADO(StudentCreateData request) {
+    public void createStudentMATRICULADO(StudentCreateDataDTO request) {
         Student studentForSave = modelingNewStudentForSave(request, SituationsStudentEnum.MATRICULADO);
         Student student = studentRepository.save(studentForSave);
 
@@ -35,7 +35,7 @@ public class StudentService {
     }
 
     @Transactional
-    public void createStudentPENDENTE(StudentCreateData request) {
+    public void createStudentPENDENTE(StudentCreateDataDTO request) {
         Student studentForSave = modelingNewStudentForSave(request, SituationsStudentEnum.PENDENTE);
         Student student = studentRepository.save(studentForSave);
 
@@ -44,7 +44,7 @@ public class StudentService {
         }
     }
 
-    private Student modelingNewStudentForSave(StudentCreateData request, SituationsStudentEnum situationStudent) {
+    private Student modelingNewStudentForSave(StudentCreateDataDTO request, SituationsStudentEnum situationStudent) {
         Student student = new Student();
         student.setName(request.name());
         student.setIdentity(request.identity());
@@ -105,7 +105,7 @@ public class StudentService {
     }
 
     @Transactional
-    public void updateStudent(StudentUpdateData request) {
+    public void updateStudent(StudentUpdateDataDTO request) {
         Student student = this.findById(request.id());
         student.setName(request.name());
         student.setIdentity(request.identity());
