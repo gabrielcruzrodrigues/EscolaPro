@@ -1,0 +1,90 @@
+.login-container {
+     display: flex;
+     min-height: 100vh;
+}
+
+.sidebar {
+     background-color: #386FA4;
+     color: #fff;
+     padding: 30px;
+     width: 500px;
+     font-family: 'roboto';
+     font-size: 20px;
+}
+
+.login-form {
+     display: flex;
+     flex-direction: column;
+}
+
+.login-form label {
+     margin-top: 20px;
+     text-align: center;
+}
+
+.login-form input {
+     padding: 13px;
+     margin-top: 5px;
+     margin-bottom: 10px;
+     border-radius: 10px;
+     border: none;
+}
+
+.login-form button {
+     padding: 10px;
+     margin: 40px 0 10px 0;
+     background-color: #84D2F6;
+     color: #133C55;
+     border-radius: 10px;
+     padding: 15px;
+     border: none;
+     cursor: pointer;
+     font-size: 25px;
+}
+
+.login-form button:hover {
+     background-color: #3498db;
+}
+
+.recover {
+     text-align: center;
+     font-size: 15px;
+}
+
+.login-form a {
+     color: #fff;
+     text-decoration: none;
+     display: block;
+     margin-top: 10px;
+}
+   
+.content {
+     flex-grow: 1;
+     background-color: #91E5F6;
+     padding: 10px 30px 30px 30px;
+     font-family: 'Poppins';
+}
+
+.content h2 {
+     color: #133C55;
+     width: 300px;
+     text-align: center;
+     margin: auto;
+     font-size: 50px;
+     border-bottom: 5px solid #2B567F;
+}
+
+.company-logo {
+     width: 100%;
+     border-radius: 15px;
+     margin: 60px 0 40px 0;
+}
+
+@media (min-width: 1080px) {
+     .sidebar {
+          width: 400px;
+     }
+}
+
+/* Add more CSS as needed for the rest of the content */
+   
