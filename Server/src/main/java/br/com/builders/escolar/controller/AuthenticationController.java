@@ -5,6 +5,7 @@ import br.com.builders.escolar.security.model.RegistrationDTO;
 import br.com.builders.escolar.security.service.AuthenticationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,11 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDTO> loginUser(@RequestBody @Valid RegistrationDTO request) {
-        return ResponseEntity.ok().body(authenticationService.loginUser(request.username(), request.password()));
+        LoginResponseDTO result = authenticationService.loginUser(request.username(), request.password());
+        if (result.login()) {
+            return ResponseEntity.ok().body(result);
+        } else {
+            return new ResponseEntity<>(result, HttpStatus.UNAUTHORIZED);
+        }
     }
 }

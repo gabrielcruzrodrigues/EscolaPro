@@ -1,25 +1,32 @@
-<body>
 
-     <div class="login-container">
-       <div class="sidebar">
-         <img class="company-logo" src="/assets/logo-company-login.png">
-        
-         <form class="login-form" (ngSubmit)="submitForm()">
-           <label for="username">USUÁRIO</label>
-           <input type="text" id="username" name="username">
-           
-           <label for="password">SENHA</label>
-           <input type="password" id="password" name="password">
-           
-           <button type="submit">Acessar Plataforma</button>
-           <a href="#" class="recover">Esqueci minha senha</a>
-         </form>
+<div class="login-container">
+  <div class="sidebar">
+    <img class="company-logo" src="/assets/logo-company-login.png">
+    <p class="bad-credentials" *ngIf="badCredentialsTextView">credenciais incorretas</p>
+  
+    <form [formGroup]="form" class="login-form" (ngSubmit)="submitForm()">
+      <label for="username">USUÁRIO</label>
+      <input type="text" id="username" name="username" formControlName="username">
+      
+      <label for="password">SENHA</label>
+      <input type="password" id="password" name="password" formControlName="password">
 
-       </div>
-       
-       <div class="content">
-         <h2>Escola PRO</h2>
-       </div>
-     </div>
-     
-     </body>
+      
+      <button type="submit">Acessar Plataforma</button>
+      <a href="#" class="recover">Esqueci minha senha</a>
+    </form>
+
+  </div>
+  
+  <div class="content">
+    <h2>Escola PRO</h2>
+    <div class="images-up">
+      <p class="text text1">Gerêncie toda a <br> sua instituição em <br>um unico lugar!</p>
+      <img class="image image1" src="/assets/image-login-2.svg">
+    </div>
+    <div class="images-down">
+      <img class="image image2" src="/assets/image-login-1.svg">
+      <p class="text text2">A liberdade <br>geográfica que você<br> precisava para a sua <br>instituição.</p>
+    </div>
+  </div>
+</div>

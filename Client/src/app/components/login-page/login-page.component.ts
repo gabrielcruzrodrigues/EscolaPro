@@ -1,29 +1,54 @@
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { response } from 'express';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { environment } from '../../../environments/environment';
+
+interface LoginResponse {
+  token: string;
+  username: string;
+}
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule, HttpClientModule, CommonModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
 })
 export class LoginPageComponent {
 
-  formData: any = {}
+  readonly apiUrl = environment.apiUrl;
+  form: FormGroup;
+  badCredentialsTextView: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(private fb: FormBuilder, private http: HttpClient) {
+    this.form = this.fb.group({
+      username: [''],
+      password: ['']
+    })
+  }
 
   submitForm() {
-    this.http.post("http://localhost:8080/login", this.formData)
-    .subscribe(
-      response => {
-        console.log('Resposta do servidor:', response)
-      },
-      error => {
-        console.error("Erro ao enviar formulário: ", error);
-      }
-    );
+    const formData = this.form.value;
+      this.http.post<LoginResponse>(`${this.apiUrl}/auth/login`, formData, { observe: 'response' })
+        .subscribe({
+          next: (response: HttpResponse<LoginResponse>) => {
+            if (response.status == 200 && response.body?.token != null) {
+              alert("logado!");
+            }
+          },
+          error: (error) => {
+            if (error.status === 401) {
+              this.badCredentials();
+            }
+          }
+        }) 
+  }
+
+  badCredentials() {
+    this.badCredentialsTextView = true;
   }
 }

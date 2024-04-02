@@ -26,9 +26,9 @@ public class AuthenticationService {
                     new UsernamePasswordAuthenticationToken(username, password));
             String token = jwtTokenService.generateToken(auth);
             Optional<User> user = userRepository.findByUsername(username);
-            return new LoginResponseDTO(user.get().getUsername(), token);
+            return new LoginResponseDTO(user.get().getUsername(), token, true);
         } catch (Exception ex) {
-            return new LoginResponseDTO(null, ex.getMessage());
+            return new LoginResponseDTO(null, ex.getMessage(), false);
         }
     }
 }

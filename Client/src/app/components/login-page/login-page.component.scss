@@ -1,6 +1,7 @@
 .login-container {
      display: flex;
-     min-height: 100vh;
+     height: 100vh;
+     overflow: hidden;
 }
 
 .sidebar {
@@ -24,15 +25,18 @@
 
 .login-form input {
      padding: 13px;
-     margin-top: 5px;
-     margin-bottom: 10px;
      border-radius: 10px;
      border: none;
+     width: 90%;
+     margin: 5px auto 10px auto;
+     font-size: 20px;
+     text-align: center;
+     font-family: 'Roboto';
 }
 
 .login-form button {
      padding: 10px;
-     margin: 40px 0 10px 0;
+     margin: 30px auto 10px auto;
      background-color: #84D2F6;
      color: #133C55;
      border-radius: 10px;
@@ -40,6 +44,7 @@
      border: none;
      cursor: pointer;
      font-size: 25px;
+     width: 96%;
 }
 
 .login-form button:hover {
@@ -71,7 +76,7 @@
      text-align: center;
      margin: auto;
      font-size: 50px;
-     border-bottom: 5px solid #2B567F;
+     border-bottom: 7px solid #2B567F;
 }
 
 .company-logo {
@@ -80,11 +85,125 @@
      margin: 60px 0 40px 0;
 }
 
-@media (min-width: 1080px) {
+.bad-credentials {
+     text-align: center;
+     margin: 5px auto;
+     background-color: rgba(255, 0, 0, 0.788);
+     padding: 5px;
+     width: 90%;
+     border-radius: 10px;
+}
+
+.images-up {
+     margin-top: 50px;
+     display: flex;
+     justify-content: space-evenly;
+}
+
+.images-down {
+     margin-top: 50px;
+     display: flex;
+     justify-content: space-evenly;
+     margin-bottom: 100px;
+}
+
+.image1 {
+     max-width: 100%;
+     height: auto;
+     width: 40%;
+     padding: 0px;
+}
+
+.text {
+     font-size: 80px;
+     padding: 0%;
+     // background-color: #133C55;
+}
+
+.image2 {
+     width: 30%;
+}
+
+@media (width <= 1600px) {
      .sidebar {
           width: 400px;
      }
+     .images-up {
+          margin: 30px auto 0 auto;
+          display: flex;
+          justify-content: space-evenly;
+          // background-color: #133C55;
+          width: 90%;
+     }
+     
+     .images-down {
+          margin: 0px auto;
+          display: flex;
+          justify-content: space-evenly;
+          width: 90%;
+     }
+     
+     .image1 {
+          max-width: 100%;
+          height: auto;
+          width: 40%;
+          padding: 0px;
+          // background-color: #133C55;
+     }
+     
+     .text {
+          font-family: 'Poppins';
+          font-weight: 600;
+          font-size: 40px;
+          padding: 0%;
+          margin-bottom: 50px;
+          // background-color: #133C55;
+     }
+     
+     .image2 {
+          width: 35%;
+     }
 }
 
+@media (width >= 1920px) {
+     .sidebar {
+          width: 450px;
+     }
+     .images-up {
+          margin: 30px auto 0 auto;
+          display: flex;
+          justify-content: space-evenly;
+          // background-color: #133C55;
+          width: 90%;
+     }
+     
+     .images-down {
+          margin: 0px auto;
+          display: flex;
+          justify-content: space-evenly;
+          width: 90%;
+     }
+     
+     .image1 {
+          max-width: 100%;
+          height: auto;
+          width: 40%;
+          padding: 0px;
+          // background-color: #133C55;
+     }
+     
+     .text {
+          font-family: 'Poppins';
+          font-weight: 600;
+          font-size: 50px;
+          padding: 0%;
+          margin-bottom: 50px;
+          // background-color: #133C55;
+     }
+     
+     .image2 {
+          width: 35%;
+     }
+}
 /* Add more CSS as needed for the rest of the content */
    
