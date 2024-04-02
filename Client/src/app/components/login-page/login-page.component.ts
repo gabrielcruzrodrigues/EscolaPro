@@ -49,6 +49,11 @@ export class LoginPageComponent {
   }
 
   badCredentials() {
+    var paragraph = document.getElementById("bad-credentials");
+    if (paragraph) {
+      paragraph.classList.toggle("hidden");
+      paragraph.classList.toggle("visible");
+    }
     this.badCredentialsTextView = true;
   }
 }

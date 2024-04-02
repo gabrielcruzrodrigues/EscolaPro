@@ -2,7 +2,9 @@
 <div class="login-container">
   <div class="sidebar">
     <img class="company-logo" src="/assets/logo-company-login.png">
-    <p class="bad-credentials" *ngIf="badCredentialsTextView">credenciais incorretas</p>
+    <p id="bad-credentials" class="bad-credentials" *ngIf="badCredentialsTextView">
+      credenciais incorretas
+    </p>
   
     <form [formGroup]="form" class="login-form" (ngSubmit)="submitForm()">
       <label for="username">USUÁRIO</label>

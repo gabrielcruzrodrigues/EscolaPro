@@ -94,6 +94,15 @@
      border-radius: 10px;
 }
 
+// .hidden {
+//      opacity: 0;
+//      transition: opacity ease-in-out;
+// }
+
+// .visible {
+//      opacity: 1;
+// }
+
 .images-up {
      margin-top: 50px;
      display: flex;
@@ -117,6 +126,7 @@
 .text {
      font-size: 80px;
      padding: 0%;
+     color: #133C55;
      // background-color: #133C55;
 }
 
@@ -157,6 +167,7 @@
           font-size: 40px;
           padding: 0%;
           margin-bottom: 50px;
+          color: #133C55;
           // background-color: #133C55;
      }
      
@@ -198,6 +209,7 @@
           font-size: 50px;
           padding: 0%;
           margin-bottom: 50px;
+          color: #133C55;
           // background-color: #133C55;
      }
      
