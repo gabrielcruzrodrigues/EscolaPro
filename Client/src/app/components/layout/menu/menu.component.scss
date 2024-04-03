@@ -1,0 +1,54 @@
+.side-menu {
+     position: fixed;
+     top: 0;
+     left: 0;
+     bottom: 0;
+     width: 220px;
+     background-color: #386FA4;
+     font-family: 'Poppins';
+   //  padding: 20px;
+     display: flex;
+     flex-direction: column;
+   }
+      
+   .side-menu nav ul {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+   }
+   
+   .side-menu nav ul li {
+     padding: 15px 20px;
+     display: flex;
+     cursor: pointer;
+   }
+   
+   .side-menu nav ul li a {
+     text-decoration: none;
+     color: white;
+     display: block;
+     font-size: 20px;
+   }
+   
+   .side-menu nav ul li.active {
+     background-color: #dcdcdc31;
+     color: #fff;
+   }
+   
+   .side-menu nav ul li.active a {
+     color: #fff;
+   }
+   
+   //  .side-menu nav ul li.geral {
+   //   padding-bottom: 20px;
+   //  }
+   
+   .side-menu nav ul li:hover {
+     background-color: #dcdcdc31;
+   }
+   
+   .icon-menu {
+     width: 30px;
+     padding-right: 5px;
+   }
+      

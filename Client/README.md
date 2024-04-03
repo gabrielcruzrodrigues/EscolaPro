@@ -1,6 +1,6 @@
-# EscolarClient
+# EscolaProN
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.13.
 
 ## Development server
 

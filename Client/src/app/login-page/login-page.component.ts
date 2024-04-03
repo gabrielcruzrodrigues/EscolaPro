@@ -1,12 +1,8 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { environment } from '../../../environment/environment';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
+import { environment } from 'src/environment/environment';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 
 interface LoginResponse {
   token: string;
@@ -15,10 +11,8 @@ interface LoginResponse {
 
 @Component({
   selector: 'app-login-page',
-  standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule, CommonModule],
   templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.scss'
+  styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
 
@@ -54,4 +48,5 @@ export class LoginPageComponent {
   badCredentials() {
     this.badCredentialsTextView = true;
   }
+
 }
