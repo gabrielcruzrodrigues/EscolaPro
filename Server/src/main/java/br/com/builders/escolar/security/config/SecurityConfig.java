@@ -8,6 +8,8 @@ import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.boot.autoconfigure.security.reactive.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -49,7 +51,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((auth) -> auth
                         .requestMatchers("/auth/login").permitAll()
                         .anyRequest().authenticated())
-                .httpBasic(Customizer.withDefaults())
+                // .httpBasic(Customizer.withDefaults())
                 .oauth2ResourceServer((config) -> config.jwt(
                         jwt -> jwt.decoder(jwtDecoder())))
                 .sessionManagement((session) -> session

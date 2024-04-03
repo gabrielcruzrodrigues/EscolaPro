@@ -8,12 +8,11 @@
      
        <form [formGroup]="form" class="login-form" (ngSubmit)="submitForm()">
          <label for="username">USUÁRIO</label>
-         <input type="text" id="username" name="username" formControlName="username">
+         <input type="text" id="username" name="username" formControlName="username" required>
          
          <label for="password">SENHA</label>
-         <input type="password" id="password" name="password" formControlName="password">
+         <input type="password" id="password" name="password" formControlName="password" required>
    
-         
          <button type="submit">Acessar Plataforma</button>
          <a href="#" class="recover">Esqueci minha senha</a>
        </form>
