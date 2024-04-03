@@ -2,7 +2,7 @@ package br.com.builders.escolar.security.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public record LoginResponseDTO(
+public record AuthenticatedLoginDTO(
         String username,
         String token,
         @JsonIgnore

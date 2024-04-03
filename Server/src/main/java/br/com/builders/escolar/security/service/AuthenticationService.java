@@ -1,7 +1,6 @@
 package br.com.builders.escolar.security.service;
 
-import br.com.builders.escolar.exception.customized.InvalidAuthenticationException;
-import br.com.builders.escolar.security.model.LoginResponseDTO;
+import br.com.builders.escolar.security.model.AuthenticatedLoginDTO;
 import br.com.builders.escolar.security.model.User;
 import br.com.builders.escolar.security.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,15 +19,15 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final UserRepository userRepository;
 
-    public LoginResponseDTO loginUser(String username, String password) {
+    public AuthenticatedLoginDTO loginUser(String username, String password) {
         try {
             Authentication auth = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(username, password));
             String token = jwtTokenService.generateToken(auth);
             Optional<User> user = userRepository.findByUsername(username);
-            return new LoginResponseDTO(user.get().getUsername(), token, true);
+            return new AuthenticatedLoginDTO(user.get().getUsername(), token, true);
         } catch (Exception ex) {
-            return new LoginResponseDTO(null, ex.getMessage(), false);
+            return new AuthenticatedLoginDTO(null, ex.getMessage(), false);
         }
     }
 }
