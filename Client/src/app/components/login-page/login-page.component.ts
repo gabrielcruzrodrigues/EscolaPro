@@ -5,6 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../environments/environment';
+// import { CookieService } from 'ngx-cookie-service';
+
+// import { Component } from '@angular/core';
+// import { FormBuilder, FormGroup } from '@angular/forms';
+// import { HttpClient, HttpResponse } from '@angular/common/http';
+// import { CookieService } from 'ngx-cookie-service'; // Certifique-se de importar o CookieService corretamente
+
 
 interface LoginResponse {
   token: string;
@@ -24,7 +31,10 @@ export class LoginPageComponent {
   form: FormGroup;
   badCredentialsTextView: boolean = false;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, 
+              private http: HttpClient, 
+              // private cookieService: CookieService
+              ) {
     this.form = this.fb.group({
       username: [''],
       password: ['']
@@ -36,8 +46,20 @@ export class LoginPageComponent {
       this.http.post<LoginResponse>(`${this.apiUrl}/auth/login`, formData, { observe: 'response' })
         .subscribe({
           next: (response: HttpResponse<LoginResponse>) => {
+
             if (response.status == 200 && response.body?.token != null) {
               alert("logado!");
+
+              // const expirationDate = new Date();
+              // expirationDate.setDate(expirationDate.getDate() + 1);
+
+              // const authToken = response.body.token;
+
+              // this.cookieService.set('token', authToken, {
+              //   secure: true,
+              //   sameSite: 'Strict',
+              //   expires: expirationDate});
+
             }
           },
           error: (error) => {

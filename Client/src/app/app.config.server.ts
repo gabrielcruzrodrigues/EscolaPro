@@ -8,7 +8,7 @@ const serverConfig: ApplicationConfig = {
     provideServerRendering(),
     provideHttpClient(
       withFetch()
-    )
+    ),
   ]
 };
 
