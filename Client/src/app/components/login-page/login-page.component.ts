@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../environment/environment';
+import { Router } from '@angular/router';
 
 interface LoginResponse {
   token: string;
@@ -24,7 +25,7 @@ export class LoginPageComponent {
   form: FormGroup;
   badCredentialsTextView: boolean = false;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.form = this.fb.group({
       username: [''],
       password: ['']
@@ -38,7 +39,7 @@ export class LoginPageComponent {
           next: (response: HttpResponse<LoginResponse>) => {
 
             if (response.status == 200) {
-              alert("logado!");
+              this.router.navigate(["/dashboard"]);
             }
           },
           error: (error) => {
