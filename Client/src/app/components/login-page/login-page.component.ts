@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../environment/environment';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 interface LoginResponse {
   token: string;
