@@ -7,12 +7,12 @@ export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const cookieService = inject(CookieService);
 
-  debugger
-  const cookieExists: boolean = cookieService.check('token');
+  // debugger
+  // const cookieExists: boolean = cookieService.check('token');
 
-  if (!cookieExists) {
-    router.navigateByUrl('/')
-    return false;
-  }
+  // if (!cookieExists) {
+  //   router.navigateByUrl('/')
+  //   return false;
+  // }
   return true;
 };

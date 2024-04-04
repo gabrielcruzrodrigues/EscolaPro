@@ -7,13 +7,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './components/layout/menu/menu.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AlunosDashboardComponent } from './components/alunos/alunos-dashboard/alunos-dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     MenuComponent,
-    DashboardComponent
+    DashboardComponent,
+    AlunosDashboardComponent
   ],
   imports: [
     BrowserModule,
