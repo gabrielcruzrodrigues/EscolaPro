@@ -10,6 +10,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { StudentsDashboardComponent } from './components/students/students-dashboard/students-dashboard.component';
 import { CardComponent } from './components/layout/card/card.component';
 import { SearchComponent } from './components/layout/search/search.component';
+import { StudentsRegisterComponent } from './components/students/students-register/students-register.component';
+import { FormStudentComponent } from './components/layout/form-student/form-student.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { SearchComponent } from './components/layout/search/search.component';
     DashboardComponent,
     StudentsDashboardComponent,
     CardComponent,
-    SearchComponent
+    SearchComponent,
+    StudentsRegisterComponent,
+    FormStudentComponent
   ],
   imports: [
     BrowserModule,
