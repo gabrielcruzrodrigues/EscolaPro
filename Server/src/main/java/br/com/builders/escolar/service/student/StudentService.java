@@ -101,7 +101,6 @@ public class StudentService {
 
     public List<Student> searchStudentByName(String name) {
         return this.studentRepository.searchStudentByName(name);
-
     }
 
     @Transactional
