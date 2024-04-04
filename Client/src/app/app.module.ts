@@ -7,7 +7,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './components/layout/menu/menu.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { AlunosDashboardComponent } from './components/alunos/alunos-dashboard/alunos-dashboard.component';
+import { StudentsDashboardComponent } from './components/students/students-dashboard/students-dashboard.component';
+import { CardComponent } from './components/layout/card/card.component';
+import { SearchComponent } from './components/layout/search/search.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { AlunosDashboardComponent } from './components/alunos/alunos-dashboard/a
     LoginPageComponent,
     MenuComponent,
     DashboardComponent,
-    AlunosDashboardComponent
+    StudentsDashboardComponent,
+    CardComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

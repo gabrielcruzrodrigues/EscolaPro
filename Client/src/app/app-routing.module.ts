@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { authGuard } from './auth/auth.guard';
-import { AlunosDashboardComponent } from './components/alunos/alunos-dashboard/alunos-dashboard.component';
+import { StudentsDashboardComponent } from './components/students/students-dashboard/students-dashboard.component';
 
 const routes: Routes = [
   {path: "", component: LoginPageComponent},
   {path: "dashboard", component: DashboardComponent, canActivate: [authGuard]},
-  {path: "alunos", component: AlunosDashboardComponent}
+  {path: "students", component: StudentsDashboardComponent}
 ];
 
 @NgModule({

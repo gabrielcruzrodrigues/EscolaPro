@@ -8,3 +8,19 @@ body, html {
      box-sizing: border-box;
      font-family: 'Arial', sans-serif;
 }
+
+.menu {
+     width: 17.5%;
+}
+
+.content {
+     // background-color: red;
+     width: 100%;
+}
+
+.main-sections {
+     display: flex;
+     flex-direction: row;
+     width: 100%;
+     height: 100vh;
+}
