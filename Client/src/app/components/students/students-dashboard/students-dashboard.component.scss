@@ -3,4 +3,26 @@
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 20px 40px;
+    // background-color: red;
+}
+
+@media(min-width: 1280px) {
+    .cards {
+        padding: 20px 35px;
+        margin-left: 1%;
+    }
+}
+
+@media(min-width: 1400px) {
+    .cards {
+        padding: 20px 55px;
+        margin-left: 1%;
+    }
+}
+
+@media(min-width: 1680px) {
+    .cards {
+        padding: 20px 40px;
+        margin-left: 1%;
+    }
 }

@@ -30,18 +30,9 @@
      font-size: 20px;
    }
    
-  //  .side-menu nav ul li.active {
-  //    background-color: #dcdcdc31;
-  //    color: #fff;
-  //  }
-   
    .side-menu nav ul li.active a {
      color: #fff;
    }
-   
-   //  .side-menu nav ul li.geral {
-   //   padding-bottom: 20px;
-   //  }
    
    .side-menu nav ul li:hover {
      background-color: #dcdcdc31;
@@ -51,4 +42,17 @@
      width: 30px;
      padding-right: 5px;
    }
+
+  @media(min-width: 1280px) {
+    .side-menu {
+      width: 16%;
+  }
+
+  @media(min-width: 1680px) {
+    .side-menu  {
+      padding: 15px 15px 15px 25px;
+      width: 13%;
+    }
+}
+}
       
