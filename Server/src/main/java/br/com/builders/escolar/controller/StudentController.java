@@ -34,13 +34,6 @@ public class StudentController {
     }
 
     @PedagogicalAccess
-    @PostMapping(path = "/pendente")
-    public ResponseEntity<?> createStudentPENDENTE(@RequestBody @Valid StudentCreateDataDTO request) {
-        this.studentService.createStudentPENDENTE(request);
-        return new ResponseEntity<>("Student created", HttpStatus.CREATED);
-    }
-
-    @PedagogicalAccess
     @GetMapping(path = "/search/{id}")
     public ResponseEntity<Student> findById(@PathVariable Long id) {
         return ResponseEntity.ok().body(this.studentService.findById(id));
