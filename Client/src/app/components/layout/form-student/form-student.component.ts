@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-form-student',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./form-student.component.scss']
 })
 export class FormStudentComponent {
-
+  @Input() destination: string = '';
 }

@@ -13,6 +13,7 @@ import { SearchComponent } from './components/layout/search/search.component';
 import { StudentsRegisterComponent } from './components/students/students-register/students-register.component';
 import { FormStudentComponent } from './components/layout/form-student/form-student.component';
 import { BackdoorComponent } from './components/layout/backdoor/backdoor.component';
+import { StudentsUpdateComponent } from './components/students/students-update/students-update.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { BackdoorComponent } from './components/layout/backdoor/backdoor.compone
     SearchComponent,
     StudentsRegisterComponent,
     FormStudentComponent,
-    BackdoorComponent
+    BackdoorComponent,
+    StudentsUpdateComponent
   ],
   imports: [
     BrowserModule,
