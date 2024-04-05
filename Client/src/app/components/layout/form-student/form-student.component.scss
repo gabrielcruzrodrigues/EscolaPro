@@ -5,7 +5,7 @@ body {
  }
  
  #studentForm {
-     width: 80%;
+     width: 90%;
      margin: 0 auto;
      background-color: #fff;
      padding: 20px;
@@ -43,17 +43,19 @@ body {
  }
  
  .form-actions button {
-     padding: 10px 20px;
-     margin-left: 10px;
+     padding: 20px 30px;
+     margin-left: 15px;
      border: none;
-     border-radius: 4px;
+     border-radius: 10px;
      cursor: pointer;
      background-color: #5cb85c;
-     color: white;
+     color: rgb(255, 255, 255);
+     font-size: 1.1em;
  }
  
  .form-actions button[name="action"][value="pendente"] {
-     background-color: #f0ad4e;
+     background-color: #84D2F6;
+     color: black
  }
 
  .gender {
@@ -67,5 +69,6 @@ body {
  }
 
  .gender input {
-     margin-bottom: 4px;
+     margin-bottom: 2px;
  }
+
