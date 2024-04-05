@@ -28,17 +28,17 @@ public class AuthenticationController {
         AuthenticatedLoginDTO result = authenticationService.loginUser(request.username(), request.password());
 
         if (result.login()) {
-//            long expirationTime = 86400000;
-//            ResponseCookie jwtCookie = ResponseCookie.from("token", result.token())
-//                    .httpOnly(false)
-//                    .secure(false)  //change to true in production
-//                    .path("/")
-//                    .maxAge(expirationTime / 1000)
-//                    .sameSite("Strict")
-//                    .domain("localhost")
-//                    .build();
-//
-//            response.addHeader(HttpHeaders.SET_COOKIE, jwtCookie.toString());
+            long expirationTime = 86400000;
+            ResponseCookie jwtCookie = ResponseCookie.from("token", result.token())
+                    .httpOnly(false) //change to true in production
+                    .secure(false)  //change to true in production
+                    .path("/")
+                    .maxAge(expirationTime / 1000)
+                    .sameSite("Strict")
+                    .domain("localhost")
+                    .build();
+
+            response.addHeader(HttpHeaders.SET_COOKIE, jwtCookie.toString());
             ResponseLoginDTO responseLoginDTO = new ResponseLoginDTO(result.username(), result.token());
 
             return ResponseEntity.ok().body(responseLoginDTO);

@@ -16,4 +16,9 @@ export class FormStudentsDataService {
     alert("passou pending");
     console.log(data);
   }
+
+  updateStudent(data: any) {
+    alert("passou update");
+    console.log(data);
+  }
 }

@@ -14,6 +14,7 @@ enum Shift {
 })
 export class FormStudentComponent {
   @Input() destination: string = '';
+  @Input() buttonUpdate: string = 'false'; 
   pendingButton: boolean = false;
   buttonFinishName: string = '';
 
@@ -49,12 +50,15 @@ export class FormStudentComponent {
   }
 
   sendData(action: string) {
-    if (action == 'register') {
-      this.formData.situation = 'MATRICULADO';
-      this.formServiceData.registerStudent(this.formData);
+
+    if (action == 'register' && this.buttonUpdate == 'true') {
+      this.formServiceData.updateStudent(this.formData);
     } else if (action == 'pending') {
       this.formData.situation = 'PENDENTE';
       this.formServiceData.pendingStudent(this.formData);
+    } else if (action == 'register') {
+      this.formData.situation = 'MATRICULADO';
+      this.formServiceData.registerStudent(this.formData);
     }
   }
 
@@ -62,26 +66,8 @@ export class FormStudentComponent {
     if (this.destination == 'register') {
       this.pendingButton = true;
       this.buttonFinishName = 'Finalizar cadastro';
-    } else  {
+    } else {
       this.buttonFinishName = 'Atualizar cadastro';
     }
   }
-
-  // formShifts = {
-  //   matutino: '',
-  //   vespertino: '',
-  //   noturno: ''
-  // }
-
-  // onShiftChange(shiftValue: string, event: any): void {
-  //   if(shiftValue in Shift) {
-  //     const shift: Shift = Shift[shiftValue as keyof typeof Shift];
-  //     if (shift && event.target.checked) {
-  //         this.formShifts[shift] = shift.toUpperCase();
-  //     } else {
-  //         this.formShifts[shift] = '';
-  //     }
-  //   } 
-
-  // }
 }
