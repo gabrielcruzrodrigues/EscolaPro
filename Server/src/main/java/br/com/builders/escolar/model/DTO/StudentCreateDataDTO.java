@@ -2,6 +2,7 @@ package br.com.builders.escolar.model.DTO;
 
 import br.com.builders.escolar.model.enums.SexEnum;
 import br.com.builders.escolar.model.enums.ShiftEnum;
+import br.com.builders.escolar.model.enums.SituationsStudentEnum;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.web.multipart.MultipartFile;
@@ -50,6 +51,8 @@ public record StudentCreateDataDTO(
         String mother,
         @NotNull
         List<ShiftEnum> shifts,
-        MultipartFile imageProfile
+        MultipartFile imageProfile,
+        @NotNull
+        SituationsStudentEnum situation
 ) {
 }

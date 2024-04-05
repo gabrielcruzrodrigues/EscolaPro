@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 
 @Target( {ElementType.METHOD, ElementType.TYPE} )
 @Retention(RetentionPolicy.RUNTIME)
-@PreAuthorize("hasRole('FINANCIAL', 'ADMIN')")
+@PreAuthorize("hasAnyRole('FINANCIAL', 'ADMIN')")
 public @interface FinancialAccess {
 }

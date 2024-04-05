@@ -107,8 +107,8 @@
          
          <!-- Actions -->
          <div class="form-actions">
-             <button type="submit" name="action" value="pendente">Deixar pendente</button>
-             <button type="submit" name="action" value="finalizar">Finalizar cadastro</button>
+             <button *ngIf="pendingButton" type="submit" name="action" value="pendente">Deixar pendente</button>
+             <button type="submit" name="action" value="finalizar">{{ buttonFinishName }}</button>
          </div>
      </div>
  </form>

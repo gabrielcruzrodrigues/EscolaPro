@@ -56,34 +56,34 @@ class StudentServiceTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        this.initialSettings();
+//        this.initialSettings();
     }
 
-    public void initialSettings() {
-        this.studentCreateDataDTO = new StudentCreateDataDTO(
-                NAME,
-                IDENTITY,
-                CPF,
-                DATE_OF_BIRTH,
-                BRASILEIRA,
-                NATURALNESS,
-                SEX,
-                EMAIL,
-                CEP,
-                ADDRESS,
-                PHONE,
-                NEIGHBORHOOD,
-                CITY,
-                STATE,
-                COUNTRY,
-                EMAIL_PERSON_RESPONSIBLE,
-                RESPONSIBLE,
-                FATHER,
-                MOTHER,
-                SHIFTS,
-                MULTIPART_FILE
-        );
-    }
+//    public void initialSettings() {
+//        this.studentCreateDataDTO = new StudentCreateDataDTO(
+//                NAME,
+//                IDENTITY,
+//                CPF,
+//                DATE_OF_BIRTH,
+//                BRASILEIRA,
+//                NATURALNESS,
+//                SEX,
+//                EMAIL,
+//                CEP,
+//                ADDRESS,
+//                PHONE,
+//                NEIGHBORHOOD,
+//                CITY,
+//                STATE,
+//                COUNTRY,
+//                EMAIL_PERSON_RESPONSIBLE,
+//                RESPONSIBLE,
+//                FATHER,
+//                MOTHER,
+//                SHIFTS,
+//                MULTIPART_FILE
+//        );
+//    }
 
     @Test
     @DisplayName("when to call createStudentMATRICULADO should save student with situation MATRICULADO")

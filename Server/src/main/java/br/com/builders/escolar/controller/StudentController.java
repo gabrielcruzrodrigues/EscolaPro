@@ -2,6 +2,7 @@ package br.com.builders.escolar.controller;
 
 import br.com.builders.escolar.model.DTO.StudentCreateDataDTO;
 import br.com.builders.escolar.model.DTO.StudentUpdateDataDTO;
+import br.com.builders.escolar.model.enums.SituationsStudentEnum;
 import br.com.builders.escolar.model.student.Student;
 import br.com.builders.escolar.security.accessInterfaces.FinancialAccess;
 import br.com.builders.escolar.security.accessInterfaces.PedagogicalAccess;
@@ -21,10 +22,14 @@ public class StudentController {
 
     private final StudentService studentService;
 
-    @PedagogicalAccess
+//    @PedagogicalAccess
     @PostMapping
-    public ResponseEntity<?> createStudentMATRICULADO(@RequestBody @Valid StudentCreateDataDTO request) {
-        this.studentService.createStudentMATRICULADO(request);
+    public ResponseEntity<?> createStudent(@RequestBody @Valid StudentCreateDataDTO request) {
+        if (request.situation() == SituationsStudentEnum.MATRICULADO) {
+            this.studentService.createStudentMATRICULADO(request);
+        } else {
+            this.studentService.createStudentPENDENTE(request);
+        }
         return new ResponseEntity<>("Student created", HttpStatus.CREATED);
     }
 

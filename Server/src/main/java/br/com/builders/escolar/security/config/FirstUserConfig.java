@@ -33,7 +33,7 @@ public class FirstUserConfig implements ApplicationRunner {
                         .id(1L)
                         .username("admin")
                         .password(passwordEncoder.encode("123456"))
-                        .role(Set.of("ADMIN"))
+                        .role(Set.of("ADMIN", "PEDAGOGICAL"))
                         .build()
         );
     }
