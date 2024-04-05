@@ -1,108 +1,112 @@
-<form>
-     <fieldset class="block-1">
+ <form id="studentForm">
+     <div class="form-section">
+         <!-- Profile Image Upload -->
+         <div class="form-group">
+             <label for="imageProfile">Profile Image:</label>
+             <input type="file" id="imageProfile" name="imageProfile">
+         </div>
 
-          <fieldset class="image-profile">
-               <input type="file" id="imageProfile" name="imageProfile">
-          </fieldset>
+         <!-- Personal Information -->
+         <div class="form-group">
+             <label for="name">Nome:</label>
+             <input type="text" id="name" name="name">
 
-          <fieldset>
-               <label>Nome: </label>
-               <input type="text" id="name" name="name">
+             <label for="cpf">CPF:</label>
+             <input type="text" id="cpf" name="cpf">
 
-               <fieldset>
-                    <label>Cpf: </label>
-                    <input type="text" id="cpf" name="cpf">
-                    <label>Rg: </label>
-                    <input type="text" id="rg" name="rg">
-               </fieldset>
+             <label for="rg">RG:</label>
+             <input type="text" id="rg" name="rg">
 
-               <fieldset>
-                    <label>Data de nascimento: </label>
-                    <input type="text" id="dateOfBirth" name="dateOfBirth">
-                    <label>Cep: </label>
-                    <input type="text" id="cep" name="cep">
-               </fieldset>
-          </fieldset>
+             <label for="dateOfBirth">Data de Nascimento:</label>
+             <input type="text" id="dateOfBirth" name="dateOfBirth">
 
-          <fieldset class="sex">
-               <fieldset>
-                    <label>Sexo:</label>
-                    <select id="select" name="select">
-                    <option value="MASCULINE">Masculino</option>
-                    <option value="FEMININE">Feminino</option>
-                    </select>
-               </fieldset>
+             <label for="cep">CEP:</label>
+             <input type="text" id="cep" name="cep">
+         </div>
 
-               <fieldset class="state-country">
-                    <fieldset class="state">
-                         <label>Estado:</label>
-                         <input list="options-state">
-                         <datalist id="options-state">
-                              <option value="test">test</option>
-                         </datalist>
-                    </fieldset>
-                    <fieldset class="country">
-                         <label>País:</label>
-                         <input list="options-country">
-                         <datalist id="options-country">
-                              <option value="test">test</option>
-                         </datalist>
-                    </fieldset>
-               </fieldset>
-          </fieldset>
+         <!-- Gender -->
+         <div class="form-group gender">
+               <label>Sexo:</label>
+                    <div class="radio-group">
+                         <input type="radio" id="masculine" name="sex" value="MASCULINE">
+                         <label for="masculine">Masculino</label>
+                    </div>
+                    <div class="radio-group">
+                         <input type="radio" id="feminine" name="sex" value="FEMININE">
+                         <label for="feminine">Feminino</label>
+                    </div>
+          </div>
 
-          <fieldset class="block-2">
-               <fieldset>
-                    <label>Email:</label>
-                    <input type="email" id="email" name="email">
-                    <label>Telefone:</label>
-                    <input type="tel" id="phone" name="phone">
-               </fieldset>
-               <fieldset>
-                    <label>Endereço:</label>
-                    <input type="text" id="address" name="address">
-                    <label>Cidade:</label>
-                    <input type="text" id="city" name="city">
-                    <label>Bairro:</label>
-                    <input type="text" id="neighborhood" name="neighborhood">
-               </fieldset>
-               <fieldset>
-                    <label>Nacionalidade:</label>
-                    <input type="text" id="nationality" name="nationality">
-                    <label>Naturalidade:</label>
-                    <input type="text" id="naturalness" name="naturalness">
-               </fieldset>
-          </fieldset>
+         <!-- State and Country -->
+         <div class="form-group gender">
+             <label for="state">Estado:</label>
+             <input list="options-state" id="state" name="state">
+             <datalist id="options-state">
+                 <option value="State 1"></option>
+                 <!-- More states -->
+             </datalist>
 
-          <fieldset class="block-3">
-               <fieldset>
-                    <label>Nome do responsável:</label>
-                    <input type="text" id="responsible" name="responsible">
-                    <label>Email do responsável:</label>
-                    <input type="email" id="emailPersonResponsible" name="emailPersonResponsible">
-               </fieldset>
-               <fieldset>
-                    <fieldset class="parents-name">
-                         <label>Nome do pai:</label>
-                         <input type="text" id="father" name="responsible">
-                         <label>Email do mãe:</label>
-                         <input type="text" id="mother" name="emailPersonResponsible">
-                    </fieldset>
-                    <fieldset class="shifts">
-                         <label>Turnos:</label>
-                         <select id="shifts" name="shifts">
-                              <option value="MATUTINO">Matutino</option>
-                              <option value="VESPERTINO">Vespertino</option>
-                              <option value="NOTURNO">Noturno</option>
-                         </select>
-                    </fieldset>
-                    <fieldset class="actions">
-                         <button type="submit">Deixar pendênte</button>
-                         <button type="submit">Finalizar cadastro</button>
-                    </fieldset>
-               </fieldset>
-          </fieldset>
+             <label for="country">País:</label>
+             <input list="options-country" id="country" name="country">
+             <datalist id="options-country">
+                 <option value="Country 1"></option>
+                 <!-- More countries -->
+             </datalist>
+         </div>
+         
+         <!-- Contact Information -->
+         <div class="form-group">
+             <label for="email">Email:</label>
+             <input type="email" id="email" name="email">
 
-     </fieldset>
-</form>
+             <label for="phone">Telefone:</label>
+             <input type="tel" id="phone" name="phone">
 
+             <label for="address">Endereço:</label>
+             <input type="text" id="address" name="address">
+
+             <label for="city">Cidade:</label>
+             <input type="text" id="city" name="city">
+
+             <label for="neighborhood">Bairro:</label>
+             <input type="text" id="neighborhood" name="neighborhood">
+
+             <label for="nationality">Nacionalidade:</label>
+             <input type="text" id="nationality" name="nationality">
+
+             <label for="naturalness">Naturalidade:</label>
+             <input type="text" id="naturalness" name="naturalness">
+         </div>
+
+         <!-- Responsible Person's Information -->
+         <div class="form-group">
+             <label for="responsible">Nome do responsável:</label>
+             <input type="text" id="responsible" name="responsible">
+
+             <label for="emailPersonResponsible">Email do responsável:</label>
+             <input type="email" id="emailPersonResponsible" name="emailPersonResponsible">
+
+             <label for="father">Nome do pai:</label>
+             <input type="text" id="father" name="father">
+
+             <label for="mother">Nome da mãe:</label>
+             <input type="text" id="mother" name="mother">
+          </div>
+         
+         <!-- Shifts -->
+         <div class="form-group">
+             <label for="shifts">Turnos:</label>
+             <select id="shifts" name="shifts">
+                 <option value="MATUTINO">Matutino</option>
+                 <option value="VESPERTINO">Vespertino</option>
+                 <option value="NOTURNO">Noturno</option>
+             </select>
+         </div>
+         
+         <!-- Actions -->
+         <div class="form-actions">
+             <button type="submit" name="action" value="pendente">Deixar pendente</button>
+             <button type="submit" name="action" value="finalizar">Finalizar cadastro</button>
+         </div>
+     </div>
+ </form>

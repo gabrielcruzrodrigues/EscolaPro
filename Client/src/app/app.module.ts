@@ -12,6 +12,7 @@ import { CardComponent } from './components/layout/card/card.component';
 import { SearchComponent } from './components/layout/search/search.component';
 import { StudentsRegisterComponent } from './components/students/students-register/students-register.component';
 import { FormStudentComponent } from './components/layout/form-student/form-student.component';
+import { BackdoorComponent } from './components/layout/backdoor/backdoor.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FormStudentComponent } from './components/layout/form-student/form-stud
     CardComponent,
     SearchComponent,
     StudentsRegisterComponent,
-    FormStudentComponent
+    FormStudentComponent,
+    BackdoorComponent
   ],
   imports: [
     BrowserModule,
