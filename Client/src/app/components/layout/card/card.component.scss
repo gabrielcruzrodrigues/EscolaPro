@@ -1,3 +1,5 @@
+@import '/src/app/scss/abstract/breakpoints_desktop';
+
 .card {
     width: 280px;
     height: 150px;
@@ -8,6 +10,12 @@
     font-family: 'Poppins';
     border: none;
     cursor: pointer;
+    flex: 1;
+
+    @include breakpoint(small-up) {
+        width: 13.75rem;
+        margin-right: 2.188rem;
+    }
 }
 
 .icon {
@@ -31,32 +39,4 @@ p {
     text-align: center;
     margin: 0;
     padding: 10px
-}
-
-// @media(min-width: 1280px) {
-//     .card {
-//         width: 14.625rem;
-//         margin-right: 13px;
-//     }
-// }
-
-// @media(min-width: 1600px) {
-//     .card {
-//         width: 260px;
-//         margin-right: 30px;
-//     }
-// }
-
-@media(min-width: 1280px) {
-    .card {
-        width: 14.625rem; /* mantido conforme estava */
-        margin-right: 0.8125rem;
-    }
-}
-
-@media(min-width: 1600px) {
-    .card {
-        width: 14.625rem;;
-        margin-right: 1.875rem;
-    }
 }

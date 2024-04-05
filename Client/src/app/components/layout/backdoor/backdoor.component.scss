@@ -1,3 +1,5 @@
+@import '/src/app/scss/abstract/breakpoints_desktop';
+
 .backdoor {
      width: 100px;
      height: 35px;
@@ -9,6 +11,11 @@
      align-items: center;
      justify-content: center;
      cursor: pointer;
+
+     @include breakpoint(small-up) {
+          width: 5rem;
+          margin: 2.5rem 2.5rem 0.625rem 2.5rem;
+     }
 }
 
 .backdoor img {

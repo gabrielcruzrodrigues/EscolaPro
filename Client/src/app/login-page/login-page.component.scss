@@ -1,6 +1,10 @@
+@import '/src/app/scss/abstract/breakpoints_desktop';
+
 .login-container {
      display: flex;
+     flex-direction: row;
      height: 100vh;
+     width: 100%;
      overflow: hidden;
 }
 
@@ -8,9 +12,13 @@
      background-color: #386FA4;
      color: #fff;
      padding: 30px;
-     width: 500px;
+     width: 20%;
      font-family: 'roboto';
      font-size: 20px;
+
+     @include breakpoint(small-up) {
+          width: 25%;
+     }
 }
 
 .login-form {
@@ -64,10 +72,18 @@
 }
    
 .content {
-     flex-grow: 1;
+     width: 75%;
      background-color: #91E5F6;
      padding: 10px 30px 30px 30px;
      font-family: 'Poppins';
+}
+
+.content-page {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     justify-content: space-between;
+     padding: 35px
 }
 
 .content h2 {
@@ -77,6 +93,22 @@
      margin: auto;
      font-size: 50px;
      border-bottom: 7px solid #2B567F;
+}
+
+.content-page p {
+     @include breakpoint(small-up) {
+          width: 40%;
+          font-size: 1.875rem;
+          // background-color: #3498db;
+     }
+}
+
+.content-page img {
+     width: 12.5rem;
+
+     @include breakpoint(small-up) {
+          width: 40%;
+     }
 }
 
 .company-logo {
@@ -94,128 +126,106 @@
      border-radius: 10px;
 }
 
-// .hidden {
-//      opacity: 0;
-//      transition: opacity ease-in-out;
+// .image2 {
+//      @include breakpoint(small-up) {
+//           width: 30%;
+//           // font-size: 30px;
+//           // background-color: #3498db;
+//      }
 // }
 
-// .visible {
-//      opacity: 1;
+.text2 {
+     @include breakpoint(small-up) {
+          // padding: 30px;
+     }
+}
+
+// .image2 {
+//      width: 30%;
 // }
 
-.images-up {
-     margin-top: 50px;
-     display: flex;
-     justify-content: space-evenly;
-}
+// @media (width <= 1600px) {
+//      .sidebar {
+//           width: 400px;
+//      }
+//      .images-up {
+//           margin: 30px auto 0 auto;
+//           display: flex;
+//           justify-content: space-evenly;
+//           // background-color: #133C55;
+//           width: 90%;
+//      }
+     
+//      .images-down {
+//           margin: 0px auto;
+//           display: flex;
+//           justify-content: space-evenly;
+//           width: 90%;
+//      }
+     
+//      .image1 {
+//           max-width: 100%;
+//           height: auto;
+//           width: 40%;
+//           padding: 0px;
+//           // background-color: #133C55;
+//      }
+     
+//      .text {
+//           font-family: 'Poppins';
+//           font-weight: 600;
+//           font-size: 40px;
+//           padding: 0%;
+//           margin-bottom: 50px;
+//           color: #133C55;
+//           // background-color: #133C55;
+//      }
+     
+//      .image2 {
+//           width: 35%;
+//      }
+// }
 
-.images-down {
-     margin-top: 50px;
-     display: flex;
-     justify-content: space-evenly;
-     margin-bottom: 100px;
-}
-
-.image1 {
-     max-width: 100%;
-     height: auto;
-     width: 40%;
-     padding: 0px;
-}
-
-.text {
-     font-size: 80px;
-     padding: 0%;
-     color: #133C55;
-     // background-color: #133C55;
-}
-
-.image2 {
-     width: 30%;
-}
-
-@media (width <= 1600px) {
-     .sidebar {
-          width: 400px;
-     }
-     .images-up {
-          margin: 30px auto 0 auto;
-          display: flex;
-          justify-content: space-evenly;
-          // background-color: #133C55;
-          width: 90%;
-     }
+// @media (width >= 1920px) {
+//      .sidebar {
+//           width: 450px;
+//      }
+//      .images-up {
+//           margin: 30px auto 0 auto;
+//           display: flex;
+//           justify-content: space-evenly;
+//           // background-color: #133C55;
+//           width: 90%;
+//      }
      
-     .images-down {
-          margin: 0px auto;
-          display: flex;
-          justify-content: space-evenly;
-          width: 90%;
-     }
+//      .images-down {
+//           margin: 0px auto;
+//           display: flex;
+//           justify-content: space-evenly;
+//           width: 90%;
+//      }
      
-     .image1 {
-          max-width: 100%;
-          height: auto;
-          width: 40%;
-          padding: 0px;
-          // background-color: #133C55;
-     }
+//      .image1 {
+//           max-width: 100%;
+//           height: auto;
+//           width: 40%;
+//           padding: 0px;
+//           // background-color: #133C55;
+//      }
      
-     .text {
-          font-family: 'Poppins';
-          font-weight: 600;
-          font-size: 40px;
-          padding: 0%;
-          margin-bottom: 50px;
-          color: #133C55;
-          // background-color: #133C55;
-     }
+//      .text {
+//           font-family: 'Poppins';
+//           font-weight: 600;
+//           font-size: 50px;
+//           padding: 0%;
+//           margin-bottom: 50px;
+//           color: #133C55;
+//           // background-color: #133C55;
+//      }
      
-     .image2 {
-          width: 35%;
-     }
-}
-
-@media (width >= 1920px) {
-     .sidebar {
-          width: 450px;
-     }
-     .images-up {
-          margin: 30px auto 0 auto;
-          display: flex;
-          justify-content: space-evenly;
-          // background-color: #133C55;
-          width: 90%;
-     }
-     
-     .images-down {
-          margin: 0px auto;
-          display: flex;
-          justify-content: space-evenly;
-          width: 90%;
-     }
-     
-     .image1 {
-          max-width: 100%;
-          height: auto;
-          width: 40%;
-          padding: 0px;
-          // background-color: #133C55;
-     }
-     
-     .text {
-          font-family: 'Poppins';
-          font-weight: 600;
-          font-size: 50px;
-          padding: 0%;
-          margin-bottom: 50px;
-          color: #133C55;
-          // background-color: #133C55;
-     }
-     
-     .image2 {
-          width: 35%;
-     }
-}
+//      .image2 {
+//           width: 35%;
+//      }
+// }
 
    

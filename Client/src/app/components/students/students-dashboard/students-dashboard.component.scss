@@ -1,9 +1,16 @@
+@import '/src/app/scss/abstract/breakpoints_desktop';
+
+
 .cards {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding: 20px 40px;
-    // background-color: red;
+
+    @include breakpoint(small-up) {
+        justify-content: left;
+        padding: 1.25rem 0.938rem 1.25rem 2.188rem;
+    }
 }
 
 @media(min-width: 1280px) {

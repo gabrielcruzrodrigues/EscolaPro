@@ -1,3 +1,6 @@
+@import '/src/app/scss/abstract/breakpoints_desktop';
+
+
 .side-menu {
      position: fixed;
      top: 0;
@@ -9,7 +12,12 @@
    //  padding: 20px;
      display: flex;
      flex-direction: column;
-   }
+
+     @include breakpoint(small-up) {
+      width: 12.5rem;
+      margin-right: 1.875rem;
+    }
+}
       
    .side-menu nav ul {
      list-style: none;
