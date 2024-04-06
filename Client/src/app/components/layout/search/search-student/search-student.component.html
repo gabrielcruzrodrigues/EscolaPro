@@ -2,6 +2,6 @@
     <input type="text" placeholder="{{ label }}" (input)="onSearch($event)" (focus)="showResults = true" (blur)="onBlur()">
     <button><img src="/assets/search-icon.png"></button>
     <ul class="search-results" *ngIf="showResults && searchResults.length > 0">
-        <li *ngFor="let result of searchResults">{{ result }}</li>
+        <li *ngFor="let result of searchResults">{{ result.name }}</li>
     </ul>
 </div>

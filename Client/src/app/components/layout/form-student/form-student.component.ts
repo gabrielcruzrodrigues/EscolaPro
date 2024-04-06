@@ -80,7 +80,7 @@ export class FormStudentComponent {
   verifyResponse(data: any) {
     // console.log('response: ', data)
     if (data == 201) {
-      alert("Usuário criado com sucesso!");
+      alert("Aluno criado com sucesso!");
       this.router.navigate(["/students"]);
     } else {
       alert("Erro ao tentar enviar formulário.");

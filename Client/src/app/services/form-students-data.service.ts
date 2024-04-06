@@ -15,7 +15,6 @@ export class FormStudentsDataService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
   registerStudent(data: any): Observable<any> {
-    console.log(data);
     const headers = this.authService.getHeaders();
     return this.http.post(this.urlStudent, data, {headers, observe: 'response'});
   }
