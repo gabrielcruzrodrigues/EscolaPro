@@ -26,6 +26,21 @@
           width: 5rem;
           margin: 2.5rem 2.5rem 0.625rem 3.450rem;
      }
+
+     @include breakpoint(big-up) {
+          width: 8rem;
+          margin: 2.5rem 2.5rem 0.625rem 3.450rem;
+     }
+
+     @include breakpoint(very-big-up) {
+          width: 8rem;
+          margin: 2.5rem 2.5rem 0.625rem 3.900rem;
+     }
+
+     @include breakpoint(full-hd-up) {
+          width: 8rem;
+          margin: 2.5rem 2.5rem 0.625rem 4.7rem;
+     }
 }
 
 .backdoor img {

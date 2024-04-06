@@ -16,6 +16,10 @@ body, html {
      @include breakpoint(hd-up) {
           width: 16%;
      }
+
+     @include breakpoint(full-hd-up) {
+          width: 15%;
+     }
 }
 
 .content {

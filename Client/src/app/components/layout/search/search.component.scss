@@ -20,6 +20,14 @@
     @include breakpoint(medium-up) {
         width: 40rem;
     }
+
+    @include breakpoint(very-big-up) {
+        width: 50rem;
+    }
+
+    @include breakpoint(full-hd-up) {
+        width: 60rem;
+    }
 }
 
 .search img {

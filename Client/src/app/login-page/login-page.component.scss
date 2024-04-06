@@ -150,6 +150,11 @@
      @include breakpoint(hd-up) {
           margin-top: 0;
      }
+
+     @include breakpoint(big-up) {
+          margin-top: 1.875rem;
+          margin-bottom: 0;
+     }
 }
 
 // .image2 {

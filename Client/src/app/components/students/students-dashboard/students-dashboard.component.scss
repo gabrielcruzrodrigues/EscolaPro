@@ -9,7 +9,7 @@
 
     @include breakpoint(small-up) {
         justify-content: left;
-        padding: 1.25rem 0.938rem 1.25rem 2.188rem;
+        padding: 1.25rem 0.313rem 1.25rem 2.600rem;
     }
 
     @include breakpoint(hd-up) {
@@ -20,6 +20,21 @@
     @include breakpoint(medium-up) {
         justify-content: space-between;
         padding: 1.25rem 0.700rem 1.25rem 2.188rem;
+    }
+
+    @include breakpoint(big-up) {
+        justify-content: space-between;
+        padding: 1.25rem 1.188rem 1.25rem 2.75rem;
+    }
+
+    @include breakpoint(extra-big-up) {
+        justify-content: space-between;
+        padding: 1.25rem 1.5rem 1.25rem 3.5rem;
+    }
+
+    @include breakpoint(full-hd-up) {
+        justify-content: space-between;
+        padding: 1.25rem 1.5rem 1.25rem 3rem;
     }
 }
 
