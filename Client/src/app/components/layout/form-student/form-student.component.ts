@@ -60,12 +60,18 @@ export class FormStudentComponent {
     } else if (action == 'pending') {
       this.formData.situation = 'PENDENTE';
       this.formServiceData.pendingStudent(this.formData).subscribe({
-        next: (response: HttpResponse<any>) => this.verifyResponse(response.status)});
+        next: (response: HttpResponse<any>) => 
+        this.verifyResponse(response.status),
+      
+        error: (err) => console.log('Erro ao deixar estudante como pendente', err)
+      });
 
     } else if (action == 'register') {
       this.formData.situation = 'MATRICULADO';
       this.formServiceData.registerStudent(this.formData).subscribe({
-        next: (response: HttpResponse<any>) => this.verifyResponse(response.status),
+        next: (response: HttpResponse<any>) => 
+          this.verifyResponse(response.status),
+
         error: (err) => console.log('Erro ao registrar estudante', err)
       });
     }

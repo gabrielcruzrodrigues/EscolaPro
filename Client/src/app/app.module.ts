@@ -9,11 +9,11 @@ import { MenuComponent } from './components/layout/menu/menu.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { StudentsDashboardComponent } from './components/students/students-dashboard/students-dashboard.component';
 import { CardComponent } from './components/layout/card/card.component';
-import { SearchComponent } from './components/layout/search/search.component';
 import { StudentsRegisterComponent } from './components/students/students-register/students-register.component';
 import { FormStudentComponent } from './components/layout/form-student/form-student.component';
 import { BackdoorComponent } from './components/layout/backdoor/backdoor.component';
 import { StudentsUpdateComponent } from './components/students/students-update/students-update.component';
+import { SearchStudentComponent } from './components/layout/search/search-student/search-student.component';
 
 @NgModule({
   declarations: [
@@ -23,11 +23,11 @@ import { StudentsUpdateComponent } from './components/students/students-update/s
     DashboardComponent,
     StudentsDashboardComponent,
     CardComponent,
-    SearchComponent,
     StudentsRegisterComponent,
     FormStudentComponent,
     BackdoorComponent,
-    StudentsUpdateComponent
+    StudentsUpdateComponent,
+    SearchStudentComponent
   ],
   imports: [
     BrowserModule,
