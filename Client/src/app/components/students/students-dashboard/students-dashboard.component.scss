@@ -13,7 +13,13 @@
     }
 
     @include breakpoint(hd-up) {
+        justify-content: space-between;
         padding: 1.25rem 0.313rem 1.25rem 2.813rem;
+    }
+
+    @include breakpoint(medium-up) {
+        justify-content: space-between;
+        padding: 1.25rem 0.700rem 1.25rem 2.188rem;
     }
 }
 

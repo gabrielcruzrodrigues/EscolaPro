@@ -62,7 +62,12 @@ body {
     @include breakpoint(hd-up) {
         padding: 1rem 2.188rem;
         margin-top: 1.875rem;
-   }
+    }
+
+    @include breakpoint(medium-up) {
+        padding: 1.3rem 3rem;
+        margin-top: 1.875rem;
+    }
  }
  
  .form-actions button[name="action"][value="pendente"] {

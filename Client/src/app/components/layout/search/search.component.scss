@@ -16,6 +16,10 @@
     @include breakpoint(small-up) {
         width: 31.25rem;
     }
+
+    @include breakpoint(medium-up) {
+        width: 40rem;
+    }
 }
 
 .search img {

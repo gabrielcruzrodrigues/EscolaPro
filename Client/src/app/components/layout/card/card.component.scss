@@ -16,6 +16,11 @@
         width: 13.75rem;
         margin-right: 2.188rem;
     }
+
+    @include breakpoint(medium-up) {
+        width: 15.625rem;
+        margin-right: 1.251rem;
+    }
 }
 
 .icon {
