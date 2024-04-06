@@ -12,10 +12,18 @@ body, html {
 
 .menu {
      width: 20%;
+
+     @include breakpoint(hd-up) {
+          width: 16%;
+     }
 }
 
 .content {
      width: 80%;
+
+     @include breakpoint(hd-up) {
+          width: 85%;
+     }
 }
 
 .main-sections {

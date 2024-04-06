@@ -11,32 +11,36 @@
         justify-content: left;
         padding: 1.25rem 0.938rem 1.25rem 2.188rem;
     }
-}
 
-@media(min-width: 1280px) {
-    .cards {
-        padding: 20px 35px;
-        margin-left: 1%;
+    @include breakpoint(hd-up) {
+        padding: 1.25rem 0.313rem 1.25rem 2.813rem;
     }
 }
 
-@media(min-width: 1400px) {
-    .cards {
-        padding: 20px 55px;
-        margin-left: 1%;
-    }
-}
+// @media(min-width: 1280px) {
+//     .cards {
+//         padding: 20px 35px;
+//         margin-left: 1%;
+//     }
+// }
 
-@media(min-width: 1680px) {
-    .cards {
-        padding: 20px 40px;
-        margin-left: 1%;
-    }
-}
+// @media(min-width: 1400px) {
+//     .cards {
+//         padding: 20px 55px;
+//         margin-left: 1%;
+//     }
+// }
 
-@media(min-width: 1880px) {
-    .cards {
-        padding: 20px 60px;
-        margin-left: 1%;
-    }
-}
+// @media(min-width: 1680px) {
+//     .cards {
+//         padding: 20px 40px;
+//         margin-left: 1%;
+//     }
+// }
+
+// @media(min-width: 1880px) {
+//     .cards {
+//         padding: 20px 60px;
+//         margin-left: 1%;
+//     }
+// }

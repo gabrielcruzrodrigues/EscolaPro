@@ -16,6 +16,11 @@
           width: 5rem;
           margin: 2.5rem 2.5rem 0.625rem 2.5rem;
      }
+
+     @include breakpoint(hd-up) {
+          width: 5rem;
+          margin: 2.5rem 2.5rem 0.625rem 3.125rem;
+     }
 }
 
 .backdoor img {

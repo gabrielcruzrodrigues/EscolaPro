@@ -76,6 +76,10 @@
      background-color: #91E5F6;
      padding: 10px 30px 30px 30px;
      font-family: 'Poppins';
+
+     @include breakpoint(hd-up) {
+          padding: 0.625rem 3.125rem 1.875rem 3.125rem;
+     }
 }
 
 .content-page {
@@ -99,7 +103,11 @@
      @include breakpoint(small-up) {
           width: 40%;
           font-size: 1.875rem;
-          // background-color: #3498db;
+     }
+
+     @include breakpoint(hd-up) {
+          width: 40%;
+          font-size: 2.188rem;
      }
 }
 
@@ -137,6 +145,10 @@
 .text2 {
      @include breakpoint(small-up) {
           // padding: 30px;
+     }
+
+     @include breakpoint(hd-up) {
+          margin-top: 0;
      }
 }
 
