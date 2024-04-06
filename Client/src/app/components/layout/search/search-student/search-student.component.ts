@@ -21,33 +21,36 @@ export class SearchStudentComponent {
   constructor(private searchService: SearchStudentService) { }
 
   onSearch(event: Event) {
+    this.searchResults = [];
     const target = event.target as HTMLInputElement;
     const query = target.value;
-    this.searchResults = [];
-    this.searchService.searchStudent(query).subscribe({
-      next: (response: HttpResponse<any>) => {
+    if (query.length > 0) {
+      this.searchService.searchStudent(query).subscribe({
+        next: (response: HttpResponse<any>) => {
 
-        if (response.body) {
-          const responseData = response.body;
+          if (response.body) {
+            const responseData = response.body;
 
-          if (Array.isArray(responseData)) {
-            this.searchResults = responseData.slice(0, 10).map(student => ({
-              id: student.id,
-              name: student.name
-            }));
+            if (Array.isArray(responseData)) {
+              this.searchResults = responseData.slice(0, 10).map(student => ({
+                id: student.id,
+                name: student.name
+              }));
+            } else {
+              console.log("Os dados no corpo da resposta não são um array.");
+            }
+
           } else {
-            console.log("Os dados no corpo da resposta não são um array.");
+            console.log("A resposta não possui um corpo (body).");
           }
 
-        } else {
-          console.log("A resposta não possui um corpo (body).");
+        },
+        error: (error) => {
+          
         }
-
-      },
-      error: (error) => {
-        console.log(error);
-      }
-    });
+      });
+    }
+    
   }
 
   onBlur() {
