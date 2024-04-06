@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from 'src/environment/environment';
 import { HttpClient, HttpResponse } from '@angular/common/http';
+import { AuthService } from '../services/auth.service';
 
 interface LoginResponse {
   token: string;
@@ -20,7 +21,11 @@ export class LoginPageComponent {
   form: FormGroup;
   badCredentialsTextView: boolean = false;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
+  constructor(
+      private fb: FormBuilder, 
+      private http: HttpClient, 
+      private router: Router,
+      private authService: AuthService) {
     this.form = this.fb.group({
       username: [''],
       password: ['']
@@ -34,6 +39,7 @@ export class LoginPageComponent {
           next: (response: HttpResponse<LoginResponse>) => {
 
             if (response.status == 200) {
+              this.authService.configureAuthenticationTokenForRequests(response.body?.token);
               this.router.navigate(["/dashboard"]);
             }
           },

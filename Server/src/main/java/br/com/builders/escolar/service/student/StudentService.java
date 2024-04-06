@@ -27,9 +27,9 @@ public class StudentService {
         Student studentForSave = modelingNewStudentForSave(request, SituationsStudentEnum.MATRICULADO);
         Student student = studentRepository.save(studentForSave);
 
-        if (request.imageProfile() != null) {
-            this.filesStudentService.saveImage(request.imageProfile(), student);
-        }
+//        if (request.imageProfile() != null) {
+//            this.filesStudentService.saveImage(request.imageProfile(), student);
+//        }
         this.familyService.createBasicFamily(student);
         this.fixedHealthService.createBasicFixedHealth(student);
     }
@@ -39,9 +39,9 @@ public class StudentService {
         Student studentForSave = modelingNewStudentForSave(request, SituationsStudentEnum.PENDENTE);
         Student student = studentRepository.save(studentForSave);
 
-        if (request.imageProfile() != null) {
-            this.filesStudentService.saveImage(request.imageProfile(), student);
-        }
+//        if (request.imageProfile() != null) {
+//            this.filesStudentService.saveImage(request.imageProfile(), student);
+//        }
     }
 
     private Student modelingNewStudentForSave(StudentCreateDataDTO request, SituationsStudentEnum situationStudent) {
@@ -66,7 +66,7 @@ public class StudentService {
         student.setResponsible(request.responsible());
         student.setFather(request.father());
         student.setMother(request.mother());
-        student.setShifts(request.shifts());
+        student.setShifts(List.of(request.shifts()));
 
         if (situationStudent.equals(SituationsStudentEnum.MATRICULADO)) {
             student.setSituation(SituationsStudentEnum.MATRICULADO);

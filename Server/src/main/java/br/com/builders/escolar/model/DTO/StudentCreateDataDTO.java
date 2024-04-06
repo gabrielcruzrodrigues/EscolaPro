@@ -50,8 +50,8 @@ public record StudentCreateDataDTO(
         @NotBlank
         String mother,
         @NotNull
-        List<ShiftEnum> shifts,
-        MultipartFile imageProfile,
+        ShiftEnum shifts,
+//        MultipartFile imageProfile,
         @NotNull
         SituationsStudentEnum situation
 ) {

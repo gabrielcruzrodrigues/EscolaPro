@@ -1,4 +1,6 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormStudentsDataService } from 'src/app/services/form-students-data.service';
 
 enum Shift {
@@ -38,12 +40,12 @@ export class FormStudentComponent {
     responsible: '',
     father: '',
     mother: '',
-    shifts: [],
-    situation: '',
-    imageProfile: ''
+    shifts: '',
+    situation: ''
+    // imageProfile: ''
   }
 
-  constructor(private formServiceData: FormStudentsDataService) {}
+  constructor(private formServiceData: FormStudentsDataService,  private router: Router) {}
 
   ngOnInit(): void {    
     this.verifyDestination();
@@ -51,14 +53,31 @@ export class FormStudentComponent {
 
   sendData(action: string) {
 
-    if (action == 'register' && this.buttonUpdate == 'true') {
+    if (action == 'register' && this.buttonUpdate == 'true') {  //update
       this.formServiceData.updateStudent(this.formData);
+      
+
     } else if (action == 'pending') {
       this.formData.situation = 'PENDENTE';
-      this.formServiceData.pendingStudent(this.formData);
+      this.formServiceData.pendingStudent(this.formData).subscribe({
+        next: (response: HttpResponse<any>) => this.verifyResponse(response.status)});
+
     } else if (action == 'register') {
       this.formData.situation = 'MATRICULADO';
-      this.formServiceData.registerStudent(this.formData);
+      this.formServiceData.registerStudent(this.formData).subscribe({
+        next: (response: HttpResponse<any>) => this.verifyResponse(response.status),
+        error: (err) => console.log('Erro ao registrar estudante', err)
+      });
+    }
+  }
+
+  verifyResponse(data: any) {
+    // console.log('response: ', data)
+    if (data == 201) {
+      alert("Usuário criado com sucesso!");
+      this.router.navigate(["/students"]);
+    } else {
+      alert("Erro ao tentar enviar formulário.");
     }
   }
 

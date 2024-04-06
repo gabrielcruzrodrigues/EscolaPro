@@ -29,7 +29,7 @@ public class AuthenticationController {
 
         if (result.login()) {
             long expirationTime = 86400000;
-            ResponseCookie jwtCookie = ResponseCookie.from("token", result.token())
+            ResponseCookie jwtCookie = ResponseCookie.from("Authorization", result.token())
                     .httpOnly(false) //change to true in production
                     .secure(false)  //change to true in production
                     .path("/")

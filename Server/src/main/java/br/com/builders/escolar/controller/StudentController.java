@@ -1,5 +1,6 @@
 package br.com.builders.escolar.controller;
 
+import br.com.builders.escolar.model.DTO.ResponseDTO;
 import br.com.builders.escolar.model.DTO.StudentCreateDataDTO;
 import br.com.builders.escolar.model.DTO.StudentUpdateDataDTO;
 import br.com.builders.escolar.model.enums.SituationsStudentEnum;
@@ -13,7 +14,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("student")
@@ -24,13 +28,18 @@ public class StudentController {
 
 //    @PedagogicalAccess
     @PostMapping
-    public ResponseEntity<?> createStudent(@RequestBody @Valid StudentCreateDataDTO request) {
+    public ResponseEntity<Object> createStudent(@RequestBody @Valid StudentCreateDataDTO request) {
         if (request.situation() == SituationsStudentEnum.MATRICULADO) {
             this.studentService.createStudentMATRICULADO(request);
         } else {
             this.studentService.createStudentPENDENTE(request);
         }
-        return new ResponseEntity<>("Student created", HttpStatus.CREATED);
+
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "user created!");
+
+//        return ResponseEntity.ok().body(response);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @PedagogicalAccess
