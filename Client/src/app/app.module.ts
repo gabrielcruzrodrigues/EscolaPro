@@ -14,6 +14,7 @@ import { FormStudentComponent } from './components/layout/form-student/form-stud
 import { BackdoorComponent } from './components/layout/backdoor/backdoor.component';
 import { StudentsUpdateComponent } from './components/students/students-update/students-update.component';
 import { SearchStudentComponent } from './components/layout/search/search-student/search-student.component';
+import { FormUpdateStudentsComponent } from './components/layout/form-update-students/form-update-students.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SearchStudentComponent } from './components/layout/search/search-studen
     FormStudentComponent,
     BackdoorComponent,
     StudentsUpdateComponent,
-    SearchStudentComponent
+    SearchStudentComponent,
+    FormUpdateStudentsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,23 +1,22 @@
- <form id="studentForm">
+<form id="studentForm">
      <div class="form-section">
-         
 
          <!-- Personal Information -->
          <div class="form-group">
              <label for="name">Nome:</label>
-             <input [(ngModel)]="formData.name" name="name-student" type="text" id="name">
+             <input name="name-student" type="text" id="name">
 
              <label for="cpf">CPF:</label>
-             <input [(ngModel)]="formData.cpf" name="cpf-student" type="text" id="cpf">
+             <input name="cpf-student" type="text" id="cpf">
 
              <label for="rg">RG:</label>
-             <input [(ngModel)]="formData.identity" name="identity-student" type="text" id="identity">
+             <input name="identity-student" type="text" id="identity">
 
              <label for="dateOfBirth">Data de Nascimento:</label>
-             <input [(ngModel)]="formData.dateOfBirth" name="dateOfBirth-student" type="text" id="dateOfBirth" >
+             <input name="dateOfBirth-student" type="text" id="dateOfBirth" >
 
              <label for="cep">CEP:</label>
-             <input [(ngModel)]="formData.cep" name="cep-student" type="text" id="cep">
+             <input name="cep-student" type="text" id="cep">
          </div>
 
          <!-- Profile Image Upload -->
@@ -30,11 +29,11 @@
          <div class="form-group gender">
                <label>Sexo:</label>
                     <div class="radio-group">
-                         <input [(ngModel)]="formData.sex" name="sex-student" type="radio" id="masculine" value="MASCULINE">
+                         <input name="sex-student" type="radio" id="masculine" value="MASCULINE">
                          <label for="masculine">Masculino</label>
                     </div>
                     <div class="radio-group">
-                         <input [(ngModel)]="formData.sex" name="sex-student" type="radio" id="feminine" value="FEMININE">
+                         <input name="sex-student" type="radio" id="feminine" value="FEMININE">
                          <label for="feminine">Feminino</label>
                     </div>
           </div>
@@ -42,14 +41,14 @@
          <!-- State and Country -->
          <div class="form-group gender">
              <label for="state">Estado:</label>
-             <input [(ngModel)]="formData.state" name="state-student" list="options-state" id="state">
+             <input name="state-student" list="options-state" id="state">
              <datalist id="options-state">
                  <option value="State 1"></option>
                  <!-- More states -->
              </datalist>
 
              <label for="country">País:</label>
-             <input [(ngModel)]="formData.country" name="country-student" list="options-country" id="country">
+             <input name="country-student" list="options-country" id="country">
              <datalist id="options-country">
                  <option value="Country 1"></option>
                  <!-- More countries -->
@@ -59,46 +58,46 @@
          <!-- Contact Information -->
          <div class="form-group">
              <label for="email">Email:</label>
-             <input [(ngModel)]="formData.email" name="email-student" type="email" id="email">
+             <input name="email-student" type="email" id="email">
 
              <label for="phone">Telefone:</label>
-             <input [(ngModel)]="formData.phone" name="phone-student" type="tel" id="phone">
+             <input name="phone-student" type="tel" id="phone">
 
              <label for="address">Endereço:</label>
-             <input [(ngModel)]="formData.address" name="address-student" type="text" id="address">
+             <input name="address-student" type="text" id="address">
 
              <label for="city">Cidade:</label>
-             <input [(ngModel)]="formData.city" name="city-student" type="text" id="city">
+             <input name="city-student" type="text" id="city">
 
              <label for="neighborhood">Bairro:</label>
-             <input [(ngModel)]="formData.neighborhood" name="neighborhood-student" type="text" id="neighborhood">
+             <input  name="neighborhood-student" type="text" id="neighborhood">
 
              <label for="nationality">Nacionalidade:</label>
-             <input [(ngModel)]="formData.nationality" name="nationality-student" type="text" id="nationality">
+             <input name="nationality-student" type="text" id="nationality">
 
              <label for="naturalness">Naturalidade:</label>
-             <input [(ngModel)]="formData.naturalness" name="naturalness-student" type="text" id="naturalness">
+             <input name="naturalness-student" type="text" id="naturalness">
          </div>
 
          <!-- Responsible Person's Information -->
          <div class="form-group">
              <label for="responsible">Nome do responsável:</label>
-             <input [(ngModel)]="formData.responsible" name="responsible-student" type="text" id="responsible">
+             <input name="responsible-student" type="text" id="responsible">
 
              <label for="emailPersonResponsible">Email do responsável:</label>
-             <input [(ngModel)]="formData.emailPersonResponsible" name="emailPersonResponsible-student" type="email" id="emailPersonResponsible">
+             <input name="emailPersonResponsible-student" type="email" id="emailPersonResponsible">
 
              <label for="father">Nome do pai:</label>
-             <input [(ngModel)]="formData.father" name="father-student" type="text" id="father">
+             <input name="father-student" type="text" id="father">
 
              <label for="mother">Nome da mãe:</label>
-             <input [(ngModel)]="formData.mother" name="mother-student" type="text" id="mother">
+             <input name="mother-student" type="text" id="mother">
           </div>
          
          <!-- Shifts -->
          <div class="form-group shifts">
              <label for="shifts">Turnos:</label>
-             <select [(ngModel)]="formData.shifts" id="shifts" name="shifts-student">
+             <select id="shifts" name="shifts-student">
                  <option value="MATUTINO">Matutino</option>
                  <option value="VESPERTINO">Vespertino</option>
                  <option value="NOTURNO">Noturno</option>
@@ -107,8 +106,7 @@
          
          <!-- Actions -->
          <div class="form-actions button">
-             <button type="submit" name="action" value="pendente" (click)="sendData('pending')">Deixar pendente</button>
-             <button type="submit" name="action" value="finalizar" (click)="sendData('register')">Finalizar matricula</button>
+             <button type="submit" name="action" value="pendente">Atualizar cadastro</button>
          </div>
      </div>
  </form>

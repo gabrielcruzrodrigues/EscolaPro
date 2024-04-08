@@ -1,5 +1,6 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { SearchStudentService } from 'src/app/services/search/search-student.service';
 
 interface Student {
@@ -18,7 +19,7 @@ export class SearchStudentComponent {
   searchResults: Student[] = [];
   showResults: boolean = false;
 
-  constructor(private searchService: SearchStudentService) { }
+  constructor(private searchService: SearchStudentService, private router: Router) { }
 
   onSearch(event: Event) {
     this.searchResults = [];
@@ -54,6 +55,14 @@ export class SearchStudentComponent {
   }
 
   onBlur() {
+    this.showResults = false;
+  }
+
+  goToUpdatePage(id: number) {
+    this.router.navigate(['/students/update/', id]);
+  }
+
+  onMouseLeave() {
     this.showResults = false;
   }
 }

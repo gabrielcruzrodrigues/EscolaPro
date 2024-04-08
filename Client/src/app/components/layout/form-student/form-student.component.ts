@@ -15,11 +15,7 @@ enum Shift {
   styleUrls: ['./form-student.component.scss']
 })
 export class FormStudentComponent {
-  @Input() destination: string = '';
-  @Input() buttonUpdate: string = 'false'; 
-  pendingButton: boolean = false;
-  buttonFinishName: string = '';
-
+  
   formData = {
     name: '',
     identity: '',
@@ -47,17 +43,9 @@ export class FormStudentComponent {
 
   constructor(private formServiceData: FormStudentsDataService,  private router: Router) {}
 
-  ngOnInit(): void {    
-    this.verifyDestination();
-  }
-
   sendData(action: string) {
 
-    if (action == 'register' && this.buttonUpdate == 'true') {  //update
-      this.formServiceData.updateStudent(this.formData);
-      
-
-    } else if (action == 'pending') {
+    if (action == 'pending') {
       this.formData.situation = 'PENDENTE';
       this.formServiceData.pendingStudent(this.formData).subscribe({
         next: (response: HttpResponse<any>) => 
@@ -84,15 +72,6 @@ export class FormStudentComponent {
       this.router.navigate(["/students"]);
     } else {
       alert("Erro ao tentar enviar formulário.");
-    }
-  }
-
-  verifyDestination() {
-    if (this.destination == 'register') {
-      this.pendingButton = true;
-      this.buttonFinishName = 'Finalizar cadastro';
-    } else {
-      this.buttonFinishName = 'Atualizar cadastro';
     }
   }
 }
