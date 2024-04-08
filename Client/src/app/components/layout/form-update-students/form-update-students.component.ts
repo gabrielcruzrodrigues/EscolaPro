@@ -1,6 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { SearchStudentService } from 'src/app/services/search/search-student.service';
+
 
 enum Shift {
   Matutino = 'matutino',
@@ -13,8 +14,8 @@ enum Shift {
   templateUrl: './form-update-students.component.html',
   styleUrls: ['./form-update-students.component.scss']
 })
-export class FormUpdateStudentsComponent {
-  idStudent: number = 0;
+export class FormUpdateStudentsComponent implements OnInit{
+  @Input() idStudent: string = '';
 
   name = '';
   identity = '';
@@ -39,10 +40,23 @@ export class FormUpdateStudentsComponent {
   situation = '';
 
 
-  constructor(private router: Router) {}
+  constructor(private searchService: SearchStudentService) {}
 
-  sendData() {
+  ngOnInit(): void {
+      this.sendData(this.idStudent);
+  }
 
+
+  sendData(data: any) {
+    const id = data;
+    this.searchService.findStudentById(id).subscribe({
+      next: (response: HttpResponse<any>) => {
+        console.log(response);
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    })
   }
 
 }

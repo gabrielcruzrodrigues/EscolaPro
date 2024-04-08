@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { SearchStudentService } from 'src/app/services/search/search-student.service';
 
 interface Student {
-  id: number;
+  id: string;
   name: string;
 }
 
@@ -26,7 +26,7 @@ export class SearchStudentComponent {
     const target = event.target as HTMLInputElement;
     const query = target.value;
     if (query.length > 0) {
-      this.searchService.searchStudent(query).subscribe({
+      this.searchService.searchStudentByName(query).subscribe({
         next: (response: HttpResponse<any>) => {
 
           if (response.body) {
@@ -58,8 +58,8 @@ export class SearchStudentComponent {
     this.showResults = false;
   }
 
-  goToUpdatePage(id: number) {
-    this.router.navigate(['/students/update/', id]);
+  goToUpdatePage(id: any) {
+    this.router.navigate(['/students/update', id]);
   }
 
   onMouseLeave() {

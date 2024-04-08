@@ -9,15 +9,20 @@ import { environment } from 'src/environment/environment';
 })
 export class SearchStudentService {
 
-  readonly apiUrl = environment.apiSearchStudent;
+  readonly apiUrl = environment.apiSearchStudentByName;
+  readonly apiFindStudentById = environment.apiFindStudentById;
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  searchStudent(data: any): Observable<any> {
+  searchStudentByName(data: any): Observable<any> {
     const headers = this.authService.getHeaders();
     let urlForRequest = this.apiUrl + data; 
     return this.http.get(urlForRequest, {headers, observe: 'response'});
   }
 
-  
+  findStudentById(data: any): Observable<any> {
+    const headers = this.authService.getHeaders();
+    let urlForRequest = this.apiFindStudentById + data;
+    return this.http.get(urlForRequest, {headers, observe: 'response'})
+  }
 }

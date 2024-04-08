@@ -7,13 +7,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./students-update.component.scss']
 })
 export class StudentsUpdateComponent implements OnInit{
-  idStudent: number = 0;
+  idStudent: string = '';
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     const param = this.route.snapshot.paramMap.get('id');
-    this.idStudent = param !== null ? +param : 0;
-    console.log(this.idStudent);
+    this.idStudent = param !== null ? param : '';
+    // console.log(this.idStudent);
   }
+
 }
