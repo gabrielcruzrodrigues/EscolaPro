@@ -126,8 +126,7 @@ public class StudentService {
         student.setResponsible(request.responsible());
         student.setFather(request.father());
         student.setMother(request.mother());
-        student.setShifts(request.shifts());
-        student.setSituation(SituationsStudentEnum.MATRICULADO);
+        student.setShifts(List.of(request.shifts()));
         this.studentRepository.save(student);
     }
 

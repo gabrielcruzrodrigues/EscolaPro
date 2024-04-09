@@ -51,7 +51,7 @@ public record StudentUpdateDataDTO(
         @NotBlank
         String mother,
         @NotNull
-        List<ShiftEnum> shifts,
+        ShiftEnum shifts,
         MultipartFile imageProfile
 ) {
 }

@@ -11,6 +11,7 @@ export class FormStudentsDataService {
 
   readonly apiUrl = environment.apiUrl;
   urlStudent = this.apiUrl + "/student";
+  urlUpdate = environment.apiUpdate;
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -24,9 +25,8 @@ export class FormStudentsDataService {
     return this.http.post(this.urlStudent, data, {headers, observe: 'response'});
   }
   
-  updateStudent(data: any) {
+  updateStudent(data: any): Observable<any> {
     const headers = this.authService.getHeaders();
-    alert("passou update");
-    console.log(data);
+    return this.http.put(this.urlUpdate, data, {headers, observe: 'response'})
   }
 }
