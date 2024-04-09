@@ -30,8 +30,7 @@ public class StudentService {
 //        if (request.imageProfile() != null) {
 //            this.filesStudentService.saveImage(request.imageProfile(), student);
 //        }
-        this.familyService.createBasicFamily(student);
-        this.fixedHealthService.createBasicFixedHealth(student);
+
     }
 
     @Transactional
