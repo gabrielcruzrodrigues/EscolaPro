@@ -1,6 +1,7 @@
 package br.com.builders.escolar.service.student;
 
 import br.com.builders.escolar.exception.customized.FamilyNotFoundException;
+import br.com.builders.escolar.exception.customized.IntegritDataException;
 import br.com.builders.escolar.exception.customized.StudentNotFoundException;
 import br.com.builders.escolar.model.DTO.CreateFamilyStudentDTO;
 import br.com.builders.escolar.model.DTO.UpdateFamilyDTO;
@@ -68,7 +69,7 @@ public class FamilyService {
         return family.orElseThrow(FamilyNotFoundException::new);
     }
 
-    public List<Family> findByAllFamilyByStudent(Long idStudent) {
+    public List<Family> findAllFamilyByStudent(Long idStudent) {
         return this.familyRepository.findAllByStudentId(idStudent);
     }
 
@@ -90,9 +91,14 @@ public class FamilyService {
         this.familyRepository.save(family);
     }
 
-    public void disabledFamily(Long id) {
-        Family family = this.findFamilyById(id);
-        family.setActive(false);
-        this.familyRepository.save(family);
+    public void disabledFamily(Long familyId, Long studentId) {
+        List<Family> familyCheck = this.findAllFamilyByStudent(studentId);
+        if (familyCheck.size() > 1) {
+            Family family = this.findFamilyById(familyId);
+            family.setActive(false);
+            this.familyRepository.save(family);
+        } else {
+            throw new IntegritDataException("The student cannot be without a family member");
+        }
     }
 }

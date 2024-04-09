@@ -1,15 +1,14 @@
 package br.com.builders.escolar.controller;
 
-import br.com.builders.escolar.model.DTO.CreateFamilyStudentDTO;
-import br.com.builders.escolar.model.DTO.StudentCreateDataDTO;
-import br.com.builders.escolar.model.DTO.StudentUpdateDataDTO;
-import br.com.builders.escolar.model.DTO.UpdateFamilyDTO;
+import br.com.builders.escolar.model.DTO.*;
 import br.com.builders.escolar.model.enums.SituationsStudentEnum;
 import br.com.builders.escolar.model.student.Family;
+import br.com.builders.escolar.model.student.FixedHealth;
 import br.com.builders.escolar.model.student.Student;
 import br.com.builders.escolar.security.accessInterfaces.FinancialAccess;
 import br.com.builders.escolar.security.accessInterfaces.PedagogicalAccess;
 import br.com.builders.escolar.service.student.FamilyService;
+import br.com.builders.escolar.service.student.FixedHealthService;
 import br.com.builders.escolar.service.student.StudentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +27,7 @@ public class StudentController {
 
     private final StudentService studentService;
     private final FamilyService familyService;
+    private final FixedHealthService fixedHealthService;
 
 //    @PedagogicalAccess
     @PostMapping
@@ -116,7 +116,7 @@ public class StudentController {
 
     @GetMapping(path = "/family/all/{id}")
     public ResponseEntity<List<Family>> findAllFamilyByStudent(@PathVariable Long id) {
-        return ResponseEntity.ok().body(this.familyService.findByAllFamilyByStudent(id));
+        return ResponseEntity.ok().body(this.familyService.findAllFamilyByStudent(id));
     }
 
     @PutMapping(path = "/family")
@@ -125,9 +125,33 @@ public class StudentController {
         return ResponseEntity.ok().body("Family updated.");
     }
 
-    @DeleteMapping(path = "/family/{id}")
-    public ResponseEntity<?> disabledFamily(@PathVariable Long id) {
-        this.familyService.disabledFamily(id);
+    @DeleteMapping(path = "/family/{familyId}/{studentId}")
+    public ResponseEntity<?> disabledFamily(@PathVariable Long familyId, @PathVariable Long studentId) {
+        this.familyService.disabledFamily(familyId, studentId);
         return ResponseEntity.ok().body("family disabled");
+    }
+
+    //======================== fixed health =================================
+
+    @PostMapping(path = "/fixedhealth")
+    public ResponseEntity<?> createFixedHealth(@RequestBody CreateFixedHealthDTO request) {
+        this.fixedHealthService.createFixedHealthByStudent(request);
+        return new ResponseEntity<>("Fixed health created.", HttpStatus.CREATED);
+    }
+
+    @GetMapping(path = "/fixedhealth/{id}")
+    public ResponseEntity<FixedHealth> findFixedHealthById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(this.fixedHealthService.findFixedHealthById(id));
+    }
+
+    @GetMapping(path = "/fixedhealth/all/{id}")
+    public ResponseEntity<List<FixedHealth>> findAllFixedHealthByStudent(@PathVariable Long id) {
+        return ResponseEntity.ok().body(this.fixedHealthService.findAllFixedHealthByStudent(id));
+    }
+
+    @PutMapping(path = "/fixedhealth")
+    public ResponseEntity<?> updateFixedHealth(@RequestBody UpdateFixedHealthDTO request) {
+        this.fixedHealthService.updateFixedHealth(request);
+        return ResponseEntity.ok().body("Fixed health updated.");
     }
 }

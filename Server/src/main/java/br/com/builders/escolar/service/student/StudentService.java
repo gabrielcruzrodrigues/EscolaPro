@@ -141,8 +141,5 @@ public class StudentService {
 
         student.setActive(true);
         student.setSituation(SituationsStudentEnum.MATRICULADO);
-
-        this.familyService.createBasicFamily(student);
-        this.fixedHealthService.createBasicFixedHealth(student);
     }
 }
