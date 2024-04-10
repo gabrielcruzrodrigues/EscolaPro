@@ -51,8 +51,9 @@
           
                <!-- Actions -->
                <div class="form-actions button">
-                    <button type="submit" name="addFamily" (click)="addFamily()">Adicionar Familiar</button>
-                    <button class="buttonNext" type="submit" name="next" (click)="nextStage()">Próxima etapa</button>
+                    <button *ngIf="atLeastOneRegisteredFamilyMember" type="submit" name="addFamily" (click)="addNewFamily()">Adicionar outro familiar</button>
+                    <button *ngIf="isFirstFamily" class="buttonNext" type="submit" name="save" (click)="saveFamily()">Salvar Familiar</button>
+                    <button *ngIf="nextStageAvaliable" class="buttonNext" type="submit" name="next" (click)="nextStage()">Próxima etapa</button>
                </div>
           </div>
  

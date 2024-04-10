@@ -3,5 +3,6 @@ export const environment = {
      apiUrl: 'http://localhost:8080',
      apiSearchStudentByName: 'http://localhost:8080/student/search/name/',
      apiFindStudentById: 'http://localhost:8080/student/search/',
-     apiUpdate: 'http://localhost:8080/student'
+     apiUpdate: 'http://localhost:8080/student',
+     apiFamily: 'http://localhost:8080/student/family'
 }

@@ -100,9 +100,9 @@ public class StudentController {
 
     //======================== family =================================
     @PostMapping(path = "/family")
-    public ResponseEntity<?> createFamily(@RequestBody CreateFamilyStudentDTO request) {
+    public ResponseEntity<Object> createFamily(@RequestBody CreateFamilyStudentDTO request) {
         this.familyService.createFamilyByStudent(request);
-        return new ResponseEntity<>("Family created.", HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping(path = "/family/{id}")
