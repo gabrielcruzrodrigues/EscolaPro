@@ -37,8 +37,6 @@ export class FormStudentStage2Component implements OnInit{
   }
 
   saveFamily() {
-    alert(this.idStudent);
-    console.log(this.formData);
     this.formStudentService.createFamily(this.formData).subscribe({
       next: (response: HttpResponse<any>) => {
         if (response.status == 201) {
@@ -76,6 +74,6 @@ export class FormStudentStage2Component implements OnInit{
   }
 
   nextStage() {
-    alert("etapa 3");
+    this.router.navigate(["students/register/stage3/" + this.idStudent]);
   }
 }

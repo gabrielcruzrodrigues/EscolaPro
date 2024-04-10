@@ -1,1 +1,43 @@
-<p>form-student-stage3 works!</p>
+<form id="familyForm">
+    <div class="form-section">
+
+        <!-- Personal Information -->
+        <div class="form-group">
+              <label for="cpf">Plano de saúde:</label>
+              <input [(ngModel)]="formData.healthInsurance" name="healthInsurance" type="text" id="healthInsurance">
+
+              <label for="rg">Tipo Sanguíneo:</label>
+              <input [(ngModel)]="formData.bloodGroup" name="bloodGroup" type="text" id="bloodGroup">
+
+              <label for="dateOfBirth">Clinica médica afiliada:</label>
+              <input [(ngModel)]="formData.medicalClinic" name="medicalClinic" type="text" id="medicalClinic" >
+
+              <label for="cep">Quantidade de irmãos:</label>
+              <input [(ngModel)]="formData.quantityBrothers" name="quantityBrothers" type="text" id="quantityBrothers">
+
+        </div>
+        
+        <!-- Contact Information -->
+        <div class="form-group">
+           
+            <!-- Type -->
+           <div class="form-group shifts">
+            <label for="toGoOutAuthorization">Esta autorizado a sair em uma emergência?</label>
+                <select [(ngModel)]="formData.toGoOutAuthorization" id="toGoOutAuthorization" name="toGoOutAuthorization">
+                    <option value="TRUE">Sim</option>
+                    <option value="FALSE">Não</option>
+                </select>
+            </div>
+
+            <label for="allergies">Alergias:</label>
+            <textarea [(ngModel)]="allergiesTextArea" name="allergies" type="text" id="allergies" placeholder="alergia,alergia,alergia..."></textarea>
+         
+              <!-- Actions -->
+              <div class="form-actions button">
+                   <button class="buttonNext" type="submit" name="save" (click)="finishingRegister()">Finalizar cadastro</button>
+              </div>
+         </div>
+
+         
+    </div>
+</form>

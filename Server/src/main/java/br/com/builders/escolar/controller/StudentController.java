@@ -132,7 +132,7 @@ public class StudentController {
     @PostMapping(path = "/fixedhealth")
     public ResponseEntity<?> createFixedHealth(@RequestBody CreateFixedHealthDTO request) {
         this.fixedHealthService.createFixedHealthByStudent(request);
-        return new ResponseEntity<>("Fixed health created.", HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping(path = "/fixedhealth/{id}")

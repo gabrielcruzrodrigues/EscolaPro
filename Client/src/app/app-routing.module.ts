@@ -7,6 +7,7 @@ import { StudentsDashboardComponent } from './components/students/students-dashb
 import { StudentsRegisterComponent } from './components/students/students-register/students-register.component';
 import { StudentsUpdateComponent } from './components/students/students-update/students-update.component';
 import { StudentsRegisterStage2Component } from './components/students/students-register-stage2/students-register-stage2.component';
+import { StudentsRegisterStage3Component } from './components/students/students-register-stage3/students-register-stage3.component';
 
 const routes: Routes = [
   {path: "", component: LoginPageComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: "students/register", component: StudentsRegisterComponent, canActivate: [authGuard]},
   {path: "students/update/:id", component: StudentsUpdateComponent, canActivate: [authGuard]},
   {path: "students/register/stage2/:id", component: StudentsRegisterStage2Component, canActivate: [authGuard]},
+  {path: "students/register/stage3/:id", component: StudentsRegisterStage3Component, canActivate: [authGuard]},
 ];
 
 @NgModule({
