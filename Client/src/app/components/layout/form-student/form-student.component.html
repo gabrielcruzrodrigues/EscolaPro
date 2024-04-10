@@ -16,8 +16,11 @@
              <label for="dateOfBirth">Data de Nascimento:</label>
              <input [(ngModel)]="formData.dateOfBirth" name="dateOfBirth-student" type="text" id="dateOfBirth" >
 
-             <label for="cep">CEP:</label>
-             <input [(ngModel)]="formData.cep" name="cep-student" type="text" id="cep">
+             <label for="phone">Telefone:</label>
+             <input [(ngModel)]="formData.phone" name="phone-student" type="tel" id="phone">
+
+             <label for="email">Email:</label>
+             <input [(ngModel)]="formData.email" name="email-student" type="email" id="email">
          </div>
 
          <!-- Profile Image Upload -->
@@ -58,11 +61,9 @@
          
          <!-- Contact Information -->
          <div class="form-group">
-             <label for="email">Email:</label>
-             <input [(ngModel)]="formData.email" name="email-student" type="email" id="email">
 
-             <label for="phone">Telefone:</label>
-             <input [(ngModel)]="formData.phone" name="phone-student" type="tel" id="phone">
+             <label for="cep">Cep:</label>
+             <input [(ngModel)]="formData.cep" name="cep-student" type="text" id="cep" (input)="verifyCepStudent($event)">
 
              <label for="address">Endereço:</label>
              <input [(ngModel)]="formData.address" name="address-student" type="text" id="address">

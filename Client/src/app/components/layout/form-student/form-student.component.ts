@@ -1,6 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { CepService } from 'src/app/services/externalApi/cep-service.service';
 import { FormStudentsDataService } from 'src/app/services/form-students-data.service';
 
 enum Shift {
@@ -41,7 +42,10 @@ export class FormStudentComponent {
     // imageProfile: ''
   }
 
-  constructor(private formServiceData: FormStudentsDataService,  private router: Router) {}
+  constructor(
+    private formServiceData: FormStudentsDataService,  
+    private router: Router,
+    private cepService: CepService) {}
 
   sendData(action: string) {
 
@@ -61,6 +65,28 @@ export class FormStudentComponent {
           this.verifyResponse(response),
 
         error: (err) => console.log('Erro ao registrar estudante', err)
+      });
+    }
+  }
+
+  verifyCepStudent(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const query = target.value;
+
+    if (query.length == 8) {
+      this.cepService.verifyCep(query).subscribe({
+        next: (response: any) => {
+          if (response.cep) {
+            console.log(response.cep)
+            this.formData.cep = response.cep;
+            this.formData.state = response.state;
+            this.formData.city = response.city;
+            this.formData.neighborhood = response.neighborhood;
+            this.formData.address = response.street;
+            this.formData.country = 'Brasil';
+          } 
+        },
+        error: (error) => alert("Este Cep não é valido.")
       });
     }
   }
