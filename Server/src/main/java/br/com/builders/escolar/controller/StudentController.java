@@ -31,18 +31,14 @@ public class StudentController {
 
 //    @PedagogicalAccess
     @PostMapping
-    public ResponseEntity<Object> createStudent(@RequestBody @Valid StudentCreateDataDTO request) {
+    public ResponseEntity<Student> createStudent(@RequestBody @Valid StudentCreateDataDTO request) {
+        Student student = new Student();
         if (request.situation() == SituationsStudentEnum.MATRICULADO) {
-            this.studentService.createStudentMATRICULADO(request);
+            student = this.studentService.createStudentMATRICULADO(request);
         } else {
-            this.studentService.createStudentPENDENTE(request);
+            student = this.studentService.createStudentPENDENTE(request);
         }
-
-        Map<String, String> response = new HashMap<>();
-        response.put("message", "user created!");
-
-//        return ResponseEntity.ok().body(response);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+        return new ResponseEntity<>(student, HttpStatus.CREATED);
     }
 
     @PedagogicalAccess

@@ -25,6 +25,12 @@ public class Family {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 50)
+    private String name;
+
+    @Column
+    private String email;
+
     @Column
     private LocalDate dateOfBirth;
 

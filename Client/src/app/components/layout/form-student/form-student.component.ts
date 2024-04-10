@@ -1,5 +1,5 @@
 import { HttpResponse } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormStudentsDataService } from 'src/app/services/form-students-data.service';
 
@@ -49,7 +49,7 @@ export class FormStudentComponent {
       this.formData.situation = 'PENDENTE';
       this.formServiceData.pendingStudent(this.formData).subscribe({
         next: (response: HttpResponse<any>) => 
-        this.verifyResponse(response.status),
+        this.verifyResponse(response),
       
         error: (err) => console.log('Erro ao deixar estudante como pendente', err)
       });
@@ -58,7 +58,7 @@ export class FormStudentComponent {
       this.formData.situation = 'MATRICULADO';
       this.formServiceData.registerStudent(this.formData).subscribe({
         next: (response: HttpResponse<any>) => 
-          this.verifyResponse(response.status),
+          this.verifyResponse(response),
 
         error: (err) => console.log('Erro ao registrar estudante', err)
       });
@@ -67,9 +67,9 @@ export class FormStudentComponent {
 
   verifyResponse(data: any) {
     // console.log('response: ', data)
-    if (data == 201) {
+    if (data.status == 201) {
       alert("Aluno criado com sucesso!");
-      this.router.navigate(["/students"]);
+      this.router.navigate(["students/register/stage2/" + data.body.id]);
     } else {
       alert("Erro ao tentar enviar formulário.");
     }

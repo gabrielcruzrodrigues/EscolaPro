@@ -43,6 +43,8 @@ public class FamilyService {
             Student student = studentOPT.get();
 
             Family family = Family.builder()
+                    .name(data.name())
+                    .email(data.email())
                     .dateOfBirth(data.dateOfBirth())
                     .address(data.address())
                     .workAddress(data.workAddress())
@@ -77,6 +79,8 @@ public class FamilyService {
     public void updateFamily(UpdateFamilyDTO data) {
         Family family = this.findFamilyById(data.id());
 
+        family.setName(data.name());
+        family.setEmail(data.email());
         family.setDateOfBirth(data.dateOfBirth());
         family.setAddress(data.address());
         family.setWorkAddress(data.workAddress());

@@ -15,6 +15,10 @@ import { BackdoorComponent } from './components/layout/backdoor/backdoor.compone
 import { StudentsUpdateComponent } from './components/students/students-update/students-update.component';
 import { SearchStudentComponent } from './components/layout/search/search-student/search-student.component';
 import { FormUpdateStudentsComponent } from './components/layout/form-update-students/form-update-students.component';
+import { StudentsRegisterStage2Component } from './components/students/students-register-stage2/students-register-stage2.component';
+import { StudentsRegisterStage3Component } from './components/students/students-register-stage3/students-register-stage3.component';
+import { FormStudentStage2Component } from './components/layout/form-student-stage2/form-student-stage2.component';
+import { FormStudentStage3Component } from './components/layout/form-student-stage3/form-student-stage3.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { FormUpdateStudentsComponent } from './components/layout/form-update-stu
     BackdoorComponent,
     StudentsUpdateComponent,
     SearchStudentComponent,
-    FormUpdateStudentsComponent
+    FormUpdateStudentsComponent,
+    StudentsRegisterStage2Component,
+    StudentsRegisterStage3Component,
+    FormStudentStage2Component,
+    FormStudentStage3Component
   ],
   imports: [
     BrowserModule,

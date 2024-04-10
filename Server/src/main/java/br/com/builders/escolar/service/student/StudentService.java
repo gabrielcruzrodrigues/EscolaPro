@@ -23,9 +23,10 @@ public class StudentService {
     private final FixedHealthService fixedHealthService;
 
     @Transactional
-    public void createStudentMATRICULADO(StudentCreateDataDTO request) {
+    public Student createStudentMATRICULADO(StudentCreateDataDTO request) {
         Student studentForSave = modelingNewStudentForSave(request, SituationsStudentEnum.MATRICULADO);
         Student student = studentRepository.save(studentForSave);
+        return student;
 
 //        if (request.imageProfile() != null) {
 //            this.filesStudentService.saveImage(request.imageProfile(), student);
@@ -34,9 +35,10 @@ public class StudentService {
     }
 
     @Transactional
-    public void createStudentPENDENTE(StudentCreateDataDTO request) {
+    public Student createStudentPENDENTE(StudentCreateDataDTO request) {
         Student studentForSave = modelingNewStudentForSave(request, SituationsStudentEnum.PENDENTE);
         Student student = studentRepository.save(studentForSave);
+        return student;
 
 //        if (request.imageProfile() != null) {
 //            this.filesStudentService.saveImage(request.imageProfile(), student);

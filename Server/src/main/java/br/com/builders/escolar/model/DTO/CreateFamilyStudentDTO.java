@@ -7,6 +7,10 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public record CreateFamilyStudentDTO(
+        @NotBlank
+        String name,
+        @NotBlank
+        String email,
         @NotNull
         LocalDate dateOfBirth,
         @NotBlank

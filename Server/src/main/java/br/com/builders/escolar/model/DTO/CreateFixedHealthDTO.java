@@ -25,10 +25,6 @@ public record CreateFixedHealthDTO(
         @NotNull
         boolean toGoOutAuthorization,
         @NotNull
-        boolean active,
-        @NotNull
-        LocalDateTime createdAt,
-        @NotNull
         Long studentId
 ) {
 }
