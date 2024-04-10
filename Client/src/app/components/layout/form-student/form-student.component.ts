@@ -68,7 +68,7 @@ export class FormStudentComponent {
   verifyResponse(data: any) {
     // console.log('response: ', data)
     if (data.status == 201) {
-      alert("Aluno criado com sucesso!");
+      alert("Dados Cadastrados!");
       this.router.navigate(["students/register/stage2/" + data.body.id]);
     } else {
       alert("Erro ao tentar enviar formulário.");

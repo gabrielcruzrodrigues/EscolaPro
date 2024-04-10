@@ -1,5 +1,6 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormStudentsDataService } from 'src/app/services/form-students-data.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class FormStudentStage2Component implements OnInit{
   isFirstFamily: boolean = true;
   nextStageAvaliable: boolean = false;
 
-  constructor(private formStudentService: FormStudentsDataService) {}
+  constructor(private formStudentService: FormStudentsDataService, private router: Router) {}
 
   ngOnInit(): void {
     this.formData.studentId = this.idStudent;
@@ -47,13 +48,31 @@ export class FormStudentStage2Component implements OnInit{
           this.nextStageAvaliable = true;
         }
       },
-      error: (error) => console.log('Erro ao registrar familiar.', error)
-      
+      error: (error) => alert('Erro ao registrar familiar, verifique as informações!')
     });
   }
 
   addNewFamily() {
-    alert("adicinando novo familiar");
+
+    this.formData = {
+      studentId: this.idStudent,
+      name: '',
+      address: '',
+      workAddress: '',
+      occupation: '',
+      neighborhood: '',
+      type: '',
+      city: '',
+      phone: '',
+      email: '',
+      state: '',
+      cep: '',
+      dateOfBirth: ''
+    };
+
+    this.atLeastOneRegisteredFamilyMember = false;
+    this.isFirstFamily = true;
+    this.nextStageAvaliable = true;
   }
 
   nextStage() {
