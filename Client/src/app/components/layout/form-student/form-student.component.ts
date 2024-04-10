@@ -77,7 +77,7 @@ export class FormStudentComponent {
       this.cepService.verifyCep(query).subscribe({
         next: (response: any) => {
           if (response.cep) {
-            console.log(response.cep)
+            alert("buscando cep...");
             this.formData.cep = response.cep;
             this.formData.state = response.state;
             this.formData.city = response.city;
