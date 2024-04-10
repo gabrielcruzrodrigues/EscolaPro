@@ -37,6 +37,8 @@ public record StudentUpdateDataDTO(
         @NotBlank
         String neighborhood,
         @NotBlank
+        String numberHouse,
+        @NotBlank
         String city,
         @NotBlank
         String state,

@@ -76,6 +76,10 @@ public class Person {
     @NotBlank
     private String neighborhood;
 
+    @Column(nullable = false, length = 10)
+    @NotBlank
+    private String numberHouse;
+
     @Column(nullable = false, length = 50)
     @NotBlank
     private String city;

@@ -59,6 +59,7 @@ public class StudentService {
         student.setAddress(request.address());
         student.setPhone(request.phone());
         student.setNeighborhood(request.neighborhood());
+        student.setNumberHouse(request.numberHouse());
         student.setCity(request.city());
         student.setState(request.state());
         student.setCountry(request.country());
@@ -119,6 +120,7 @@ public class StudentService {
         student.setAddress(request.address());
         student.setPhone(request.phone());
         student.setNeighborhood(request.neighborhood());
+        student.setNumberHouse(request.numberHouse());
         student.setCity(request.city());
         student.setState(request.state());
         student.setCountry(request.country());

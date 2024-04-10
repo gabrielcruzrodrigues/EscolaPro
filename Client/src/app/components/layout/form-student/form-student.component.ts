@@ -38,7 +38,8 @@ export class FormStudentComponent {
     father: '',
     mother: '',
     shifts: '',
-    situation: ''
+    situation: '',
+    numberHouse: ''
     // imageProfile: ''
   }
 
