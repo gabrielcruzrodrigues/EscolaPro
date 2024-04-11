@@ -14,6 +14,10 @@ public record UpdateFinancialResponsibleDTO(
         @NotNull
         LocalDate dateOfBirth,
         @NotBlank
+        String identity,
+        @NotBlank
+        String cpf,
+        @NotBlank
         String address,
         @NotBlank
         String workAddress,

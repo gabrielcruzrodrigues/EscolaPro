@@ -14,7 +14,7 @@
              <input [(ngModel)]="formData.identity" name="identity-student" type="text" id="identity">
 
              <label for="dateOfBirth">Data de Nascimento:</label>
-             <input [(ngModel)]="formData.dateOfBirth" name="dateOfBirth-student" type="text" id="dateOfBirth" >
+             <input [(ngModel)]="formData.dateOfBirth" name="dateOfBirth-student" type="date" id="dateOfBirth" >
 
              <label for="phone">Telefone:</label>
              <input [(ngModel)]="formData.phone" name="phone-student" type="tel" id="phone">
@@ -83,20 +83,33 @@
 
          <!-- Responsible Person's Information -->
          <div class="form-group">
-             <label for="responsible">Nome do responsável:</label>
-             <input [(ngModel)]="formData.responsible" name="responsible-student" type="text" id="responsible">
+            <label for="responsible">Nome do responsável:</label>
+            <input [(ngModel)]="formData.responsible" name="responsible-student" type="text" id="responsible">
 
-             <label for="emailPersonResponsible">Email do responsável:</label>
-             <input [(ngModel)]="formData.emailPersonResponsible" name="emailPersonResponsible-student" type="email" id="emailPersonResponsible">
+            <label for="emailPersonResponsible">Email do responsável:</label>
+            <input [(ngModel)]="formData.emailPersonResponsible" name="emailPersonResponsible-student" type="email" id="emailPersonResponsible">
 
-             <label for="father">Nome do pai:</label>
-             <input [(ngModel)]="formData.father" name="father-student" type="text" id="father">
+            <label for="father">Nome do pai:</label>
+            <input [(ngModel)]="formData.father" name="father-student" type="text" id="father">
 
-             <label for="mother">Nome da mãe:</label>
-             <input [(ngModel)]="formData.mother" name="mother-student" type="text" id="mother">
+            <label for="mother">Nome da mãe:</label>
+            <input [(ngModel)]="formData.mother" name="mother-student" type="text" id="mother">
 
-             <label for="naturalness">Naturalidade:</label>
-             <input [(ngModel)]="formData.naturalness" name="naturalness-student" type="text" id="naturalness">
+            <label for="naturalness">Naturalidade:</label>
+            <input [(ngModel)]="formData.naturalness" name="naturalness-student" type="text" id="naturalness">
+
+            <div class="form-group gender responsible">
+                <label>O aluno é seu próprio responsável financeiro?</label>
+                    <div class="radio-group">
+                        <input [(ngModel)]="formData.financialResponsible" name="financialResponsible" type="radio" id="financialResponsible" value="TRUE">
+                        <label for="TRUE">Sim</label>
+                    </div>
+                    <div class="radio-group">
+                        <input [(ngModel)]="formData.financialResponsible" name="financialResponsible" type="radio" id="financialResponsible" value="FALSE">
+                        <label for="FALSE">Não</label>
+                    </div>
+           </div>
+
           </div>
          
          <!-- Shifts -->

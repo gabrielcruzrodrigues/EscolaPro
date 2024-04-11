@@ -39,12 +39,32 @@ export class FormStudentComponent {
     mother: '',
     shifts: '',
     situation: '',
-    numberHouse: ''
+    numberHouse: '',
+    financialResponsible: ''
     // imageProfile: ''
   }
 
+  financialResponsibleData = {
+    name: '',
+    email: '',
+    dateOfBirth: '',
+    cpf: '',
+    identity: '',
+    address: '',
+    workAddress: '',
+    occupation: '',
+    neighborhood: '',
+    numberHouse: '',
+    city: '',
+    phone: '',
+    state: '',
+    cep: '',
+    type: '',
+    studentId: ''
+  }
+
   constructor(
-    private formServiceData: FormStudentsDataService,  
+    private studentService: FormStudentsDataService,  
     private router: Router,
     private cepService: CepService) {}
 
@@ -52,7 +72,7 @@ export class FormStudentComponent {
 
     if (action == 'pending') {
       this.formData.situation = 'PENDENTE';
-      this.formServiceData.pendingStudent(this.formData).subscribe({
+      this.studentService.pendingStudent(this.formData).subscribe({
         next: (response: HttpResponse<any>) => 
         this.verifyResponse(response),
       
@@ -61,10 +81,10 @@ export class FormStudentComponent {
 
     } else if (action == 'register') {
       this.formData.situation = 'MATRICULADO';
-      this.formServiceData.registerStudent(this.formData).subscribe({
-        next: (response: HttpResponse<any>) => 
-          this.verifyResponse(response),
-
+      this.studentService.registerStudent(this.formData).subscribe({
+        next: (response: HttpResponse<any>) => {
+          this.verifyResponse(response)
+        },
         error: (err) => console.log('Erro ao registrar estudante', err)
       });
     }
@@ -93,12 +113,45 @@ export class FormStudentComponent {
   }
 
   verifyResponse(data: any) {
-    // console.log('response: ', data)
     if (data.status == 201) {
+      if (this.formData.financialResponsible == 'TRUE') {
+        this.createFinancialResponsible(data.body.id);    
+      }
       alert("Dados Cadastrados!");
       this.router.navigate(["students/register/stage2/" + data.body.id]);
     } else {
       alert("Erro ao tentar enviar formulário.");
     }
+  }
+
+  createFinancialResponsible(data: any) {
+    this.modelingObjFinancialResponsibleData(data);
+    this.studentService.createFinancialResponsible(this.financialResponsibleData).subscribe({
+      next: (response: HttpResponse<any>) => {
+        console.log("Financial responsible created with success.");
+      },
+      error: (error) => {
+        console.log("Financial Responsible error", error.message);
+      }
+    })
+  }
+
+  modelingObjFinancialResponsibleData(idStudent: any) {
+    this.financialResponsibleData.name = this.formData.name;
+    this.financialResponsibleData.email = this.formData.email;
+    this.financialResponsibleData.dateOfBirth = this.formData.dateOfBirth;
+    this.financialResponsibleData.address = this.formData.address;
+    this.financialResponsibleData.workAddress = this.formData.address;
+    this.financialResponsibleData.occupation = '';
+    this.financialResponsibleData.neighborhood = this.formData.neighborhood;
+    this.financialResponsibleData.numberHouse = this.formData.numberHouse;
+    this.financialResponsibleData.city = this.formData.city;
+    this.financialResponsibleData.phone = this.formData.phone;
+    this.financialResponsibleData.state = this.formData.state;
+    this.financialResponsibleData.cep = this.formData.cep;
+    this.financialResponsibleData.type = 'STUDENT';
+    this.financialResponsibleData.studentId = idStudent;
+    this.financialResponsibleData.cpf = this.formData.cpf;
+    this.financialResponsibleData.identity = this.formData.identity;
   }
 }

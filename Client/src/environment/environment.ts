@@ -5,5 +5,6 @@ export const environment = {
      apiFindStudentById: 'http://localhost:8080/student/search/',
      apiUpdate: 'http://localhost:8080/student',
      apiFamily: 'http://localhost:8080/student/family',
-     apiFixedhealth: 'http://localhost:8080/student/fixedhealth'
+     apiFixedhealth: 'http://localhost:8080/student/fixedhealth',
+     apiFinancialResponsible: 'http://localhost:8080/student/financialresponsible'
 }

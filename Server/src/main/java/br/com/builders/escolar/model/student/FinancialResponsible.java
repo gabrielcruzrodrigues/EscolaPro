@@ -3,6 +3,7 @@ package br.com.builders.escolar.model.student;
 import br.com.builders.escolar.model.enums.FamilyTypeEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,8 +28,17 @@ public class FinancialResponsible {
     @Column(length = 50)
     private String name;
 
-    @Column
+    @Column(length = 100, nullable = false)
+    @Email
     private String email;
+
+    @Column(nullable = false, length = 10)
+    @NotBlank
+    private String identity;
+
+    @Column(nullable = false, length = 11)
+    @NotBlank
+    private String cpf;
 
     @Column
     private LocalDate dateOfBirth;

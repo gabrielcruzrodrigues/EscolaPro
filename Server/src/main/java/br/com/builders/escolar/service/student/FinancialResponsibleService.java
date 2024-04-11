@@ -33,6 +33,8 @@ public class FinancialResponsibleService {
                     .name(data.name())
                     .email(data.email())
                     .dateOfBirth(data.dateOfBirth())
+                    .cpf(data.cpf())
+                    .identity(data.identity())
                     .address(data.address())
                     .workAddress(data.workAddress())
                     .occupation(data.occupation())
@@ -70,6 +72,8 @@ public class FinancialResponsibleService {
         financialResponsible.setName(data.name());
         financialResponsible.setEmail(data.email());
         financialResponsible.setDateOfBirth(data.dateOfBirth());
+        financialResponsible.setCpf(data.cpf());
+        financialResponsible.setIdentity(data.identity());
         financialResponsible.setAddress(data.address());
         financialResponsible.setWorkAddress(data.workAddress());
         financialResponsible.setOccupation(data.occupation());

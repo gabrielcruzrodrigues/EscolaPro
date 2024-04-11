@@ -14,6 +14,7 @@ export class FormStudentsDataService {
   urlUpdate = environment.apiUpdate;
   urlFamily = environment.apiFamily;
   urlFixedhealth = environment.apiFixedhealth;
+  urlFinancialResponsible = environment.apiFinancialResponsible;
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -40,5 +41,10 @@ export class FormStudentsDataService {
   createFixedhealth(data: any): Observable<any> {
     const headers = this.authService.getHeaders();
     return this.http.post(this.urlFixedhealth, data, {headers, observe: 'response'});
+  }
+
+  createFinancialResponsible(data: any): Observable<any> {
+    const headers = this.authService.getHeaders();
+    return this.http.post(this.urlFinancialResponsible, data, {headers, observe: 'response'});
   }
 }
