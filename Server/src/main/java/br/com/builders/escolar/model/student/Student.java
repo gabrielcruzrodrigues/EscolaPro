@@ -43,11 +43,14 @@ public class Student extends Person {
     private List<ShiftEnum> shifts;
 
     @OneToMany(mappedBy = "student")
+    private List<FilesStudent> imageProfile;
+
+    @OneToMany(mappedBy = "student")
     private List<Family> family;
 
     @OneToOne(mappedBy = "student")
     private FixedHealth fixedHealth;
 
-    @OneToMany(mappedBy = "student")
-    private List<FilesStudent> imageProfile;
+    @OneToOne(mappedBy = "student")
+    private FinancialResponsible financialResponsible;
 }

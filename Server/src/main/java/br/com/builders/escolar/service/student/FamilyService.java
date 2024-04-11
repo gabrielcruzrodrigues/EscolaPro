@@ -25,18 +25,6 @@ public class FamilyService {
     private final StudentRepository studentRepository;
 
     @Transactional
-    public void createBasicFamily(Student student) {
-        Family family = modelingBasicFamily(student);
-        this.familyRepository.save(family);
-    }
-
-    private Family modelingBasicFamily(Student student) {
-        return Family.builder()
-                .student(student)
-                .build();
-    }
-
-    @Transactional
     public void createFamilyByStudent(CreateFamilyStudentDTO data) {
         Optional<Student> studentOPT = this.studentRepository.findById(data.studentId());
         if (studentOPT.isPresent()) {
@@ -50,6 +38,7 @@ public class FamilyService {
                     .workAddress(data.workAddress())
                     .occupation(data.occupation())
                     .neighborhood(data.neighborhood())
+                    .numberHouse(data.numberHouse())
                     .city(data.city())
                     .phone(data.phone())
                     .state(data.state())
@@ -86,6 +75,7 @@ public class FamilyService {
         family.setWorkAddress(data.workAddress());
         family.setOccupation(data.occupation());
         family.setNeighborhood(data.neighborhood());
+        family.setNumberHouse(data.numberHouse());
         family.setCity(data.city());
         family.setPhone(data.phone());
         family.setState(data.state());

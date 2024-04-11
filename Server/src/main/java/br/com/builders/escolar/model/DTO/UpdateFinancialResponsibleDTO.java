@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
-public record UpdateFamilyDTO(
+public record UpdateFinancialResponsibleDTO(
         @NotBlank
         String name,
         @NotBlank
@@ -36,5 +36,4 @@ public record UpdateFamilyDTO(
         @NotNull
         Long id
 ) {
-
 }

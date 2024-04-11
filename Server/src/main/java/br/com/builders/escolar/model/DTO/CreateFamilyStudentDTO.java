@@ -22,6 +22,8 @@ public record CreateFamilyStudentDTO(
         @NotBlank
         String neighborhood,
         @NotBlank
+        String numberHouse,
+        @NotBlank
         String city,
         @NotBlank
         String phone,

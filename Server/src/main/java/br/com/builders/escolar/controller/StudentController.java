@@ -3,11 +3,13 @@ package br.com.builders.escolar.controller;
 import br.com.builders.escolar.model.DTO.*;
 import br.com.builders.escolar.model.enums.SituationsStudentEnum;
 import br.com.builders.escolar.model.student.Family;
+import br.com.builders.escolar.model.student.FinancialResponsible;
 import br.com.builders.escolar.model.student.FixedHealth;
 import br.com.builders.escolar.model.student.Student;
 import br.com.builders.escolar.security.accessInterfaces.FinancialAccess;
 import br.com.builders.escolar.security.accessInterfaces.PedagogicalAccess;
 import br.com.builders.escolar.service.student.FamilyService;
+import br.com.builders.escolar.service.student.FinancialResponsibleService;
 import br.com.builders.escolar.service.student.FixedHealthService;
 import br.com.builders.escolar.service.student.StudentService;
 import jakarta.validation.Valid;
@@ -28,6 +30,7 @@ public class StudentController {
     private final StudentService studentService;
     private final FamilyService familyService;
     private final FixedHealthService fixedHealthService;
+    private final FinancialResponsibleService financialResponsibleService;
 
 //    @PedagogicalAccess
     @PostMapping
@@ -148,6 +151,30 @@ public class StudentController {
     @PutMapping(path = "/fixedhealth")
     public ResponseEntity<?> updateFixedHealth(@RequestBody UpdateFixedHealthDTO request) {
         this.fixedHealthService.updateFixedHealth(request);
+        return ResponseEntity.ok().body("Fixed health updated.");
+    }
+
+    //======================== Financial Responsible =================================
+
+    @PostMapping(path = "/financialresponsible")
+    public ResponseEntity<?> createFinancialResponsible(@RequestBody CreateFinancialResponsibleDTO request) {
+        this.financialResponsibleService.createFinancialResponsible(request);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @GetMapping(path = "/financialresponsible/{id}")
+    public ResponseEntity<FinancialResponsible> findFinancialResponsible(@PathVariable Long id) {
+        return ResponseEntity.ok().body(this.financialResponsibleService.findFinancialResponsibleById(id));
+    }
+
+    @GetMapping(path = "/financialresponsible/all/{id}")
+    public ResponseEntity<List<FinancialResponsible>> findAllFinancialResponsibleByStudent(@PathVariable Long id) {
+        return ResponseEntity.ok().body(this.financialResponsibleService.findAllFinancialResponsibleByStudent(id));
+    }
+
+    @PutMapping(path = "/financialresponsible")
+    public ResponseEntity<?> updateFinancialResponsible(@RequestBody UpdateFinancialResponsibleDTO request) {
+        this.financialResponsibleService.updateFinancialResponsible(request);
         return ResponseEntity.ok().body("Fixed health updated.");
     }
 }

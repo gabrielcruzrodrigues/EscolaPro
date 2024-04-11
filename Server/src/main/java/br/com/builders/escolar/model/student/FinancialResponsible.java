@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table
@@ -19,7 +18,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Data
 @Builder
-public class Family {
+public class FinancialResponsible {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,16 +62,16 @@ public class Family {
     private String cep;
 
     @Column
+    @Enumerated(EnumType.STRING)
+    private FamilyTypeEnum type;
+
+    @Column
     private LocalDateTime createdAt;
 
     @Column
     private boolean active;
 
-    @Column
-    @Enumerated(EnumType.STRING)
-    private FamilyTypeEnum type;
-
-    @ManyToOne
+    @OneToOne
     @JsonIgnore
     @JoinColumn(name = "student_id")
     private Student student;
