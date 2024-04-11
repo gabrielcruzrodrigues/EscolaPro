@@ -157,7 +157,7 @@ public class StudentController {
     //======================== Financial Responsible =================================
 
     @PostMapping(path = "/financialresponsible")
-    public ResponseEntity<?> createFinancialResponsible(@RequestBody CreateFinancialResponsibleDTO request) {
+    public ResponseEntity<Object> createFinancialResponsible(@RequestBody CreateFinancialResponsibleDTO request) {
         this.financialResponsibleService.createFinancialResponsible(request);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
