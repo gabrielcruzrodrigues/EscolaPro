@@ -19,6 +19,8 @@ import { StudentsRegisterStage2Component } from './components/students/students-
 import { StudentsRegisterStage3Component } from './components/students/students-register-stage3/students-register-stage3.component';
 import { FormStudentStage2Component } from './components/layout/form-student-stage2/form-student-stage2.component';
 import { FormStudentStage3Component } from './components/layout/form-student-stage3/form-student-stage3.component';
+import { FormFinancialResponsibleComponent } from './components/layout/form-financial-responsible/form-financial-responsible.component';
+import { StudentsRegisterFinancialResponsibleComponent } from './components/students/students-register-financial-responsible/students-register-financial-responsible.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { FormStudentStage3Component } from './components/layout/form-student-sta
     StudentsRegisterStage2Component,
     StudentsRegisterStage3Component,
     FormStudentStage2Component,
-    FormStudentStage3Component
+    FormStudentStage3Component,
+    FormFinancialResponsibleComponent,
+    StudentsRegisterFinancialResponsibleComponent
   ],
   imports: [
     BrowserModule,

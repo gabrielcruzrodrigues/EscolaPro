@@ -15,6 +15,8 @@ export class FormStudentsDataService {
   urlFamily = environment.apiFamily;
   urlFixedhealth = environment.apiFixedhealth;
   urlFinancialResponsible = environment.apiFinancialResponsible;
+  readonly urlSearchByName = environment.apiSearchStudentByName;
+  readonly apiFindStudentById = environment.apiFindStudentById;
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -46,5 +48,17 @@ export class FormStudentsDataService {
   createFinancialResponsible(data: any): Observable<any> {
     const headers = this.authService.getHeaders();
     return this.http.post(this.urlFinancialResponsible, data, {headers, observe: 'response'});
+  }
+
+  searchStudentByName(data: any): Observable<any> {
+    const headers = this.authService.getHeaders();
+    let urlForRequest = this.urlSearchByName + data; 
+    return this.http.get(urlForRequest, {headers, observe: 'response'});
+  }
+
+  findStudentById(data: any): Observable<any> {
+    const headers = this.authService.getHeaders();
+    let urlForRequest = this.apiFindStudentById + data;
+    return this.http.get(urlForRequest, {headers, observe: 'response'})
   }
 }

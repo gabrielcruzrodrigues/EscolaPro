@@ -1,7 +1,8 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { SearchStudentService } from 'src/app/services/search/search-student.service';
+import { FormStudentComponent } from '../../form-student/form-student.component';
+import { FormStudentsDataService } from 'src/app/services/form-students-data.service';
 
 interface Student {
   id: string;
@@ -19,16 +20,18 @@ export class SearchStudentComponent {
   searchResults: Student[] = [];
   showResults: boolean = false;
 
-  constructor(private searchService: SearchStudentService, private router: Router) { }
+  constructor(
+    private router: Router,
+    private studentService: FormStudentsDataService) { }
 
   onSearch(event: Event) {
     this.searchResults = [];
     const target = event.target as HTMLInputElement;
     const query = target.value;
+ 
     if (query.length > 0) {
-      this.searchService.searchStudentByName(query).subscribe({
+      this.studentService.searchStudentByName(query).subscribe({
         next: (response: HttpResponse<any>) => {
-
           if (response.body) {
             const responseData = response.body;
 

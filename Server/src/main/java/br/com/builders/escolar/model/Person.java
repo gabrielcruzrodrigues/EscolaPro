@@ -29,9 +29,6 @@ public class Person {
     @NotBlank
     private String name;
 
-//    @Column(nullable = false)
-//    private LocalDateTime entryDate;
-
     @Column(nullable = false, length = 10)
     @NotBlank
     private String identity;

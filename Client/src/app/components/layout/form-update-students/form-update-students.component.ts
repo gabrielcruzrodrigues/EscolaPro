@@ -1,7 +1,6 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormStudentsDataService } from 'src/app/services/form-students-data.service';
-import { SearchStudentService } from 'src/app/services/search/search-student.service';
 
 
 enum Shift {
@@ -65,7 +64,7 @@ export class FormUpdateStudentsComponent implements OnInit{
     // imageProfile: ''
   }
 
-  constructor(private searchService: SearchStudentService, private studentService: FormStudentsDataService) {}
+  constructor(private studentService: FormStudentsDataService) {}
 
   ngOnInit(): void {
     this.searchStudent(this.idStudent);
@@ -74,7 +73,7 @@ export class FormUpdateStudentsComponent implements OnInit{
 
   searchStudent(data: any) {
     const id = data;
-    this.searchService.findStudentById(id).subscribe({
+    this.studentService.findStudentById(id).subscribe({
       next: (response: HttpResponse<any>) => {
         console.log(response);
         this.fillOutForm(response.body);
