@@ -1,6 +1,5 @@
 package br.com.builders.escolar.model.student;
 
-import br.com.builders.escolar.model.files.FilesStudent;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

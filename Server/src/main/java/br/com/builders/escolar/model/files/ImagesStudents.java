@@ -5,6 +5,7 @@ import br.com.builders.escolar.model.student.Student;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,14 +14,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class FilesStudent {
+@Builder
+public class ImagesStudents {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String register;
 
     @Column
     @Enumerated(EnumType.STRING)
@@ -29,7 +31,7 @@ public class FilesStudent {
     @Column(nullable = false)
     private String reference;
 
-    @ManyToOne
+    @OneToOne
     @JsonIgnore
     @JoinColumn(name = "student_id")
     private Student student;

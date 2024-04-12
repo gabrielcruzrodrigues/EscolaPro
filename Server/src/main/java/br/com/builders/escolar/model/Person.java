@@ -1,6 +1,7 @@
 package br.com.builders.escolar.model;
 
 import br.com.builders.escolar.model.enums.SexEnum;
+import br.com.builders.escolar.model.files.BasicFilesStudents;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @MappedSuperclass
 @NoArgsConstructor
@@ -88,10 +90,6 @@ public class Person {
     @Column(nullable = false, length = 50)
     @NotBlank
     private String country;
-
-//    @Column(nullable = false)
-//    @Enumerated(EnumType.STRING)
-//    private RoleEnum role;
 
     @Column
     private LocalDateTime createdAt;

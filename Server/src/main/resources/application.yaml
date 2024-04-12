@@ -1,9 +1,8 @@
-images-students-path: "C:/faculty/images-students"
-files-students-path: "C:/faculty/files-students"
+images-students-path: "C:/escolaPro/images-students"
+files-students-path: "C:/escolaPro/files-students"
 
 jwt:
   private:
     key: classpath:app.key
   public:
     key: classpath:app.pub
-

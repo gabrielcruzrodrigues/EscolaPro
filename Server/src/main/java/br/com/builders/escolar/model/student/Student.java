@@ -3,7 +3,7 @@ package br.com.builders.escolar.model.student;
 import br.com.builders.escolar.model.Person;
 import br.com.builders.escolar.model.enums.ShiftEnum;
 import br.com.builders.escolar.model.enums.SituationsStudentEnum;
-import br.com.builders.escolar.model.files.FilesStudent;
+import br.com.builders.escolar.model.files.BasicFilesStudents;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -42,8 +42,17 @@ public class Student extends Person {
     @Enumerated(EnumType.STRING)
     private List<ShiftEnum> shifts;
 
+    @OneToOne(mappedBy = "student")
+    private BasicFilesStudents imageProfile;
+
     @OneToMany(mappedBy = "student")
-    private List<FilesStudent> imageProfile;
+    private List<BasicFilesStudents> cpfFile;
+
+    @OneToMany(mappedBy = "student")
+    private List<BasicFilesStudents> rgFile;
+
+    @OneToMany(mappedBy = "student")
+    private List<BasicFilesStudents> C;
 
     @OneToMany(mappedBy = "student")
     private List<Family> family;
