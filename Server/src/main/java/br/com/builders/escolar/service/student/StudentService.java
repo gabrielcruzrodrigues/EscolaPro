@@ -6,6 +6,7 @@ import br.com.builders.escolar.model.DTO.StudentUpdateDataDTO;
 import br.com.builders.escolar.model.enums.SituationsStudentEnum;
 import br.com.builders.escolar.model.student.Student;
 import br.com.builders.escolar.repository.StudentRepository;
+import br.com.builders.escolar.service.files.FilesStudentService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

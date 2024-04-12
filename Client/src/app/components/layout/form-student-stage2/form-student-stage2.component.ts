@@ -174,10 +174,10 @@ export class FormStudentStage2Component implements OnInit{
     const query = target.value;
 
     if (query.length == 8) {
+      alert("buscando cep...");
       this.cepService.verifyCep(query).subscribe({
         next: (response: any) => {
           if (response.cep) {
-            alert("buscando cep...");
             this.formData.cep = response.cep;
             this.formData.state = response.state;
             this.formData.city = response.city;

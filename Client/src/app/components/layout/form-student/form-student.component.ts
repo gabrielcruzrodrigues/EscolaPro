@@ -40,8 +40,8 @@ export class FormStudentComponent {
     shifts: '',
     situation: '',
     numberHouse: '',
-    financialResponsible: ''
-    // imageProfile: ''
+    financialResponsible: '',
+    imageProfile: ''
   }
 
   financialResponsibleData = {
@@ -69,6 +69,7 @@ export class FormStudentComponent {
     private cepService: CepService) {}
 
   sendData(action: string) {
+    console.log(this.formData)
 
     if (action == 'pending') {
       this.formData.situation = 'PENDENTE';
@@ -95,10 +96,10 @@ export class FormStudentComponent {
     const query = target.value;
 
     if (query.length == 8) {
+      alert("buscando cep...");
       this.cepService.verifyCep(query).subscribe({
         next: (response: any) => {
           if (response.cep) {
-            alert("buscando cep...");
             this.formData.cep = response.cep;
             this.formData.state = response.state;
             this.formData.city = response.city;

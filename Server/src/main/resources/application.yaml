@@ -1,5 +1,7 @@
 images-students-path: "C:/escolaPro/images-students"
 files-students-path: "C:/escolaPro/files-students"
+files-family-path: "C:/escolaPro/files-family"
+files-financialResponsible-path: "C:/escolaPro/files-financialResponsible"
 
 jwt:
   private:

@@ -1,22 +1,22 @@
-package br.com.builders.escolar.service.student;
+package br.com.builders.escolar.service;
 
 import br.com.builders.escolar.model.DTO.StudentCreateDataDTO;
 import br.com.builders.escolar.model.enums.SexEnum;
 import br.com.builders.escolar.model.enums.ShiftEnum;
 import br.com.builders.escolar.repository.StudentRepository;
+import br.com.builders.escolar.service.files.FilesStudentService;
+import br.com.builders.escolar.service.student.FamilyService;
+import br.com.builders.escolar.service.student.FixedHealthService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import static org.mockito.Mockito.*;
 import org.mockito.MockitoAnnotations;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class StudentServiceTest {
 

@@ -53,7 +53,10 @@ public record StudentCreateDataDTO(
         String mother,
         @NotNull
         ShiftEnum shifts,
-//        MultipartFile imageProfile,
+        MultipartFile imageProfile,
+        MultipartFile cpfFile,
+        MultipartFile rgFile,
+        MultipartFile ProofOfAddress,
         @NotNull
         SituationsStudentEnum situation
 ) {

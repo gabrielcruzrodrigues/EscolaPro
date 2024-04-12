@@ -1,4 +1,4 @@
-package br.com.builders.escolar.service.student;
+package br.com.builders.escolar.service.files;
 
 import br.com.builders.escolar.exception.customized.FileTypeErrorException;
 import br.com.builders.escolar.exception.customized.SaveFileErrorException;

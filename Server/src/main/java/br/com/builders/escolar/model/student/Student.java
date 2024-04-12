@@ -52,7 +52,7 @@ public class Student extends Person {
     private List<BasicFilesStudents> rgFile;
 
     @OneToMany(mappedBy = "student")
-    private List<BasicFilesStudents> C;
+    private List<BasicFilesStudents> proofOfAddressFile;
 
     @OneToMany(mappedBy = "student")
     private List<Family> family;
