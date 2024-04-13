@@ -16,6 +16,8 @@ enum Shift {
   styleUrls: ['./form-student.component.scss']
 })
 export class FormStudentComponent {
+
+  selectedFile: File | null = null;
   
   formData = {
     name: '',
@@ -68,8 +70,15 @@ export class FormStudentComponent {
     private router: Router,
     private cepService: CepService) {}
 
+    onFileSelected(imageInput: any)  {
+      const file: File = imageInput.files[0];
+      const reader = new FileReader();
+    }
+
   sendData(action: string) {
     console.log(this.formData)
+
+    
 
     if (action == 'pending') {
       this.formData.situation = 'PENDENTE';
