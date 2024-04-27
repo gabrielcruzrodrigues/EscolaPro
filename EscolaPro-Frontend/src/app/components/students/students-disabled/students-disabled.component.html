@@ -1,0 +1,37 @@
+<section class="main-sections">
+     <section class="menu">
+         <menu></menu>
+     </section>
+     <section class="content">
+          <app-backdoor router="/students"></app-backdoor>
+          
+          <h1 class="title">Desabilitar aluno</h1>
+
+          <app-search-student label="Pesquisar aluno..." destination="disabled"></app-search-student>
+          
+          <form id="form" [formGroup]="form">
+             <div class="form-section">
+         
+                    <!-- Personal Information -->
+                    <div class="form-group">
+                         <label for="healthInsurance">Nome completo:</label>
+                         <input formControlName="name" name="name" type="text" id="name">
+
+                         <label for="bloodGroup">Data do registro:</label>
+                         <input formControlName="createdAt" name="createdAt" type="text" id="createdAt">
+                    </div>
+               
+                    <div class="form-group">
+                         <label for="bloodGroup">Curso:</label>
+                         <input formControlName="course" name="course" type="text" id="course">
+                    
+                         <!-- Actions -->
+                         <div class="form-actions button">
+                              <button class="buttonNext" type="submit" (click)="disabledStudent()">Desabilitar aluno</button>
+                         </div>
+                    </div>
+               </div>
+         </form>
+         
+     </section>
+ </section>

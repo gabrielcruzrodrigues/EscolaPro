@@ -1,0 +1,37 @@
+<section class="main-sections">
+    <section class="menu">
+        <menu></menu>
+    </section>
+    <section class="content">
+        <app-backdoor router="/students"></app-backdoor>
+        <h1 class="title">Lista de estudantes</h1>
+        <form id="form">
+            <div class="form-section">
+        
+                <!-- <div class="form-group" > -->
+                    
+                    <div class="div-list" *ngFor="let student of students" (click)="viewStudent(student.id)">
+                        <div class="image-div">
+                            <div class="image">
+                                <img src="/assets/professores-menu.png">
+                            </div>
+                        </div>
+                        <div class="content-list">
+                            <!-- <p>{{student.id}}</p> -->
+                            <label>Nome: </label>
+                            <p>{{student.name}}</p>
+                            <label>Sexo: </label>
+                            <p>{{student.sex}}</p>
+                            <label>Data de criação : </label>
+                            <p>{{student.createdAt}}</p>
+                        </div>
+                    </div>
+                    
+                <!-- </div> -->
+                
+            </div>
+        </form>
+        
+    </section>
+</section>
+

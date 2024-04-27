@@ -1,0 +1,221 @@
+/* You can add global styles to this file, and also import other style files */
+@import '/src/scss/abstract/breakpoints_desktop';
+@import "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;700;900&display=swap";
+@import '/src/scss/color-variables.scss';
+
+//========================== estructure ==========================
+
+body, html {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Poppins', sans-serif;
+}
+
+.menu {
+     width: 20%;
+
+     @include breakpoint(hd-up) {
+          width: 16%;
+     }
+
+     @include breakpoint(full-hd-up) {
+          width: 15%;
+     }
+}
+
+.content {
+     width: 80%;
+
+     @include breakpoint(hd-up) {
+          width: 85%;
+     }
+}
+
+.main-sections {
+     display: flex;
+     flex-direction: row;
+     width: 100%;
+     height: 100vh;
+}
+
+.title {
+     text-align: center;
+     font-family: 'Poppins', sans-serif;
+     font-size: 2.5rem;
+     margin: 2rem 0 0 0;
+     border: 1px solid $border-input-color;
+     font-weight: 400;
+}
+
+//========================== form ==========================
+
+body {
+     margin: 0;
+     padding: 0;
+}
+ 
+#form {
+     width: 90%;
+     margin: 0 auto;
+     background-color: #fff;
+     padding: 20px;
+     font-family: 'Poppins', sans-serif;
+}
+ 
+.form-section {
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     grid-gap: 20px;
+}
+ 
+.form-group {
+     display: flex;
+     flex-direction: column;
+     margin-bottom: 15px;
+}
+
+.form-group-files {
+    display: flex;
+     flex-direction: row;
+     margin-bottom: 15px;
+}
+ 
+.form-group label {
+    margin-bottom: 5px;
+}
+ 
+.form-group input[type="date"],
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="number"] {
+     padding: 10px;
+     margin-bottom: 10px;
+     border: 1px solid $border-input-color;
+     border-radius: 4px;
+}
+
+.form-group select {
+     padding: 10px;
+     border: 1px solid $border-input-color;
+     border-radius: 4px;
+}
+ 
+.form-actions {
+     text-align: right;
+}
+ 
+.form-actions button {
+     padding: 20px 30px;
+     margin-left: 15px;
+     border: none;
+     border-radius: 10px;
+     cursor: pointer;
+     width: 15rem;
+     background-color: $primary-color;
+     color: rgb(255, 255, 255);
+     font-size: 1.0em;
+
+    @include breakpoint(small-up) {
+        padding: 0.625rem 0.625rem;
+        margin-top: 1.875rem;
+    }
+
+    @include breakpoint(hd-up) {
+        padding: 1rem 2.188rem;
+        margin-top: 1.875rem;
+    }
+
+    @include breakpoint(medium-up) {
+        padding: 1.3rem 3rem;
+        margin-top: 1.875rem;
+    }
+
+    @include breakpoint(very-big-up) {
+        padding: 1.3rem 3.6rem;
+        margin-top: 1.875rem;
+    }
+
+    @include breakpoint(full-hd-up) {
+        padding: 1.3rem 6rem;
+        margin-top: 1.875rem;
+        margin-left: 2rem;
+    }
+}
+
+.form-actions button:active {
+     background-color: $third-color;
+}
+ 
+.form-actions button[name="action"][value="pendente"] {
+     background-color: $button-access-color;
+     color: black
+}
+
+.gender {
+     border: 1px solid $border-input-color;
+     border-radius: 5px;
+     padding: 10px;
+}
+
+.gender label {
+     margin-bottom: 1px;
+}
+
+.gender input {
+     margin-bottom: 2px;
+     padding: 5px;
+}
+
+.button button:active {
+    background-color: $active-button;
+}
+
+.files input {
+    width: 100%;
+    height: 80%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.input-file {
+     position: relative;
+     width: 100%;
+     margin-bottom: 5px;
+     height: 90px;
+     background-color: $input-field;
+     border-radius: 5px;
+     cursor: pointer;
+ }
+
+.input-radio {
+     margin-top: 10px;
+}
+
+.file-upload-icon {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     width: 60px;
+     pointer-events: none;
+}
+
+.file-selected {
+     background-color: $primary-color;
+}
+
+.btn-view-file {
+     width: 100%;
+     height: 100%;
+     cursor: pointer;
+     background-color: $primary-color;
+     border: none;
+     border-radius: 5px;
+}
+
+.btn-view-file:active {
+     background-color: $button-access-color;
+}

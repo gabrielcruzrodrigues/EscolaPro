@@ -1,0 +1,151 @@
+<section class="main-sections">
+    <section class="menu" (click)="handleOutsideClick($event)">
+            <menu></menu>
+    </section>
+     <section class="content">
+        <!-- <app-backdoor router="/students"></app-backdoor> -->
+
+        <h1 class="title">Dados do aluno</h1>
+         
+        <form id="form" [formGroup]="form">
+            <div class="form-section">
+            
+                <!-- Personal Information -->
+                <div class="form-group">
+                    <label for="name">Nome:</label>
+                    <input formControlName="name" name="name-student" type="text" id="name" required>
+       
+                    <label for="cpf">CPF:</label>
+                    <input formControlName="cpf" name="cpf-student" type="text" id="cpf" required>
+       
+                    <label for="identity">RG:</label>
+                    <input formControlName="identity" name="identity" type="text" id="identity" required>
+       
+                    <label for="dateOfBirth">Data de Nascimento:</label>
+                    <input formControlName="dateOfBirth" name="dateOfBirth-student" type="date" id="dateOfBirth" required>
+       
+                    <label for="phone">Telefone:</label>
+                    <input formControlName="phone" name="phone-student" type="tel" id="phone" required>
+       
+                    <label for="email">Email:</label>
+                    <input formControlName="email" name="email-student" type="email" id="email" required>
+                </div>
+
+                <div class="form-group">
+       
+                    <label for="cep">Cep:</label>
+                    <input formControlName="cep" name="cep-student" type="text" id="cep" (input)="verifyCepStudent($event)" required>
+       
+                    <label for="address">Endereço:</label>
+                    <input formControlName="address" name="address-student" type="text" id="address" required>
+       
+                    <label for="city">Cidade:</label>
+                    <input formControlName="city" name="city-student" type="text" id="city" required>
+       
+                    <label for="neighborhood">Bairro:</label>
+                    <input formControlName="neighborhood" name="neighborhood-student" type="text" id="neighborhood" required>
+       
+                    <label for="naturalness">Numero da casa:</label>
+                    <input formControlName="numberHouse" name="numberHouse" type="text" id="numberHouse" required>
+       
+                    <label for="nationality">Nacionalidade:</label>
+                    <input formControlName="nationality" name="nationality-student" type="text" id="nationality" required>
+                </div>
+       
+                <!-- Gender -->
+                <div class="form-group gender">
+                    <label>Sexo:</label>
+                        <div class="radio-group">
+                            <input formControlName="sex" class="input-radio" name="sex" type="radio" id="masculine" value="MASCULINE">
+                            <label for="masculine">Masculino</label>
+                        </div>
+                        <div class="radio-group">
+                            <input formControlName="sex" class="input-radio" name="sex" type="radio" id="feminine" value="FEMININE">
+                            <label for="feminine">Feminino</label>
+                        </div>
+                </div>
+       
+                <!-- State and Country -->
+                <div class="form-group gender">
+                    <label for="state">Estado:</label>
+                    <input formControlName="state" name="state-student" list="options-state" id="state">
+                    <datalist id="options-state">
+                        <option value="State 1"></option>
+                    </datalist>
+       
+                    <label for="country">País:</label>
+                    <input formControlName="country" name="country-student" list="options-country" id="country">
+                    <datalist id="options-country">
+                        <option value="Country 1"></option>
+                    </datalist>
+                </div>
+
+                <!-- Files Upload -->
+                <div class="form-group files">
+                    <label for="imageProfile">Imagem do aluno:</label>
+                    <div class="input-file" [class.file-selected]="image">
+                        <input name="imageProfile-student" type="file" id="imageProfile" (change)="onFileSelected($event)">
+                        <img src="assets/upload-icon.png" class="file-upload-icon">  
+                    </div>
+
+                    <label for="rg-file-student">Cópia do rg:</label>
+                    <div class="input-file" [class.file-selected]="rg">
+                        <input name="rg-file-student" type="file" id="rg-file-student" (change)="onRgSelected($event)">
+                        <img src="assets/upload-icon.png" class="file-upload-icon">
+                    </div>
+
+                    <label for="cpf-file-student">Cópia do cpf:</label>
+                    <div class="input-file" [class.file-selected]="cpf">
+                          <input name="cpf-file-student" type="file" id="cpf-file-student" (change)="onCpfSelected($event)">
+                          <img src="assets/upload-icon.png" class="file-upload-icon">
+                    </div>
+
+                    <label for="proofOfAddress-file-student">Cópia do comprovante de residência:</label>
+                    <div class="input-file" [class.file-selected]="proofOfAddress">
+                          <input name="proofOfAddress-file-student" type="file" id="proofOfAddress-file-student" (change)="onProofOfAddressSelected($event)">
+                          <img src="assets/upload-icon.png" class="file-upload-icon">
+                    </div>
+               </div> 
+       
+                <!-- Responsible Person's Information -->
+                <div class="form-group">
+                    <label for="responsible">Nome do responsável:</label>
+                    <input formControlName="responsible" name="responsible-student" type="text" id="responsible" required>
+        
+                    <label for="emailPersonResponsible">Email do responsável:</label>
+                    <input formControlName="emailPersonResponsible" name="emailPersonResponsible-student" type="email" id="emailPersonResponsible" required>
+        
+                    <label for="father">Nome do pai:</label>
+                    <input formControlName="father" name="father-student" type="text" id="father" required>
+        
+                    <label for="mother">Nome da mãe:</label>
+                    <input formControlName="mother" name="mother-student" type="text" id="mother" required>
+        
+                    <label for="naturalness">Naturalidade:</label>
+                    <input formControlName="naturalness" name="naturalness-student" type="text" id="naturalness" required>
+        
+                    <div class="form-group gender">
+                        <label>O aluno é seu próprio responsável financeiro?</label>
+                            <div class="radio-group">
+                                <input formControlName="financialResponsible" name="financialResponsible" type="radio" id="financialResponsible" value="TRUE">
+                                <label for="financialResponsibleTrue">Sim</label>
+                            </div>
+                            <div class="radio-group">
+                                <input formControlName="financialResponsible" name="financialResponsible" type="radio" id="financialResponsible" value="FALSE">
+                                <label for="financialResponsibleFalse">Não</label>
+                            </div>
+                    </div>
+                </div>
+            
+                <div></div>
+
+                <!-- Actions -->
+                <div class="form-actions button">
+                    <button type="button" (click)="sendData('pending')">Deixar pendente</button>
+                    <button type="button" (click)="sendData('register')">Próxima etapa</button>
+                </div>
+            </div>
+        </form>
+
+     </section>
+</section>

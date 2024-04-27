@@ -1,0 +1,67 @@
+@import '/src/scss/abstract/breakpoints_desktop';
+@import '/src/scss/color-variables.scss';
+
+
+.side-menu {
+     position: fixed;
+     top: 0;
+     left: 0;
+     bottom: 0;
+     width: 14.9%;
+     background-color: $primary-color;
+     font-family: 'Poppins';
+   //  padding: 20px;
+     display: flex;
+     flex-direction: column;
+
+     @include breakpoint(small-up) {
+      width: 12.5rem;
+      margin-right: 1.875rem;
+    }
+}
+      
+   .side-menu nav ul {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+   }
+   
+   .side-menu nav ul li {
+     padding: 15px 20px;
+     display: flex;
+     cursor: pointer;
+   }
+   
+   .side-menu nav ul li a {
+     text-decoration: none;
+     color: white;
+     display: block;
+     font-size: 20px;
+   }
+   
+   .side-menu nav ul li.active a {
+     color: #fff;
+   }
+   
+   .side-menu nav ul li:hover {
+     background-color: #dcdcdc31;
+   }
+   
+   .icon-menu {
+     width: 30px;
+     padding-right: 5px;
+   }
+
+  @media(min-width: 1280px) {
+    .side-menu {
+      width: 16%;
+  }
+
+  @media(min-width: 1680px) {
+    .side-menu  {
+      padding: 15px 15px 15px 25px;
+      width: 13%;
+    }
+}
+}
+      

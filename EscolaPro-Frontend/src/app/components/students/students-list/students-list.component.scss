@@ -1,0 +1,51 @@
+@import '/src/scss/color-variables.scss';
+
+.div-list {
+    background-color: #ccc;
+    width: 95%;
+    height: 100%;
+    display: flex;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.image-div {
+    width: 40%;
+    padding: 10px;
+}
+
+.image {
+    display: flex;
+    background-color: #6a6464;  
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.image img {
+    width: 70%;
+}
+
+.content-list {
+    text-align: left;
+    width: 60%;
+    height: 100%;
+    padding: 10px;
+}
+
+.content-list p {
+    background-color: white;
+    padding: 3px 3px 3px 8px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin: 0px 0px 10px 0px;
+}
+
+.content-list label {
+    padding: 0;
+    margin: 0;
+}

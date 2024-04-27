@@ -1,0 +1,20 @@
+export class FinancialResponsibleData {
+    name: string = '';
+    email: string = '';
+    dateOfBirth: string = '';
+    cpf: string = '';
+    identity: string = '';
+    address: string = '';
+    workAddress: string = '';
+    occupation: string = '';
+    neighborhood: string = '';
+    numberHouse: string = '';
+    city: string = '';
+    naturalness: string = '';
+    nationality: string = '';
+    country: string = '';
+    phone: string = '';
+    state: string = '';
+    cep: string = '';
+    type: string = '';
+  }

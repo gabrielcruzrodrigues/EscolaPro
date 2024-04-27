@@ -1,0 +1,22 @@
+export class FamilyData {
+    studentId: string = '';
+    name: string = '';
+    address: string = '';
+    workAddress: string = '';
+    occupation: string = '';
+    neighborhood: string = '';
+    numberHouse: string = '';
+    type: string = '';
+    city: string = '';
+    phone: string = '';
+    email: string = '';
+    state: string = '';
+    cep: string = '';
+    dateOfBirth: string = '';
+    cpf: string = '';
+    identity: string = '';
+    financialResponsible: string = '';
+    naturalness: string = '';
+    nationality: string = '';
+    country: string = '';
+}

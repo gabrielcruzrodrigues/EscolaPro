@@ -1,0 +1,67 @@
+@import '/src/scss/abstract/breakpoints_desktop';
+
+
+.cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px 40px;
+
+    @include breakpoint(small-up) {
+        justify-content: left;
+        padding: 1.25rem 0.313rem 1.25rem 2.600rem;
+    }
+
+    @include breakpoint(hd-up) {
+        justify-content: space-between;
+        padding: 1.25rem 0.313rem 1.25rem 2.813rem;
+    }
+
+    @include breakpoint(medium-up) {
+        justify-content: space-between;
+        padding: 1.25rem 0.700rem 1.25rem 2.188rem;
+    }
+
+    @include breakpoint(big-up) {
+        justify-content: space-between;
+        padding: 1.25rem 1.188rem 1.25rem 2.75rem;
+    }
+
+    @include breakpoint(extra-big-up) {
+        justify-content: space-between;
+        padding: 1.25rem 1.5rem 1.25rem 3.5rem;
+    }
+
+    @include breakpoint(full-hd-up) {
+        justify-content: space-between;
+        padding: 1.25rem 1.5rem 1.25rem 3rem;
+    }
+}
+
+// @media(min-width: 1280px) {
+//     .cards {
+//         padding: 20px 35px;
+//         margin-left: 1%;
+//     }
+// }
+
+// @media(min-width: 1400px) {
+//     .cards {
+//         padding: 20px 55px;
+//         margin-left: 1%;
+//     }
+// }
+
+// @media(min-width: 1680px) {
+//     .cards {
+//         padding: 20px 40px;
+//         margin-left: 1%;
+//     }
+// }
+
+// @media(min-width: 1880px) {
+//     .cards {
+//         padding: 20px 60px;
+//         margin-left: 1%;
+//     }
+// }

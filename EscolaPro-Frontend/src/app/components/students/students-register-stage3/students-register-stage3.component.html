@@ -1,0 +1,50 @@
+<section class="main-sections">
+    <section class="menu" (click)="handleOutsideClick($event)">
+        <menu></menu>
+    </section>
+    <section class="content">
+        <h1 class="title">Ficha de saúde</h1>
+        <form id="form">
+            <div class="form-section">
+        
+                <!-- Personal Information -->
+                <div class="form-group">
+                    <label for="healthInsurance">Plano de saúde:</label>
+                    <input [(ngModel)]="formData.healthInsurance" name="healthInsurance" type="text" id="healthInsurance">
+    
+                    <label for="bloodGroup">Tipo Sanguíneo:</label>
+                    <input [(ngModel)]="formData.bloodGroup" name="bloodGroup" type="text" id="bloodGroup">
+    
+                    <label for="medicalClinic">Clinica médica afiliada:</label>
+                    <input [(ngModel)]="formData.medicalClinic" name="medicalClinic" type="text" id="medicalClinic" >
+    
+                    <label for="quantityBrothers">Quantidade de irmãos:</label>
+                    <input [(ngModel)]="formData.quantityBrothers" name="quantityBrothers" type="text" id="quantityBrothers">
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="form-group">
+                    <!-- Type -->
+                   <div class="form-group shifts">
+                        <label for="toGoOutAuthorization">Esta autorizado a sair em uma emergência?</label>
+                        <select [(ngModel)]="formData.toGoOutAuthorization" id="toGoOutAuthorization" name="toGoOutAuthorization">
+                            <option value="TRUE">Sim</option>
+                            <option value="FALSE">Não</option>
+                        </select>
+                    </div>
+        
+                    <label for="allergies">Alergias:</label>
+                    <textarea [(ngModel)]="allergiesTextArea" name="allergies" type="text" id="allergies" value="alergia..."></textarea>
+                </div>
+                
+                <div></div>
+                
+                <!-- Actions -->
+                <div class="form-actions button">
+                        <button class="buttonNext" type="submit" name="save" (click)="finishingRegister()">Finalizar cadastro</button>
+                </div>
+            </div>
+        </form>
+        
+    </section>
+</section>

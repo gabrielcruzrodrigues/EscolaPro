@@ -1,0 +1,452 @@
+<section class="main-sections">
+     <section class="menu">
+         <menu></menu>
+     </section>
+     <section class="content">
+         <app-backdoor router="/students"></app-backdoor>
+         <h2 class="title">Dados do aluno</h2>
+         
+         <form id="form" [formGroup]="form">
+               <div class="form-section">
+               
+                    <!-- Personal Information -->
+                    <div class="form-group">
+                         <label for="name">Nome:</label>
+                         <input formControlName="name" name="name-student" type="text" id="name" required>
+          
+                         <label for="cpf">CPF:</label>
+                         <input formControlName="cpf" name="cpf-student" type="text" id="cpf" required>
+          
+                         <label for="identity">RG:</label>
+                         <input formControlName="identity" name="identity" type="text" id="identity" required>
+          
+                         <label for="dateOfBirth">Data de Nascimento:</label>
+                         <input formControlName="dateOfBirth" name="dateOfBirth-student" type="date" id="dateOfBirth" required>
+          
+                         <label for="phone">Telefone:</label>
+                         <input formControlName="phone" name="phone-student" type="tel" id="phone" required>
+          
+                         <label for="email">Email:</label>
+                         <input formControlName="email" name="email-student" type="email" id="email" required>
+                    </div>
+
+                    <div class="form-group">
+          
+                         <label for="cep">Cep:</label>
+                         <input formControlName="cep" name="cep-student" type="text" id="cep" required>
+          
+                         <label for="address">Endereço:</label>
+                         <input formControlName="address" name="address-student" type="text" id="address" required>
+          
+                         <label for="city">Cidade:</label>
+                         <input formControlName="city" name="city-student" type="text" id="city" required>
+          
+                         <label for="neighborhood">Bairro:</label>
+                         <input formControlName="neighborhood" name="neighborhood-student" type="text" id="neighborhood" required>
+          
+                         <label for="naturalness">Numero da casa:</label>
+                         <input formControlName="numberHouse" name="numberHouse" type="text" id="numberHouse" required>
+          
+                         <label for="nationality">Nacionalidade:</label>
+                         <input formControlName="nationality" name="nationality-student" type="text" id="nationality" required>
+                    </div>
+          
+                    <!-- Gender -->
+                    <div class="form-group gender">
+                         <label>Sexo:</label>
+                         <div class="radio-group">
+                              <input formControlName="sex" class="input-radio" name="sex" type="radio" id="masculine" value="MASCULINE">
+                              <label for="masculine">Masculino</label>
+                         </div>
+                         <div class="radio-group">
+                              <input formControlName="sex" class="input-radio" name="sex" type="radio" id="feminine" value="FEMININE">
+                              <label for="feminine">Feminino</label>
+                         </div>
+                    </div>
+          
+                    <!-- State and Country -->
+                    <div class="form-group gender">
+                         <label for="state">Estado:</label>
+                         <input formControlName="state" name="state-student" list="options-state" id="state">
+                         <datalist id="options-state">
+                         <option value="State 1"></option>
+                         </datalist>
+          
+                         <label for="country">País:</label>
+                         <input formControlName="country" name="country-student" list="options-country" id="country">
+                         <datalist id="options-country">
+                         <option value="Country 1"></option>
+                         </datalist>
+                    </div>
+
+                    <!-- Files Upload -->
+                    <div class="form-group files">
+                         <label for="imageProfile">Imagem do aluno:</label>
+                         <div class="input-file" [class.file-selected]="image">
+                              <button class="btn-view-file" name="imageProfile-student" type="file" id="imageProfile" (click)="downloadFile('IMAGE_PROFILE')"></button>
+                              <img src="assets/upload-icon.png" class="file-upload-icon">  
+                         </div>
+
+                         <label for="rg-file-student">Cópia do rg:</label>
+                         <div class="input-file" [class.file-selected]="rg">
+                              <button class="btn-view-file" name="rg-file-student" type="file" id="rg-file-student" (click)="downloadFile('RG')"></button>
+                              <img src="assets/upload-icon.png" class="file-upload-icon">
+                         </div>
+
+                         <label for="cpf-file-student">Cópia do cpf:</label>
+                         <div class="input-file" [class.file-selected]="cpf">
+                              <button class="btn-view-file" name="cpf-file-student" type="file" id="cpf-file-student" (click)="downloadFile('CPF')"></button>
+                              <img src="assets/upload-icon.png" class="file-upload-icon">
+                         </div>
+
+                         <label for="proofOfAddress-file-student">Cópia do comprovante de residência:</label>
+                         <div class="input-file" [class.file-selected]="proofOfAddress">
+                              <button class="btn-view-file" name="proofOfAddress-file-student" type="file" id="proofOfAddress-file-student" (click)="downloadFile('PROOF_OF_ADDRESS')"></button>
+                              <img src="assets/upload-icon.png" class="file-upload-icon">
+                         </div>
+               </div> 
+                    <!-- Responsible Person's Information -->
+                    <div class="form-group">
+                         <label for="responsible">Nome do responsável:</label>
+                         <input formControlName="responsible" name="responsible-student" type="text" id="responsible" required>
+          
+                         <label for="emailPersonResponsible">Email do responsável:</label>
+                         <input formControlName="emailPersonResponsible" name="emailPersonResponsible-student" type="email" id="emailPersonResponsible" required>
+          
+                         <label for="father">Nome do pai:</label>
+                         <input formControlName="father" name="father-student" type="text" id="father" required>
+          
+                         <label for="mother">Nome da mãe:</label>
+                         <input formControlName="mother" name="mother-student" type="text" id="mother" required>
+          
+                         <label for="naturalness">Naturalidade:</label>
+                         <input formControlName="naturalness" name="naturalness-student" type="text" id="naturalness" required>
+                    </div>
+               </div>
+          </form>
+
+          <h2 class="title">Dados dos familiares</h2>
+
+          <!-- family 1 -->
+          <form id="form" [formGroup]="form">
+               <div class="form-section">
+                    <!-- Personal Information -->
+                    <div class="form-group">
+                         <label for="name">Nome completo:</label>
+                         <input formControlName="familyName" name="familyName" type="text" id="familyName">
+
+                         <label for="cpf">CPF:</label>
+                         <input formControlName="familyCpf" name="familyCpf" type="text" id="familyCpf">
+               
+                         <label for="identity">RG:</label>
+                         <input formControlName="familyIdentity" name="familyIdentity" type="text" id="familyIdentity">
+
+                         <label for="email">Email:</label>
+                         <input formControlName="familyEmail" name="familyEmail" type="text" id="familyEmail">
+          
+                         <label for="dateOfBirth">Data de nascimento:</label>
+                         <input formControlName="familyDateOfBirth" name="familyDateOfBirth" type="date" id="familyDateOfBirth">
+          
+                         <label for="occupation">Profissão:</label>
+                         <input formControlName="familyOccupation" name="familyOccupation" type="text" id="familyOccupation" >
+                         
+                         <!-- Type -->
+                         <div class="form-group shifts">
+                              <label for="familyType">Tipo:</label>
+                              <select formControlName="familyType" id="type" name="familyType">
+                                   <option value="FATHER">Pai</option>
+                                   <option value="MOTHER">Mãe</option>
+                              </select>
+                         </div>
+
+                         <div class="form-group files">
+                              <label for="rg-file-family">Cópia do rg:</label>
+                              <div class="input-file" [class.file-selected]="rg">
+                                   <button class="btn-view-file" name="rg-file-family" type="file" id="rg-file-family" (click)="downloadFile('FAMILY_RG')"></button>
+                                   <img src="assets/upload-icon.png" class="file-upload-icon">
+                              </div>
+          
+                              <label for="cpf-file-family">Cópia do cpf:</label>
+                              <div class="input-file" [class.file-selected]="cpf">
+                                   <button class="btn-view-file" name="cpf-file-family" type="file" id="cpf-file-family" (click)="downloadFile('FAMILY_CPF')"></button>
+                                   <img src="assets/upload-icon.png" class="file-upload-icon">
+                              </div>
+          
+                              <label for="proofOfAddress-file-family">Cópia do comprovante de residência:</label>
+                              <div class="input-file" [class.file-selected]="proofOfAddress">
+                                   <button class="btn-view-file" name="proofOfAddress-file-family" type="file" id="proofOfAddress-file-family" (click)="downloadFile('FAMILY_PROOF_OF_ADDRESS')"></button>
+                                   <img src="assets/upload-icon.png" class="file-upload-icon">
+                              </div>
+                         </div>
+                    </div>
+                    
+                    
+                    <!-- Contact Information -->
+                    <div class="form-group">
+                         <label for="cep">Cep:</label>
+                         <input formControlName="familyCep" name="familyCep" type="text" id="familyCep">
+
+                         <label for="address">Endereço:</label>
+                         <input formControlName="familyAddress" name="familyAddress" type="text" id="familyAddress">
+
+                         <label for="numberHouse">Numero da casa:</label>
+                         <input formControlName="familyNumberHouse" name="familyNumberHouse" type="text" id="familyNumberHouse">
+
+                         <label for="neighborhood">Bairro:</label>
+                         <input formControlName="familyNeighborhood" name="familyNeighborhood" type="text" id="familyNeighborhood">
+
+                         <label for="city">Cidade:</label>
+                         <input formControlName="familyCity" name="familyCity" type="email" id="familyCity">
+          
+                         <label for="phone">Telefone:</label>
+                         <input formControlName="familyPhone" name="familyPhone" type="tel" id="familyPhone">
+
+                         <label for="state">Estado:</label>
+                         <input formControlName="familyState" name="familyState" type="text" id="familyState">
+
+                         <label for="country">País:</label>
+                         <input formControlName="familyCountry" name="familyCountry" type="text" id="familyCountry">
+          
+                         <label for="workAddress">Endereço de trabalho:</label>
+                         <input formControlName="familyWorkAddress" name="familyWorkAddress" type="text" id="familyWorkAddress">
+                         
+                         <label for="naturalness">Naturalidade:</label>
+                         <input formControlName="familyNaturalness" name="familyNaturalness" type="text" id="familyNaturalness">
+
+                         <label for="nationality">Nacionalidade:</label>
+                         <input formControlName="familyNationality" name="familyNationality" type="text" id="familyNationality">
+                    </div>        
+               </div>
+          </form>
+
+          <hr>
+
+          <!-- family 2  -->
+          <form id="form" [formGroup]="form">
+               <div class="form-section">
+                    <!-- Personal Information -->
+                    <div class="form-group">
+                         <label for="name">Nome completo:</label>
+                         <input formControlName="family2Name" name="family2Name" type="text" id="family2Name">
+
+                         <label for="cpf">CPF:</label>
+                         <input formControlName="family2Cpf" name="family2Cpf" type="text" id="family2Cpf">
+               
+                         <label for="identity">RG:</label>
+                         <input formControlName="family2Identity" name="family2Identity" type="text" id="family2Identity">
+
+                         <label for="email">Email:</label>
+                         <input formControlName="family2Email" name="family2Email" type="text" id="family2Email">
+          
+                         <label for="dateOfBirth">Data de nascimento:</label>
+                         <input formControlName="family2DateOfBirth" name="family2DateOfBirth" type="date" id="family2DateOfBirth">
+          
+                         <label for="occupation">Profissão:</label>
+                         <input formControlName="family2Occupation" name="family2Occupation" type="text" id="family2Occupation" >
+                         
+                         <!-- Type -->
+                         <div class="form-group shifts">
+                              <label for="family2Type">Tipo:</label>
+                              <select formControlName="family2Type" id="type" name="family2Type">
+                                   <option value="FATHER">Pai</option>
+                                   <option value="MOTHER">Mãe</option>
+                              </select>
+                         </div>
+
+                         <div class="form-group files">
+                              <label for="rg-file-family2">Cópia do rg:</label>
+                              <div class="input-file" [class.file-selected]="rg">
+                                   <button class="btn-view-file" name="rg-file-family2" type="file" id="rg-file-family2" (click)="downloadFile('FAMILY2_RG')"></button>
+                                   <img src="assets/upload-icon.png" class="file-upload-icon">
+                              </div>
+          
+                              <label for="cpf-file-family2">Cópia do cpf:</label>
+                              <div class="input-file" [class.file-selected]="cpf">
+                                   <button class="btn-view-file" name="cpf-file-family2" type="file" id="cpf-file-family2" (click)="downloadFile('FAMILY2_CPF')"></button>
+                                   <img src="assets/upload-icon.png" class="file-upload-icon">
+                              </div>
+          
+                              <label for="proofOfAddress-file-family2">Cópia do comprovante de residência:</label>
+                              <div class="input-file" [class.file-selected]="proofOfAddress">
+                                   <button class="btn-view-file" name="proofOfAddress-file-family2" type="file" id="proofOfAddress-file-family2" (click)="downloadFile('FAMILY2_PROOF_OF_ADDRESS')"></button>
+                                   <img src="assets/upload-icon.png" class="file-upload-icon">
+                              </div>
+                         </div>
+                    </div>
+                    
+                    
+                    <!-- Contact Information -->
+                    <div class="form-group">
+                         <label for="cep">Cep:</label>
+                         <input formControlName="family2Cep" name="family2Cep" type="text" id="family2Cep">
+
+                         <label for="address">Endereço:</label>
+                         <input formControlName="family2Address" name="family2Address" type="text" id="family2Address">
+
+                         <label for="numberHouse">Numero da casa:</label>
+                         <input formControlName="family2NumberHouse" name="family2NumberHouse" type="text" id="family2NumberHouse">
+
+                         <label for="neighborhood">Bairro:</label>
+                         <input formControlName="family2Neighborhood" name="family2Neighborhood" type="text" id="family2Neighborhood">
+
+                         <label for="city">Cidade:</label>
+                         <input formControlName="family2City" name="family2City" type="email" id="family2City">
+          
+                         <label for="phone">Telefone:</label>
+                         <input formControlName="family2Phone" name="family2Phone" type="tel" id="family2Phone">
+
+                         <label for="state">Estado:</label>
+                         <input formControlName="family2State" name="family2State" type="text" id="family2State">
+
+                         <label for="country">País:</label>
+                         <input formControlName="family2Country" name="family2Country" type="text" id="family2Country">
+          
+                         <label for="workAddress">Endereço de trabalho:</label>
+                         <input formControlName="family2WorkAddress" name="family2WorkAddress" type="text" id="family2WorkAddress">
+                         
+                         <label for="naturalness">Naturalidade:</label>
+                         <input formControlName="family2Naturalness" name="family2Naturalness" type="text" id="family2Naturalness">
+
+                         <label for="nationality">Nacionalidade:</label>
+                         <input formControlName="family2Nationality" name="family2Nationality" type="text" id="family2Nationality">
+                    </div>        
+               </div>
+          </form>
+
+          <h2 class="title">Dados do responsável financeiro</h2>
+
+          <form id="form"  [formGroup]="form">
+               <div class="form-section">
+                   <!-- Personal Information -->
+                   <div class="form-group">
+                       <label for="name">Nome completo:</label>
+                       <input formControlName="financialName" name="financialName" type="text" id="financialName">
+       
+                       <label for="cpf">CPF:</label>
+                       <input formControlName="financialCpf" name="financialCpf" type="text" id="financialCpf">
+                       
+                       <label for="identity">RG:</label>
+                       <input formControlName="financialIdentity" name="financialIdentity" type="text" id="financialIdentity">
+                       
+                       <label for="occupation">Profissão:</label>
+                       <input formControlName="financialOccupation" name="financialOccupation" type="text" id="financialOccupation" >
+   
+                       <label for="nationality">Nacionalidade:</label>
+                       <input formControlName="financialNationality" name="financialNationality-student" type="text" id="financialNationality">
+          
+                       <label for="dateOfBirth">Data de nascimento:</label>
+                       <input formControlName="financialDateOfBirth" name="financialDateOfBirth" type="date" id="financialDateOfBirth">
+   
+                       <div class="form-group files">
+                           <label for="rg-file-financial-responsible">Cópia do rg:</label>
+                           <div class="input-file" [class.file-selected]="rg">
+                                <button class="btn-view-file" name="rg-file-financial-responsible" type="file" id="rg-file-financial-responsible" (click)="downloadFile('FINANCIAL_RG')"></button>
+                                <img src="assets/upload-icon.png" class="file-upload-icon">
+                           </div>
+       
+                           <label for="cpf-file-financial-responsible">Cópia do cpf:</label>
+                           <div class="input-file" [class.file-selected]="cpf">
+                                <button class="btn-view-file" name="cpf-file-financial-responsible" type="file" id="cpf-file-financial-responsible" (click)="downloadFile('FINANCIAL_CPF')"></button>
+                                <img src="assets/upload-icon.png" class="file-upload-icon">
+                           </div>
+       
+                           <label for="proofOfAddress-file-financial-responsible">Cópia do comprovante de residência:</label>
+                           <div class="input-file" [class.file-selected]="proofOfAddress">
+                                <button class="btn-view-file" name="proofOfAddress-file-financial-responsible" type="file" id="proofOfAddress-file-financial-responsible" (click)="downloadFile('FINANCIAL_PROOF_OF_ADDRESS')"></button>
+                                <img src="assets/upload-icon.png" class="file-upload-icon">
+                           </div>
+                      </div>
+                   </div>
+                   
+                   <!-- Contact Information -->
+                   <div class="form-group">
+                         <label for="cep">Cep:</label>
+                         <input formControlName="financialCep" name="financialCep" type="text" id="financialCep">
+                         
+                         <label for="address">Endereço:</label>
+                         <input formControlName="financialAddress" name="financialAddress" type="text" id="financialAddress">
+     
+                         <label for="workAddress">Endereço de trabalho:</label>
+                         <input formControlName="financialWorkAddress" name="financialWorkAddress" type="text" id="financialWorkAddress">
+     
+                         <label for="neighborhood">Bairro:</label>
+                         <input formControlName="financialNeighborhood" name="financialNeighborhood" type="text" id="financialNeighborhood">
+          
+                         <label for="numberHouse">Numero da casa:</label>
+                         <input formControlName="financialNumberHouse" name="financialNumberHouse" type="text" id="financialNumberHouse">
+     
+                         <label for="city">Cidade:</label>
+                         <input formControlName="financialCity" name="financialCity" type="text" id="financialCity">
+     
+                         <label for="state">Estado:</label>
+                         <input formControlName="financialState" name="financialState" type="text" id="financialState">
+     
+                         <label for="country">País:</label>
+                         <input formControlName="financialCountry" name="financialCountry" type="text" id="financialCountry">
+          
+                         <label for="phone">Telefone:</label>
+                         <input formControlName="financialPhone" name="financialPhone" type="tel" id="financialPhone">
+          
+                         <label for="email">Email:</label>
+                         <input formControlName="financialEmail" name="financialEmail" type="text" id="financialEmail">
+          
+     
+                         <label for="naturalness">Naturalidade:</label>
+                         <input formControlName="financialNaturalness" name="financialNaturalness" type="text" id="financialNaturalness">
+     
+                         
+                         <!-- Type -->
+                         <div class="form-group shifts">
+                              <label for="financialType">Tipo:</label>
+                              <select formControlName="financialType" id="type" name="financialType">
+                                   <option value="FATHER">Pai</option>
+                                   <option value="MOTHER">Mãe</option>
+                                   <option value="STUDENT">Próprio estudante</option>
+                              </select>
+                         </div>
+                    </div>
+               </div>
+          </form>
+
+          <h1 class="title">Ficha de saúde</h1>
+
+          <form id="form" [formGroup]="form">
+               <div class="form-section">
+           
+                   <!-- Personal Information -->
+                   <div class="form-group">
+                       <label for="healthInsurance">Plano de saúde:</label>
+                       <input formControlName="healthInsurance" name="healthInsurance" type="text" id="healthInsurance">
+       
+                       <label for="bloodGroup">Tipo Sanguíneo:</label>
+                       <input formControlName="bloodGroup" name="bloodGroup" type="text" id="bloodGroup">
+       
+                       <label for="medicalClinic">Clinica médica afiliada:</label>
+                       <input formControlName="medicalClinic" name="medicalClinic" type="text" id="medicalClinic" >
+       
+                       <label for="quantityBrothers">Quantidade de irmãos:</label>
+                       <input formControlName="quantityBrothers" name="quantityBrothers" type="text" id="quantityBrothers">
+                   </div>
+                   
+                   <!-- Contact Information -->
+                   <div class="form-group">
+                       <!-- Type -->
+                      <div class="form-group shifts">
+                           <label for="toGoOutAuthorization">Esta autorizado a sair em uma emergência?</label>
+                           <select formControlName="toGoOutAuthorization" id="toGoOutAuthorization" name="toGoOutAuthorization">
+                               <option value="true">Sim</option>
+                               <option value="false">Não</option>
+                           </select>
+                       </div>
+           
+                       <label for="allergies">Alergias:</label>
+                       <textarea formControlName="allergiesTextArea" name="allergies" type="text" id="allergies" placeholder="alergia,alergia,alergia..."></textarea>
+                   </div>
+               </div>
+               <div class="form-actions">
+                    <button type="button" (click)="sendData('update')">Editar aluno</button>
+                    <button type="button" (click)="sendData('disabled')">Desabilitar aluno</button>
+                </div>
+          </form>
+     </section>
+</section>

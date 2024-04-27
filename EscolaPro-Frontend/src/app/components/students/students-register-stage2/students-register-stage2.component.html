@@ -1,0 +1,121 @@
+<section class="main-sections">
+     <section class="menu" (click)="handleOutsideClick($event)">
+         <menu></menu>
+     </section>
+
+     <section class="content">
+          <h1 class="title">Dados do familiar</h1>
+          
+          <form id="form" [formGroup]="form">
+               <div class="form-section">
+          
+                    <!-- Personal Information -->
+                    <div class="form-group">
+                         <label for="name">Nome completo:</label>
+                         <input formControlName="name" name="name" type="text" id="name">
+
+                         <label for="cpf">CPF:</label>
+                         <input formControlName="cpf" name="cpf" type="text" id="cpf">
+               
+                         <label for="identity">RG:</label>
+                         <input formControlName="identity" name="identity" type="text" id="identity">
+
+                         <label for="email">Email:</label>
+                         <input formControlName="email" name="email" type="text" id="email">
+          
+                         <label for="dateOfBirth">Data de nascimento:</label>
+                         <input formControlName="dateOfBirth" name="dateOfBirth" type="date" id="dateOfBirth">
+          
+                         <label for="occupation">Profissão:</label>
+                         <input formControlName="occupation" name="occupation" type="text" id="occupation" >
+                         
+                         <!-- Type -->
+                         <div class="form-group shifts">
+                              <label for="type">Tipo:</label>
+                              <select formControlName="type" id="type" name="type">
+                                   <option value="FATHER">Pai</option>
+                                   <option value="MOTHER">Mãe</option>
+                              </select>
+                         </div>
+
+                         <div class="form-group files">
+                              <label for="rg-file-family">Cópia do rg:</label>
+                              <div class="input-file" [class.file-selected]="rg">
+                                   <input name="rg-file-family" type="file" id="rg-file-family" (change)="onRgSelected($event)">
+                                   <img src="assets/upload-icon.png" class="file-upload-icon">
+                              </div>
+          
+                              <label for="cpf-file-family">Cópia do cpf:</label>
+                              <div class="input-file" [class.file-selected]="cpf">
+                                   <input name="cpf-file-family" type="file" id="cpf-file-family" (change)="onCpfSelected($event)">
+                                   <img src="assets/upload-icon.png" class="file-upload-icon">
+                              </div>
+          
+                              <label for="proofOfAddress-file-family">Cópia do comprovante de residência:</label>
+                              <div class="input-file" [class.file-selected]="proofOfAddress">
+                                   <input name="proofOfAddress-file-family" type="file" id="proofOfAddress-file-family" (change)="onProofOfAddressSelected($event)">
+                                   <img src="assets/upload-icon.png" class="file-upload-icon">
+                              </div>
+                         </div>
+                    </div>
+                    
+                    
+                    <!-- Contact Information -->
+                    <div class="form-group">
+                              <label for="cep">Cep:</label>
+                              <input formControlName="cep" name="cep" type="text" id="cep" (input)="verifyCepStudent($event)">
+
+                              <label for="address">Endereço:</label>
+                              <input formControlName="address" name="address" type="text" id="address">
+
+                              <label for="numberHouse">Numero da casa:</label>
+                              <input formControlName="numberHouse" name="numberHouse" type="text" id="numberHouse">
+
+                              <label for="neighborhood">Bairro:</label>
+                              <input formControlName="neighborhood" name="neighborhood" type="text" id="neighborhood">
+
+                              <label for="city">Cidade:</label>
+                              <input formControlName="city" name="city" type="email" id="city">
+               
+                              <label for="phone">Telefone:</label>
+                              <input formControlName="phone" name="phone-" type="tel" id="phone">
+
+                              <label for="state">Estado:</label>
+                              <input formControlName="state" name="state" type="text" id="state">
+
+                              <label for="country">País:</label>
+                              <input formControlName="country" name="country" type="text" id="country">
+               
+                              <label for="workAddress">Endereço de trabalho:</label>
+                              <input formControlName="workAddress" name="workAddress" type="text" id="workAddress">
+                              
+                              <label for="naturalness">Naturalidade:</label>
+                              <input formControlName="naturalness" name="naturalness-student" type="text" id="naturalness">
+
+                              <label for="nationality">Nacionalidade:</label>
+                              <input formControlName="nationality" name="nationality-student" type="text" id="nationality">
+                    
+
+                              <div *ngIf="showFinancialresponsibleOptions" class="form-group gender responsible">
+                                   <label>Este familiar é o responsável financeiro do aluno?</label>
+                                   <div class="radio-group">
+                                        <input formControlName="financialResponsible" name="financialResponsible" type="radio" id="financialResponsible" value="TRUE">
+                                        <label for="financialResponsibleTrue">Sim</label>
+                                   </div>
+                                   <div class="radio-group">
+                                        <input formControlName="financialResponsible" name="financialResponsible" type="radio" id="financialResponsible" value="FALSE">
+                                        <label for="financialResponsibleFalse">Não</label>
+                                   </div>
+                              </div>
+
+                              <!-- Actions -->
+                              <div class="form-actions button">
+                                   <button *ngIf="addFamilyButton" type="submit" name="addFamily" (click)="resetFormFromAddNewFamily()">Adicionar outro familiar</button>
+                                   <button *ngIf="saveFamilyButton" class="buttonNext" type="submit" name="save" (click)="saveFamily()">Salvar Familiar</button>
+                                   <button *ngIf="nextStageAvaliable" class="buttonNext" type="submit" name="next" (click)="nextStage()">Próxima etapa</button>
+                              </div>
+                         </div>        
+               </div>
+          </form>
+     </section>
+</section>

@@ -1,0 +1,23 @@
+images-students-path: "C:/escolaPro/images-students"
+files-students-path: "C:/escolaPro/files-students"
+files-family-path: "C:/escolaPro/files-family"
+files-financialResponsible-path: "C:/escolaPro/files-financialResponsible"
+
+jwt:
+  private:
+    key: classpath:app.key
+  public:
+    key: classpath:app.pub
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+  datasource:
+    username: postgres #change in production
+    url: jdbc:postgresql://localhost:5432/escolaPro
+    password: 1234 #change in production
+  jpa:
+    hibernate:
+      ddl-auto: update
