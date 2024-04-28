@@ -21,7 +21,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 @Slf4j
@@ -43,7 +42,7 @@ public class StudentController {
         if (request.situation() == SituationsStudentEnum.MATRICULADO) {
             student = this.studentService.createStudentMATRICULADO(request);
         } else {
-            student = this.studentService.createStudentPENDENTE(request);
+//            student = this.studentService.createStudentPENDENTE(request);
         }
         return new ResponseEntity<>(student, HttpStatus.CREATED);
     }
@@ -63,20 +62,20 @@ public class StudentController {
     @PedagogicalAccess
     @GetMapping(path = "/{active}")
     public ResponseEntity<Page<Student>> findAllActiveStudents(Pageable pageable, @PathVariable boolean active) {
-        return ResponseEntity.ok().body(this.studentService.findAllActiveStudents(active, pageable));
+        return ResponseEntity.ok().body(this.studentService.findAllStudents(active, pageable));
     }
 
-    @PedagogicalAccess
-    @GetMapping(path = "/active/matriculado")
-    public ResponseEntity<List<Student>> listStudentsMATRICULADO() {
-        return ResponseEntity.ok().body(this.studentService.listStudentsWithSituationMATRICULADO());
-    }
-
-    @PedagogicalAccess
-    @GetMapping(path = "/active/pendente")
-    public ResponseEntity<List<Student>> listStudentsPENDENTE() {
-        return ResponseEntity.ok().body(this.studentService.listStudentsWithSituationPENDENTE());
-    }
+//    @PedagogicalAccess
+//    @GetMapping(path = "/active/matriculado")
+//    public ResponseEntity<List<Student>> listStudentsMATRICULADO() {
+//        return ResponseEntity.ok().body(this.studentService.listStudentsWithSituationMATRICULADO());
+//    }
+//
+//    @PedagogicalAccess
+//    @GetMapping(path = "/active/pendente")
+//    public ResponseEntity<List<Student>> listStudentsPENDENTE() {
+//        return ResponseEntity.ok().body(this.studentService.listStudentsWithSituationPENDENTE());
+//    }
 
     @PedagogicalAccess
     @PutMapping
@@ -108,7 +107,7 @@ public class StudentController {
     @PedagogicalAccess
     @PutMapping(path = "/complete/registration/{id}")
     public ResponseEntity<?> completeRegistration(@PathVariable Long id) {
-        this.studentService.completeRegistrationOfTheStudentPENDENTE(id);
+        this.studentService.completeRegistrationOfStudentPENDENTE(id);
         return ResponseEntity.noContent().build();
     }
 

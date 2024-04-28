@@ -15,7 +15,7 @@ import java.util.List;
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
     @Query("SELECT s FROM Student s WHERE s.active = :active")
-    Page<Student> findAllActiveStudents(@Param("active") boolean active, Pageable pageable);
+    Page<Student> findAllStudents(@Param("active") boolean active, Pageable pageable);
 
     @Query("SELECT s FROM Student s WHERE LOWER(s.name) LIKE %:partialName% AND s.active = true")
     List<Student> searchStudentByName(@Param("partialName") String partialName);

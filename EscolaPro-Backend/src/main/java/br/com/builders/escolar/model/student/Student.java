@@ -7,15 +7,18 @@ import br.com.builders.escolar.model.enums.SituationsStudentEnum;
 import br.com.builders.escolar.model.files.BasicFilesStudents;
 import br.com.builders.escolar.model.files.ImagesStudents;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
 @Table
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 public class Student extends Person {
@@ -62,4 +65,27 @@ public class Student extends Person {
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "student", cascade = CascadeType.REMOVE)
     private FinancialResponsible financialResponsible;
+
+    public Student(Long id, @NotNull @NotBlank String name, @NotBlank String identity, @NotBlank String cpf, LocalDate dateOfBirth,
+                   @NotBlank String nationality, @NotBlank String naturalness, @Email @NotBlank String email, @NotBlank String cep,
+                   @NotBlank String address, @NotBlank String phone, @NotBlank String neighborhood, @NotBlank String numberHouse,
+                   @NotBlank String city, @NotBlank String state, @NotBlank String country, LocalDateTime createdAt, boolean active,
+                   SexEnum sex, SituationsStudentEnum situation, String emailPersonResponsible, String responsible, String father,
+                   String mother, ImagesStudents imageProfile, BasicFilesStudents cpfFile, BasicFilesStudents rgFile,
+                   BasicFilesStudents proofOfAddressFile, List<Family> family, FixedHealth fixedHealth, FinancialResponsible financialResponsible) {
+        super(id, name, identity, cpf, dateOfBirth, nationality, naturalness, email, cep, address, phone, neighborhood, numberHouse, city, state, country, createdAt, active);
+        this.sex = sex;
+        this.situation = situation;
+        this.emailPersonResponsible = emailPersonResponsible;
+        this.responsible = responsible;
+        this.father = father;
+        this.mother = mother;
+        this.imageProfile = imageProfile;
+        this.cpfFile = cpfFile;
+        this.rgFile = rgFile;
+        this.proofOfAddressFile = proofOfAddressFile;
+        this.family = family;
+        this.fixedHealth = fixedHealth;
+        this.financialResponsible = financialResponsible;
+    }
 }

@@ -1,7 +1,6 @@
 package br.com.builders.escolar.service.student;
 
-import br.com.builders.escolar.exception.customized.UserNotFoundException;
-import br.com.builders.escolar.model.DTO.CreateFamilyStudentDTO;
+import br.com.builders.escolar.exception.customized.StudentNotFoundException;
 import br.com.builders.escolar.model.DTO.FullStudentWith2FamilyDTO;
 import br.com.builders.escolar.model.DTO.StudentCreateDataDTO;
 import br.com.builders.escolar.model.enums.FileTypeEnum;
@@ -10,7 +9,6 @@ import br.com.builders.escolar.model.student.Student;
 import br.com.builders.escolar.repository.StudentRepository;
 import br.com.builders.escolar.service.files.FilesStudentService;
 import br.com.builders.escolar.utils.VerifyIfIsNotNullOfEmpty;
-import br.com.builders.escolar.utils.converters.FullStudentByFamily;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,8 +37,6 @@ public class StudentService {
 
     private final StudentRepository studentRepository;
     private final FilesStudentService filesStudentService;
-    private final FamilyService familyService;
-    private final FixedHealthService fixedHealthService;
 
     @Transactional
     public Student createStudentMATRICULADO(StudentCreateDataDTO request) {
@@ -64,16 +61,16 @@ public class StudentService {
         }
     }
 
-    @Transactional
-    public Student createStudentPENDENTE(StudentCreateDataDTO request) {
-        Student studentForSave = modelingNewStudentForSave(request, SituationsStudentEnum.PENDENTE);
-        Student student = studentRepository.save(studentForSave);
-        return student;
-
-//        if (request.imageProfile() != null) {
-//            this.filesStudentService.saveImage(request.imageProfile(), student);
-//        }
-    }
+//    @Transactional
+//    public Student createStudentPENDENTE(StudentCreateDataDTO request) {
+//        Student studentForSave = modelingNewStudentForSave(request, SituationsStudentEnum.PENDENTE);
+//        Student student = studentRepository.save(studentForSave);
+//        return student;
+//
+////        if (request.imageProfile() != null) {
+////            this.filesStudentService.saveImage(request.imageProfile(), student);
+////        }
+//    }
 
     private Student modelingNewStudentForSave(StudentCreateDataDTO request, SituationsStudentEnum situationStudent) {
         Student student = new Student();
@@ -111,24 +108,30 @@ public class StudentService {
     }
 
     public Student findById(Long id) {
-        return this.studentRepository.findById(id).orElseThrow(UserNotFoundException::new);
+        Optional<Student> student = studentRepository.findById(id);
+        if (student.isPresent()) {
+            return student.get();
+        } else {
+            throw new StudentNotFoundException();
+        }
     }
 
     public List<Student> findAll() {
         return this.studentRepository.findAll();
     }
 
-    public Page<Student> findAllActiveStudents(boolean active, Pageable pageable) {
-        return this.studentRepository.findAllActiveStudents(active, pageable);
+    public Page<Student> findAllStudents(boolean active, Pageable pageable) {
+        Page<Student> students = this.studentRepository.findAllStudents(active, pageable);
+        return students;
     }
 
-    public List<Student> listStudentsWithSituationMATRICULADO() {
-        return this.studentRepository.listStudentBySituation(SituationsStudentEnum.MATRICULADO);
-    }
-
-    public List<Student> listStudentsWithSituationPENDENTE() {
-        return this.studentRepository.listStudentBySituation(SituationsStudentEnum.PENDENTE);
-    }
+//    public List<Student> listStudentsWithSituationMATRICULADO() {
+//        return this.studentRepository.listStudentBySituation(SituationsStudentEnum.MATRICULADO);
+//    }
+//
+//    public List<Student> listStudentsWithSituationPENDENTE() {
+//        return this.studentRepository.listStudentBySituation(SituationsStudentEnum.PENDENTE);
+//    }
 
     public List<Student> searchStudentByName(String name) {
         return this.studentRepository.searchStudentByName(name);
@@ -252,19 +255,19 @@ public class StudentService {
     }
 
     @Transactional
-    public void completeRegistrationOfTheStudentPENDENTE(Long id) {
+    public void completeRegistrationOfStudentPENDENTE(Long id) {
         Student student = this.findById(id);
 
         student.setActive(true);
         student.setSituation(SituationsStudentEnum.MATRICULADO);
     }
 
-    public boolean verifyIfQuantityFamilyStudentIsGreaterThanOne(long id) {
-        Student student = this.findById(id);
-        return student.getFamily().size() > 1;
-    }
+//    private boolean verifyIfQuantityFamilyStudentIsGreaterThanOne(long id) {
+//        Student student = this.findById(id);
+//        return student.getFamily().size() > 1;
+//    }
 
-    public boolean areAllFieldsFilled(FullStudentWith2FamilyDTO request) {
+    private boolean areAllFieldsFilled(FullStudentWith2FamilyDTO request) {
         return VerifyIfIsNotNullOfEmpty.isNotNullOrEmpty(request.familyName()) &&
                 VerifyIfIsNotNullOfEmpty.isNotNullOrEmpty(request.familyCpf()) &&
                 VerifyIfIsNotNullOfEmpty.isNotNullOrEmpty(request.familyIdentity()) &&
