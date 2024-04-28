@@ -2,7 +2,7 @@ package br.com.builders.escolar.service.student;
 
 import br.com.builders.escolar.exception.customized.ExceededTheNumberOfFamilyMembersException;
 import br.com.builders.escolar.exception.customized.FamilyNotFoundException;
-import br.com.builders.escolar.exception.customized.IntegritDataException;
+import br.com.builders.escolar.exception.customized.IntegrityDataException;
 import br.com.builders.escolar.exception.customized.StudentNotFoundException;
 import br.com.builders.escolar.model.DTO.CreateFamilyStudentDTO;
 import br.com.builders.escolar.model.DTO.UpdateFamilyDTO;
@@ -32,7 +32,7 @@ public class FamilyService {
     public void createFamilyByStudent(CreateFamilyStudentDTO data) {
         Optional<Student> studentOPT = this.studentRepository.findById(data.studentId());
         if (studentOPT.isPresent()) {
-            if (studentOPT.get().getFamily().size() <= 1) {
+            if (studentOPT.get().getFamily().size() <= 2) {
                 Student student = studentOPT.get();
                 Family family = modelingNewFamily(data, student);
                 Family response = this.familyRepository.save(family);
@@ -45,7 +45,7 @@ public class FamilyService {
         }
     }
 
-    public Family modelingNewFamily(CreateFamilyStudentDTO data, Student student) {
+    private Family modelingNewFamily(CreateFamilyStudentDTO data, Student student) {
         Family family = new Family();
         family.setName(data.name());
         family.setIdentity(data.identity());
@@ -91,7 +91,12 @@ public class FamilyService {
     }
 
     public List<Family> findAllFamilyByStudent(Long idStudent) {
-        return this.familyRepository.findAllByStudentId(idStudent);
+        Optional<Student> student = studentRepository.findById(idStudent);
+        if (student.isPresent()) {
+            return this.familyRepository.findAllByStudentId(idStudent);
+        } else {
+            throw new StudentNotFoundException();
+        }
     }
 
     @Transactional
@@ -122,7 +127,7 @@ public class FamilyService {
             family.setActive(false);
             this.familyRepository.save(family);
         } else {
-            throw new IntegritDataException("The student cannot be without a family member");
+            throw new IntegrityDataException("The student cannot be without a family member");
         }
     }
 }

@@ -1,9 +1,8 @@
 package br.com.builders.escolar.service.student;
 
 import br.com.builders.escolar.exception.customized.FinancialResponsibleNotFoundException;
-import br.com.builders.escolar.exception.customized.IntegritDataException;
+import br.com.builders.escolar.exception.customized.IntegrityDataException;
 import br.com.builders.escolar.model.DTO.CreateFinancialResponsibleDTO;
-import br.com.builders.escolar.model.DTO.StudentCreateDataDTO;
 import br.com.builders.escolar.model.DTO.UpdateFinancialResponsibleDTO;
 import br.com.builders.escolar.model.enums.FileTypeEnum;
 import br.com.builders.escolar.model.student.FinancialResponsible;
@@ -115,7 +114,7 @@ public class FinancialResponsibleService {
             financialResponsible.setActive(false);
             this.financialResponsibleRepository.save(financialResponsible);
         } else {
-            throw new IntegritDataException("The student cannot be without a Financial Responsible member");
+            throw new IntegrityDataException("The student cannot be without a Financial Responsible member");
         }
     }
 }
