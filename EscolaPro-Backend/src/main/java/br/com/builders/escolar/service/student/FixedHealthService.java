@@ -4,7 +4,6 @@ import br.com.builders.escolar.exception.customized.FixedHealthNotFoundException
 import br.com.builders.escolar.exception.customized.StudentNotFoundException;
 import br.com.builders.escolar.model.DTO.CreateFixedHealthDTO;
 import br.com.builders.escolar.model.DTO.UpdateFixedHealthDTO;
-import br.com.builders.escolar.model.student.Family;
 import br.com.builders.escolar.model.student.FixedHealth;
 import br.com.builders.escolar.model.student.Student;
 import br.com.builders.escolar.repository.FixedHealthRepository;
@@ -23,18 +22,6 @@ public class FixedHealthService {
 
     private final FixedHealthRepository fixedHealthRepository;
     private final StudentRepository studentRepository;
-
-//    @Transactional
-//    public void createBasicFixedHealth(Student student) {
-//        FixedHealth fixedHealth = modelingBasicFixedHealth(student);
-//        this.fixedHealthRepository.save(fixedHealth);
-//    }
-
-//    private FixedHealth modelingBasicFixedHealth(Student student) {
-//        return FixedHealth.builder()
-//                .student(student)
-//                .build();
-//    }
 
     @Transactional
     public void createFixedHealthByStudent(CreateFixedHealthDTO data) {
@@ -65,9 +52,9 @@ public class FixedHealthService {
         return fixedHealth.orElseThrow(FixedHealthNotFoundException::new);
     }
 
-    public List<FixedHealth> findAllFixedHealthByStudent(Long idStudent) {
-        return this.fixedHealthRepository.findAllByStudentId(idStudent);
-    }
+//    public List<FixedHealth> findAllFixedHealthByStudent(Long idStudent) {
+//        return this.fixedHealthRepository.findAllByStudentId(idStudent);
+//    }
 
     public void updateFixedHealth(UpdateFixedHealthDTO data) {
         FixedHealth fixedHealth = this.findFixedHealthById(data.id());

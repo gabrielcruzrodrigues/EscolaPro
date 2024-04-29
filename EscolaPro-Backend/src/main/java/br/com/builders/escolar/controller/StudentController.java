@@ -153,10 +153,10 @@ public class StudentController {
         return ResponseEntity.ok().body(this.fixedHealthService.findFixedHealthById(id));
     }
 
-    @GetMapping(path = "/fixedhealth/all/{id}")
-    public ResponseEntity<List<FixedHealth>> findAllFixedHealthByStudent(@PathVariable Long id) {
-        return ResponseEntity.ok().body(this.fixedHealthService.findAllFixedHealthByStudent(id));
-    }
+//    @GetMapping(path = "/fixedhealth/all/{id}")
+//    public ResponseEntity<List<FixedHealth>> findAllFixedHealthByStudent(@PathVariable Long id) {
+//        return ResponseEntity.ok().body(this.fixedHealthService.findAllFixedHealthByStudent(id));
+//    }
 
     @PutMapping(path = "/fixedhealth")
     public ResponseEntity<?> updateFixedHealth(@RequestBody UpdateFixedHealthDTO request) {
