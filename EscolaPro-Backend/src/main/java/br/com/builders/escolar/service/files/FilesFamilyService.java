@@ -28,7 +28,7 @@ public class FilesFamilyService implements FileStorageServiceInterface<Family>{
      @Value("${files-family-path}")
      private String filesFamilyPath;
 
-     private final FilesFamilyRepository filesFinancialResponsibleRepository;
+     private final FilesFamilyRepository filesFamilyRepository;
 
      @Override
      public void saveFile(MultipartFile file, Family family, FileTypeEnum type) {
@@ -65,7 +65,7 @@ public class FilesFamilyService implements FileStorageServiceInterface<Family>{
                             .type(FileTypeEnum.RG)
                             .rgFile(family)
                             .build();
-                    this.filesFinancialResponsibleRepository.save(file);
+                    this.filesFamilyRepository.save(file);
                     break;
                case CPF:
                     file = BasicFilesFamily.builder()
@@ -74,7 +74,7 @@ public class FilesFamilyService implements FileStorageServiceInterface<Family>{
                             .type(FileTypeEnum.CPF)
                             .cpfFile(family)
                             .build();
-                    this.filesFinancialResponsibleRepository.save(file);
+                    this.filesFamilyRepository.save(file);
                     break;
                case PROOF_OF_ADDRESS:
                     file = BasicFilesFamily.builder()
@@ -83,7 +83,7 @@ public class FilesFamilyService implements FileStorageServiceInterface<Family>{
                             .type(FileTypeEnum.PROOF_OF_ADDRESS)
                             .proofOfAddress(family)
                             .build();
-                    this.filesFinancialResponsibleRepository.save(file);
+                    this.filesFamilyRepository.save(file);
                     break;
                default:
                     throw new FileTypeErrorException();
@@ -94,7 +94,7 @@ public class FilesFamilyService implements FileStorageServiceInterface<Family>{
      public String generateFileName(MultipartFile file, Family family, FileTypeEnum type) {
           String fileName = GenerateNewName.generateFileName(file, family.getName());
           String newFileName = ToAddTypeFile.toAddType(fileName, type);
-          if (filesFinancialResponsibleRepository.findByReference(newFileName).isEmpty()) {
+          if (filesFamilyRepository.findByReference(newFileName).isEmpty()) {
                return newFileName;
           } else {
                return GenerateNewName.addCharactersToFileName(newFileName);
