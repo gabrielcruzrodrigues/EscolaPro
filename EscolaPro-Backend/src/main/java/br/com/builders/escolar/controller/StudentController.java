@@ -177,10 +177,10 @@ public class StudentController {
         return ResponseEntity.ok().body(this.financialResponsibleService.findFinancialResponsibleById(id));
     }
 
-    @GetMapping(path = "/financialresponsible/all/{id}")
-    public ResponseEntity<List<FinancialResponsible>> findAllFinancialResponsibleByStudent(@PathVariable Long id) {
-        return ResponseEntity.ok().body(this.financialResponsibleService.findAllFinancialResponsibleByStudent(id));
-    }
+//    @GetMapping(path = "/financialresponsible/all/{id}")
+//    public ResponseEntity<List<FinancialResponsible>> findAllFinancialResponsibleByStudent(@PathVariable Long id) {
+//        return ResponseEntity.ok().body(this.financialResponsibleService.findAllFinancialResponsibleByStudent(id));
+//    }
 
     @PutMapping(path = "/financialresponsible")
     public ResponseEntity<?> updateFinancialResponsible(@RequestBody UpdateFinancialResponsibleDTO request) {
