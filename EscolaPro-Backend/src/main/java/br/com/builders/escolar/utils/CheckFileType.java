@@ -23,8 +23,8 @@ public class CheckFileType {
     }
 
     private static Boolean isFile(MultipartFile file) throws FileNullContentException {
-        String fileName = file.getOriginalFilename();
         if (file != null) {
+            String fileName = file.getOriginalFilename();
             return fileName.endsWith(".pdf");
         } else {
             throw new FileNullContentException();

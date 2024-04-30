@@ -1,8 +1,11 @@
 package br.com.builders.escolar.service.files;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import br.com.builders.escolar.exception.customized.FamilyNotFoundException;
+import br.com.builders.escolar.exception.customized.FileNullContentException;
 import br.com.builders.escolar.utils.ToAddTypeFile;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -40,10 +43,14 @@ public class FilesFamilyService implements FileStorageServiceInterface<Family>{
                          Path path = Paths.get(filesFamilyPath + "/" + newFileName);
                          Files.write(path, bytes);
                          this.saveFileReferenceInDatabase(newFileName, family, type);
-                    } catch (Exception ex) {
+                    } catch (IOException ex) {
                          throw new SaveFileErrorException(ex.getMessage());
                     }
+               } else {
+                    throw new FamilyNotFoundException();
                }
+          } else {
+               throw new FileNullContentException();
           }
      }
 
@@ -55,7 +62,7 @@ public class FilesFamilyService implements FileStorageServiceInterface<Family>{
      @Override
      public void saveFileReferenceInDatabase(String fileName, Family family, FileTypeEnum typeForVerify) {
           String register = GenerateRegister.newRegister();
-          BasicFilesFamily file = new BasicFilesFamily();
+          BasicFilesFamily file;
 
           switch (typeForVerify) {
                case RG:
