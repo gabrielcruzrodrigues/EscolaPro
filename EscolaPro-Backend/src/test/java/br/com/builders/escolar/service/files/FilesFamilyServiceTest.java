@@ -34,6 +34,9 @@ class FilesFamilyServiceTest {
     private FilesFamilyRepository filesFamilyRepository;
 
     @Mock
+    private CheckFileType checkFileType;
+
+    @Mock
     private MultipartFile file;
 
     @Mock
@@ -47,15 +50,6 @@ class FilesFamilyServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    private MockedStatic<CheckFileType> mockedStaticCheckFileType;
-
-    @AfterEach
-    void tearDown() {
-        if (mockedStaticCheckFileType != null) {
-            mockedStaticCheckFileType.close();
-        }
-    }
-
     @Test
     @DisplayName("Must receive data and save file with success")
     void saveFile_withSuccess() throws IOException {
@@ -65,19 +59,17 @@ class FilesFamilyServiceTest {
         String expectedFileName = "document.pdf";
         Path expectedPath = Paths.get("files/family/" + expectedFileName);
 
-        try (MockedStatic<Files> mockedFiles = Mockito.mockStatic(Files.class)) {
-            MockedStatic<CheckFileType> mockedStatic_CheckFileType = Mockito.mockStatic(CheckFileType.class);
-            MockedStatic<GenerateNewName> mockedStatic_GenerateFileName = Mockito.mockStatic(GenerateNewName.class);
+        try (MockedStatic<GenerateNewName> mockedStatic_GenerateFileName = Mockito.mockStatic(GenerateNewName.class);
+            MockedStatic<Files> mockedFiles = Mockito.mockStatic(Files.class)) {
 
             when(file.getBytes()).thenReturn(content);
             when(filesFamilyRepository.findByReference(anyString())).thenReturn(Optional.empty());
             when(family.getName()).thenReturn("Gabriel");
+            when(checkFileType.verifyIfIsAFile(any(MultipartFile.class))).thenReturn(true);
 
+            mockedFiles.when(() -> Files.write(eq(expectedPath), eq(content))).thenReturn(null);
             mockedStatic_GenerateFileName.when(() -> GenerateNewName.generateFileName(any(MultipartFile.class), anyString()))
                     .thenReturn(expectedFileName);
-            mockedStatic_CheckFileType.when(() -> CheckFileType.verifyIfIsAFile(any(MultipartFile.class)))
-                    .thenReturn(true);
-            mockedFiles.when(() -> Files.write(eq(expectedPath), eq(content))).thenReturn(null);
 
             //action
             filesFamilyService.saveFile(file, family, type);
@@ -85,44 +77,35 @@ class FilesFamilyServiceTest {
             //verify
             verify(file, times(1)).getBytes();
             mockedStatic_GenerateFileName.verify(() -> GenerateNewName.generateFileName(any(MultipartFile.class), anyString()), times(1));
-            mockedStatic_CheckFileType.verify(() -> CheckFileType.verifyIfIsAFile(file), times(1));
+            verify(checkFileType, times(1)).verifyIfIsAFile(any(MultipartFile.class));
         }
     }
 
     @Test
     @DisplayName("Must return FileNullContentException when to call verifyFileType")
     void saveFile_withSuccess_FileNullContentException() {
-        //configuration test
         FileTypeEnum type = FileTypeEnum.RG;
-        try (MockedStatic<CheckFileType> mockedStatic_CheckFileType = Mockito.mockStatic(CheckFileType.class)) {
-            mockedStatic_CheckFileType.when(() -> CheckFileType.verifyIfIsAFile(any(MultipartFile.class))).thenReturn(false);
+        when(checkFileType.verifyIfIsAFile(any(MultipartFile.class))).thenReturn(false);
 
-            //action
-            FileNullContentException response = assertThrows(FileNullContentException.class, () -> {
-                filesFamilyService.saveFile(file, family, type);
-            }, "Must capture FileNullContentException");
+        FileNullContentException response = assertThrows(FileNullContentException.class, () -> {
+            filesFamilyService.saveFile(file, family, type);
+        }, "Must capture FileNullContentException");
 
-            //verify
-            assertEquals(FileNullContentException.class, response.getClass());
-        }
+        assertEquals(FileNullContentException.class, response.getClass());
+
     }
 
     @Test
     @DisplayName("Must return FamilyNotFoundException when family equals null")
     void saveFile_withSuccess_FamilyNotFoundException() {
-        //configuration test
         FileTypeEnum type = FileTypeEnum.RG;
-        try (MockedStatic<CheckFileType> mockedStatic_CheckFileType = Mockito.mockStatic(CheckFileType.class)) {
-            mockedStatic_CheckFileType.when(() -> CheckFileType.verifyIfIsAFile(any(MultipartFile.class))).thenReturn(true);
+        when(checkFileType.verifyIfIsAFile(any(MultipartFile.class))).thenReturn(true);
 
-            //action
-            FamilyNotFoundException response = assertThrows(FamilyNotFoundException.class, () -> {
-                filesFamilyService.saveFile(file, null, type);
-            }, "Must capture FamilyNotFoundException");
+        FamilyNotFoundException response = assertThrows(FamilyNotFoundException.class, () -> {
+            filesFamilyService.saveFile(file, null, type);
+        }, "Must capture FamilyNotFoundException");
 
-            //verify
-            assertEquals(FamilyNotFoundException.class, response.getClass());
-        }
+        assertEquals(FamilyNotFoundException.class, response.getClass());
     }
 
     @Test
@@ -134,55 +117,26 @@ class FilesFamilyServiceTest {
         String expectedFileName = "document.pdf";
         Path expectedPath = Paths.get("files/family/" + expectedFileName);
 
-        try (MockedStatic<CheckFileType> mockedStatic_CheckFileType = Mockito.mockStatic(CheckFileType.class)) {
+        try (MockedStatic<GenerateNewName> mockedStatic_GenerateFileName = Mockito.mockStatic(GenerateNewName.class)) {
             MockedStatic<Files> mockedFiles = Mockito.mockStatic(Files.class);
-            MockedStatic<GenerateNewName> mockedStatic_GenerateFileName = Mockito.mockStatic(GenerateNewName.class);
 
             when(file.getBytes()).thenReturn(content);
             when(filesFamilyRepository.findByReference(anyString())).thenReturn(Optional.empty());
             when(family.getName()).thenReturn("Gabriel");
+            when(checkFileType.verifyIfIsAFile(any(MultipartFile.class))).thenReturn(true);
 
             mockedStatic_GenerateFileName.when(() -> GenerateNewName.generateFileName(any(MultipartFile.class), anyString()))
                     .thenReturn(expectedFileName);
-            mockedStatic_CheckFileType.when(() -> CheckFileType.verifyIfIsAFile(any(MultipartFile.class)))
-                    .thenReturn(true);
             mockedFiles.when(() -> Files.write(eq(expectedPath), eq(content))).thenThrow(new IOException("Simulated IO Exception"));
 
-            //action
             try {
                 filesFamilyService.saveFile(file, family, type);
             } catch (SaveFileErrorException ex) {
-
-                //verify
                 assertNotNull(ex);
                 assertTrue(ex.getCause() instanceof IOException);
                 assertEquals("Simulated IO Exception", ex.getCause().getMessage());
             }
         }
-    }
-
-    @Test
-    @DisplayName("Must return true in verify type file")
-    void verifyFileType_true() {
-        try(MockedStatic<CheckFileType> mockedStatic = Mockito.mockStatic(CheckFileType.class)) {
-            mockedStatic.when(() -> CheckFileType.verifyIfIsAFile(file)).thenReturn(true);
-
-            boolean response = filesFamilyService.verifyFileType(file);
-
-            assertTrue(response);
-            mockedStatic.verify(() -> CheckFileType.verifyIfIsAFile(file), times(1));
-        }
-    }
-
-    @Test
-    @DisplayName("Must return a false when file is not a png")
-    void verifyFileType_false() {
-        when(file.getOriginalFilename()).thenReturn("file.png");
-
-        boolean response = filesFamilyService.verifyFileType(file);
-
-        assertFalse(response);
-        verify(file, times(1)).getOriginalFilename();
     }
 
     @Test

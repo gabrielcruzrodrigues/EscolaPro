@@ -28,6 +28,7 @@ public class FilesStudentService implements FileStorageServiceInterface<Student>
 
     private final FilesStudentRepository filesStudentRepository;
     private final ImageStudentRepository imageStudentRepository;
+    private final CheckFileType checkFileType;
 
     @Value("${files-students-path}")
     private String filesPath;
@@ -38,7 +39,7 @@ public class FilesStudentService implements FileStorageServiceInterface<Student>
     @Transactional
     @Override
     public void saveFile(MultipartFile file, Student student, FileTypeEnum type) {
-        if (this.verifyFileType(file)) {
+        if (checkFileType.verifyIfIsAFile(file)) {
             if (student != null) {
                 if (type == FileTypeEnum.IMAGE) {
                     this.finalPath = this.imagesPath;
@@ -57,11 +58,6 @@ public class FilesStudentService implements FileStorageServiceInterface<Student>
                 }
             }
         }
-    }
-
-    @Override
-    public boolean verifyFileType(MultipartFile file) {
-        return CheckFileType.verifyIfIsAFile(file) || CheckFileType.verifyIfIsAImage(file);
     }
 
     @Override

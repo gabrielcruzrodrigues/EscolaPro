@@ -32,10 +32,11 @@ public class FilesFamilyService implements FileStorageServiceInterface<Family>{
      private String filesFamilyPath;
 
      private final FilesFamilyRepository filesFamilyRepository;
+     private final CheckFileType checkFileType;
 
      @Override
      public void saveFile(MultipartFile file, Family family, FileTypeEnum type) {
-          if (verifyFileType(file)) {
+          if (checkFileType.verifyIfIsAFile(file)) {
                if (family != null) {
                     try {
                          byte[] bytes = file.getBytes();
@@ -52,11 +53,6 @@ public class FilesFamilyService implements FileStorageServiceInterface<Family>{
           } else {
                throw new FileNullContentException();
           }
-     }
-
-     @Override
-     public boolean verifyFileType(MultipartFile file) {
-          return CheckFileType.verifyIfIsAFile(file);
      }
 
      @Override

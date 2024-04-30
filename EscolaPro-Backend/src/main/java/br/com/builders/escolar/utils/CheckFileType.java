@@ -1,15 +1,18 @@
 package br.com.builders.escolar.utils;
 
 import br.com.builders.escolar.exception.customized.FileNullContentException;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
+@Component
 public class CheckFileType {
 
-    public static Boolean verifyIfIsAImage(MultipartFile file) throws FileNullContentException {
+    public Boolean verifyIfIsAImage(MultipartFile file) throws FileNullContentException {
         return isImage(file);
     }
 
-    private static boolean isImage(MultipartFile file) {
+    private boolean isImage(MultipartFile file) {
         String fileName = file.getOriginalFilename();
         if (file != null) {
             return fileName.endsWith(".JPG") || fileName.endsWith(".jpg") || fileName.endsWith("jpeg") || fileName.endsWith(".png");
@@ -18,11 +21,11 @@ public class CheckFileType {
         }
     }
 
-    public static boolean verifyIfIsAFile(MultipartFile file) throws FileNullContentException {
+    public boolean verifyIfIsAFile(MultipartFile file) throws FileNullContentException {
         return isFile(file);
     }
 
-    private static Boolean isFile(MultipartFile file) throws FileNullContentException {
+    private Boolean isFile(MultipartFile file) throws FileNullContentException {
         if (file != null) {
             String fileName = file.getOriginalFilename();
             return fileName.endsWith(".pdf");

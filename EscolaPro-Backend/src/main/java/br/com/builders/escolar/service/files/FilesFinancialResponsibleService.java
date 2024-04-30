@@ -27,10 +27,11 @@ public class FilesFinancialResponsibleService implements FileStorageServiceInter
     private String financialResponsiblePath;
 
     private final FilesFinancialResponsibleRepository filesFinancialResponsibleRepository;
+    private final CheckFileType checkFileType;
 
     @Override
     public void saveFile(MultipartFile file, FinancialResponsible financialResponsible, FileTypeEnum type) {
-        if (this.verifyFileType(file)) {
+        if (checkFileType.verifyIfIsAFile(file)) {
             if (financialResponsible != null) {
                 try {
                     byte[] bytes = file.getBytes();
@@ -43,11 +44,6 @@ public class FilesFinancialResponsibleService implements FileStorageServiceInter
                 }
             }
         }
-    }
-
-    @Override
-    public boolean verifyFileType(MultipartFile file) {
-        return CheckFileType.verifyIfIsAFile(file);
     }
 
     @Override
